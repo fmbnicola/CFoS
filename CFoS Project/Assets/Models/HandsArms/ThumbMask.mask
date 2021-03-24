@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ThumbMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Hand
+    m_Weight: 0
+  - m_Path: HandArmature
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1/Forearm
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1/Forearm/Arm
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1/Forearm/Arm/Arm_end
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1/Index
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1/Index/Index1
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1/Index/Index1/Index2
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1/Index/Index1/Index2/Index2_end
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1/Middle
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1/Middle/Middle1
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1/Middle/Middle1/Middle2
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1/Middle/Middle1/Middle2/Middle2_end
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1/Pinky
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1/Pinky/Pinky1
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1/Pinky/Pinky1/Pinky2
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1/Pinky/Pinky1/Pinky2/Pinky2_end
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1/Ring
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1/Ring/Ring1
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1/Ring/Ring1/Ring2
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1/Ring/Ring1/Ring2/Ring2_end
+    m_Weight: 0
+  - m_Path: HandArmature/Hand 1/Thumb
+    m_Weight: 1
+  - m_Path: HandArmature/Hand 1/Thumb/Thumb1
+    m_Weight: 1
+  - m_Path: HandArmature/Hand 1/Thumb/Thumb1/Thumb2
+    m_Weight: 1
+  - m_Path: HandArmature/Hand 1/Thumb/Thumb1/Thumb2/Thumb2_end
+    m_Weight: 1
