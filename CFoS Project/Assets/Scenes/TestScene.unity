@@ -1142,10 +1142,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useCullingMasks: 0
-  Supershape: {fileID: 1834614735}
-  SamplePoints: 360
-  LineThickness: 2
-  LineColor: {r: 1, g: 1, b: 1, a: 1}
+  LineThickness: 3.74
+  LineColor: {r: 1, g: 0.3915094, b: 0.9182877, a: 1}
+  DebugEnabled: 0
 --- !u!4 &1827776699
 Transform:
   m_ObjectHideFlags: 0
@@ -1160,30 +1159,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1834614735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9961e8264da3614c9c12d94f7572513, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AMin: -1
-  AMax: 1
-  BMin: -1
-  BMax: 1
-  MMin: 0
-  MMax: 50
-  N1Min: 0
-  N1Max: 2
-  N2Min: 0
-  N2Max: 2
-  N3Min: 0
-  N3Max: 2
 --- !u!1 &1868635075
 GameObject:
   m_ObjectHideFlags: 0

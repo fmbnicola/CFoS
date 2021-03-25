@@ -7,7 +7,7 @@ namespace CFoS.Supershape
 {
     [CanEditMultipleObjects]
     [CustomEditor(typeof(Supershape2D))]
-    public class Supershaper2DEditor : Editor
+    public class Supershape2DEditor : Editor
     {
         public override void OnInspectorGUI()
         {

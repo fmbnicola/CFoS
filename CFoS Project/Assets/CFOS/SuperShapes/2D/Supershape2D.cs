@@ -18,7 +18,7 @@ namespace CFoS.Supershape
         }
 
 
-        // Parameters
+        // Parameters and Ranges
         private float a = 1.0f;
         [HideInInspector] public float AMin = -1, AMax = 1;
         public float A { get { return a; } set { VarChangeCheck(ref a, value); } }
@@ -47,7 +47,7 @@ namespace CFoS.Supershape
         // Methods
         public override string ToString()
         {
-            return "2D Supershape { a: " + a + ", b: " + b + ", m: " + m + ", n1: " + n1 + ", n2: " + n2 + ", n3: " + n3 + " }";
+            return "Supershape2D { a: " + a + ", b: " + b + ", m: " + m + ", n1: " + n1 + ", n2: " + n2 + ", n3: " + n3 + " }";
         }
 
         public float GetValue(float theta)
@@ -78,5 +78,3 @@ namespace CFoS.Supershape
         }
     }
 }
-
-
