@@ -95,12 +95,14 @@ namespace CFoS.Supershape
                 return;
             }
 
-            A  = Random.Range(AMin, AMax);
-            B  = Random.Range(BMin, BMax);
-            M  = Random.Range(MMin, MMax);
-            N1 = Random.Range(N1Min, N1Max);
-            N2 = Random.Range(N2Min, N2Max);
-            N3 = Random.Range(N3Min, N3Max);
+            a  = Random.Range(AMin, AMax);
+            b  = Random.Range(BMin, BMax);
+            m  = Random.Range(MMin, MMax);
+            n1 = Random.Range(N1Min, N1Max);
+            n2 = Random.Range(N2Min, N2Max);
+            n3 = Random.Range(N3Min, N3Max);
+
+            OnUpdate?.Invoke();
 
             Debug.Log("Randomize");
         }
