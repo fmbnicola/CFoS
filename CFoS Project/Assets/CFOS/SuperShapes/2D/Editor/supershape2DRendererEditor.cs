@@ -5,27 +5,38 @@ using UnityEngine;
 
 namespace CFoS.Supershape
 {
-    [CanEditMultipleObjects]
     [CustomEditor(typeof(Supershape2DRenderer))]
+    [CanEditMultipleObjects]
     public class Supershape2DRendererEditor : Editor
     {
         bool showParameters = false;
         bool showProperties = true;
 
+        SerializedProperty thickness;
+        SerializedProperty color;
+
+        public void OnEnable()
+        {
+            thickness = serializedObject.FindProperty("LineThickness");
+            color = serializedObject.FindProperty("LineColor");
+        }
+
         public override void OnInspectorGUI()
         {
+            
             base.OnInspectorGUI();
 
+            serializedObject.Update();
             Supershape2DRenderer supershapeRenderer = (Supershape2DRenderer) target;
 
             // Supershape Reference
             EditorGUILayout.Space(5);
-
+            
             EditorGUILayout.BeginHorizontal();
             supershapeRenderer.Supershape = (Supershape2D) EditorGUILayout.ObjectField("Supershape Reference", supershapeRenderer.Supershape, typeof(Supershape2D), true);
             if (GUILayout.Button("Edit", GUILayout.Width(50))) Selection.activeObject = supershapeRenderer.Supershape;
             EditorGUILayout.EndHorizontal();
-
+            
             // Supershape Parameters quick-edit
             var supershape = supershapeRenderer.Supershape;
             if (supershape != null)
@@ -54,19 +65,20 @@ namespace CFoS.Supershape
             if (showProperties)
             {
                 supershapeRenderer.SamplePoints = EditorGUILayout.IntField("Sample Points", supershapeRenderer.SamplePoints);
+                EditorGUILayout.PropertyField(thickness);
+                EditorGUILayout.PropertyField(color);
+            }
+            EditorGUILayout.EndFoldoutHeaderGroup();
 
-                EditorGUI.BeginChangeCheck();
-
-                supershapeRenderer.LineColor = EditorGUILayout.ColorField("Line Color", supershapeRenderer.LineColor);
-                supershapeRenderer.LineThickness = EditorGUILayout.FloatField("Line Thickness", supershapeRenderer.LineThickness);
-
-                if (EditorGUI.EndChangeCheck())
-                {
-                    SceneView.RepaintAll();
-                }
+            //Propagate to multi-obj editing
+            foreach (var obj in targets)
+            {
+                Supershape2DRenderer renderer = (Supershape2DRenderer)obj;
+                renderer.SamplePoints = supershapeRenderer.SamplePoints;
+                renderer.Supershape = supershapeRenderer.Supershape;
             }
 
-            EditorGUILayout.EndFoldoutHeaderGroup();
+            serializedObject.ApplyModifiedProperties();
         }
     }
 }

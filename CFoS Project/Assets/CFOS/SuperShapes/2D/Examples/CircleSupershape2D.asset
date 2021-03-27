@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9961e8264da3614c9c12d94f7572513, type: 3}
-  m_Name: DefaultSupershape2D
+  m_Name: CircleSupershape2D
   m_EditorClassIdentifier: 
-  a: 1
-  b: 1
-  m: 0
-  n1: 1
-  n2: 1
-  n3: 1
-  UpdateEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  AMin: -1
+  AMax: 1
+  BMin: -1
+  BMax: 1
+  MMin: 0
+  MMax: 50
+  N1Min: 0
+  N1Max: 2
+  N2Min: 0
+  N2Max: 2
+  N3Min: 0
+  N3Max: 2

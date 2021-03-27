@@ -11,6 +11,7 @@ namespace CFoS.Supershape
     public class Supershape2DRenderer : ImmediateModeShapeDrawer
     {
         // Supershape Reference
+        
         private Supershape2D supershape;
         public Supershape2D Supershape
         {
@@ -33,7 +34,7 @@ namespace CFoS.Supershape
         protected PolylinePath polyline;
 
         // Debug
-        [HideInInspector] public bool DebugEnabled = false;
+        public bool DebugEnabled = false;
 
 
 
@@ -67,6 +68,7 @@ namespace CFoS.Supershape
             // Init Supershape
             if (supershape == null)
             {
+                if (DebugEnabled) Debug.Log("New Supershape");
                 supershape = ScriptableObject.CreateInstance<Supershape2D>();
             }
             supershape.OnUpdate -= UpdateRender;
@@ -132,8 +134,10 @@ namespace CFoS.Supershape
             using (Draw.Command(cam))
             {
                 // set up static parameters. these are used for all following Draw.Line calls
-                Draw.LineGeometry = LineGeometry.Flat2D;
-                Draw.LineThicknessSpace = ThicknessSpace.Pixels;
+                Draw.PolylineGeometry = PolylineGeometry.Flat2D;
+                Draw.LineThicknessSpace = ThicknessSpace.Meters;
+                Draw.DetailLevel = DetailLevel.Medium;
+                Draw.PolylineJoins = PolylineJoins.Miter;
 
                 // set properties
                 Draw.LineThickness = LineThickness;
