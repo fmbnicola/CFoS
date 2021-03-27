@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9961e8264da3614c9c12d94f7572513, type: 3}
-  m_Name: CircleSupershape2D
+  m_Name: TriangleSupershape2D
   m_EditorClassIdentifier: 
+  Lock: 1
   AMin: -1
   AMax: 1
   BMin: -1

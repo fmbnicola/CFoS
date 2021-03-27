@@ -14,9 +14,19 @@ namespace CFoS.Supershape
 
         public void VarChangeCheck(ref float var, float val)
         {
-            if (var != val) { var = val; OnUpdate?.Invoke(); }
+            if (Lock)
+            {
+                Debug.LogError("Supershape " + name + " is locked! [Trying to set parameter]");
+                return;
+            }
+            if (var != val)
+            {
+                var = val;
+                OnUpdate?.Invoke();
+            }
         }
 
+        [HideInInspector] public bool Lock = false;
 
         // Parameters and Ranges
         private float a = 1.0f;
@@ -75,6 +85,24 @@ namespace CFoS.Supershape
             float y = r * Mathf.Sin(theta);
 
             return new Vector2(x, y);
+        }
+
+        public void Randomize()
+        {
+            if (Lock)
+            {
+                Debug.LogError("Supershape " + name + " is locked! [Trying to randomize parameters]");
+                return;
+            }
+
+            A  = Random.Range(AMin, AMax);
+            B  = Random.Range(BMin, BMax);
+            M  = Random.Range(MMin, MMax);
+            N1 = Random.Range(N1Min, N1Max);
+            N2 = Random.Range(N2Min, N2Max);
+            N3 = Random.Range(N3Min, N3Max);
+
+            Debug.Log("Randomize");
         }
     }
 }

@@ -8,15 +8,19 @@ using UnityEngine;
 namespace CFoS.Supershape
 {
     [ExecuteAlways]
-    public class Supershape2DRenderer : ImmediateModeShapeDrawer
+    public class Supershape2DRenderer : MonoBehaviour
     {
+        public void VarChangeCheck<T>(ref T var, T val, Action func)
+        {
+            if (!var.Equals(val)) { var = val; func?.Invoke(); }
+        }
+
         // Supershape Reference
-        
         private Supershape2D supershape;
         public Supershape2D Supershape
         {
             get { return supershape; }
-            set { if (supershape != value) { Clean(); supershape = value; Init(); } }
+            set { VarChangeCheck(ref supershape, value, () => { Clean(); Init(); }); }
         }
 
         // Render Properties
@@ -24,14 +28,26 @@ namespace CFoS.Supershape
         public int SamplePoints
         {
             get { return samplePoints; }
-            set { if (samplePoints!= value) { samplePoints = value; Init(); } }
+            set { VarChangeCheck(ref samplePoints, value, Init); }
         }
 
-        [HideInInspector] public float LineThickness = 2.0f;
-        [HideInInspector] public Color LineColor = Color.white;
+        private float lineThickness = 0.05f;
+        public float LineThickness
+        {
+            get { return lineThickness; }
+            set { VarChangeCheck(ref lineThickness, value, UpdateProperties); }
+        }
+
+        private Color lineColor = Color.white;
+        public Color LineColor
+        {
+            get { return lineColor; }
+            set { VarChangeCheck(ref lineColor, value, UpdateProperties); }
+
+        }
 
         // Polyline
-        protected PolylinePath polyline;
+        public Polyline Polyline;
 
         // Debug
         public bool DebugEnabled = false;
@@ -39,17 +55,13 @@ namespace CFoS.Supershape
 
 
         // Unity Events
-        public override void OnEnable()
+        public void OnEnable()
         {
-            base.OnEnable();
-
             Init();
         }
 
-        public override void OnDisable()
+        public void OnDisable()
         {
-            base.OnDisable();
-
             Clean();
         }
 
@@ -57,7 +69,6 @@ namespace CFoS.Supershape
         {
             Clean();
         }
-
 
 
         // Methods
@@ -75,11 +86,12 @@ namespace CFoS.Supershape
             supershape.OnUpdate += UpdateRender;
 
             // Init Polyline
-            if (polyline != null)
+            if (Polyline == null)
             {
-                polyline.Dispose();
+                Polyline = gameObject.AddComponent(typeof(Polyline)) as Polyline;
+                Polyline.Closed = false;
             }
-            polyline = new PolylinePath();
+            Polyline.points.Clear();
 
             if (samplePoints < 10) samplePoints = 10;
 
@@ -87,7 +99,7 @@ namespace CFoS.Supershape
             for (float angle = 0; angle < 2 * Mathf.PI; angle += inc)
             {
                 var point = supershape.GetCoords(angle);
-                polyline.AddPoint(point);
+                Polyline.AddPoint(point);
             }
 
             // Force SceneView update
@@ -103,22 +115,22 @@ namespace CFoS.Supershape
             if (supershape != null)
                 supershape.OnUpdate -= UpdateRender;
 
-            if (polyline != null)
-                polyline.Dispose();
+            if (Polyline != null)
+                Polyline.points.Clear();
         }
 
         protected void UpdateRender()
         {
-            if (supershape == null || polyline == null) Init();
+            if (supershape == null || Polyline == null) Init();
 
             if (DebugEnabled) Debug.Log("Update: " + supershape);
 
-            float inc = 2 * Mathf.PI / samplePoints;
             int i = 0;
+            float inc = 2 * Mathf.PI / samplePoints;
             for (float angle = 0; angle < 2 * Mathf.PI; angle += inc)
             {
                 var point = supershape.GetCoords(angle);
-                polyline.SetPoint(i++, point);
+                Polyline.SetPointPosition(i++, point);
             }
 
             // Force SceneView update
@@ -127,30 +139,16 @@ namespace CFoS.Supershape
             #endif
         }
 
-        public override void DrawShapes(Camera cam)
+        protected void UpdateProperties()
         {
-            if (supershape == null || polyline == null) Init();
-
-            using (Draw.Command(cam))
+            // Update Render Properties
+            if (Polyline != null)
             {
-                // set up static parameters. these are used for all following Draw.Line calls
-                Draw.PolylineGeometry = PolylineGeometry.Flat2D;
-                Draw.LineThicknessSpace = ThicknessSpace.Meters;
-                Draw.DetailLevel = DetailLevel.Medium;
-                Draw.PolylineJoins = PolylineJoins.Miter;
-
-                // set properties
-                Draw.LineThickness = LineThickness;
-                Draw.Color = LineColor;
-
-                // set static parameter to draw in the local space of this object
-                Draw.Matrix = transform.localToWorldMatrix;
-
-                // draw SShape
-                Draw.Polyline(polyline, closed: true);
-
+                Polyline.Color = LineColor;
+                Polyline.Thickness = LineThickness;
             }
         }
+
     }
 }
 

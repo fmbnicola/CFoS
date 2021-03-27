@@ -13,19 +13,47 @@ namespace CFoS.Supershape
         {
             base.OnInspectorGUI();
 
-            Supershape2D supershape = (Supershape2D) target;
+            Supershape2D supershape = (Supershape2D)target;
 
-            supershape.A = CustomSlider("A", supershape.A, ref supershape.AMin, ref supershape.AMax);
-            supershape.B = CustomSlider("B", supershape.B, ref supershape.BMin, ref supershape.BMax);
+            // Lock/Unlock Button
+            GUI.contentColor = supershape.Lock ? new Color(0.0f, 0.8f, 0.0f) : new Color(0.9f, 0.0f, 0.0f);
+            if (GUILayout.Button(supershape.Lock ? "UNLOCK" : "LOCK", GUILayout.Height(30)))
+                supershape.Lock = !supershape.Lock;
+            GUI.contentColor = Color.white;
 
-            EditorGUILayout.Space(40);
-            supershape.M = CustomSlider("M", supershape.M, ref supershape.MMin, ref supershape.MMax);
+            // Parameters
+            EditorGUI.BeginDisabledGroup(supershape.Lock);
 
-            EditorGUILayout.Space(40);
-            supershape.N1 = CustomSlider("N1", supershape.N1, ref supershape.N1Min, ref supershape.N1Max);
-            supershape.N2 = CustomSlider("N2", supershape.N2, ref supershape.N2Min, ref supershape.N2Max);
-            supershape.N3 = CustomSlider("N3", supershape.N3, ref supershape.N3Min, ref supershape.N3Max);
+            using (var check = new EditorGUI.ChangeCheckScope())
+            {
+                EditorGUILayout.Space(10);
 
+                float a, b, m, n1, n2, n3;
+                a = CustomSlider("A", supershape.A, ref supershape.AMin, ref supershape.AMax);
+                b = CustomSlider("B", supershape.B, ref supershape.BMin, ref supershape.BMax);
+                EditorGUILayout.Space(40);
+                m = CustomSlider("M", supershape.M, ref supershape.MMin, ref supershape.MMax);
+                EditorGUILayout.Space(40);
+                n1 = CustomSlider("N1", supershape.N1, ref supershape.N1Min, ref supershape.N1Max);
+                n2 = CustomSlider("N2", supershape.N2, ref supershape.N2Min, ref supershape.N2Max);
+                n3 = CustomSlider("N3", supershape.N3, ref supershape.N3Min, ref supershape.N3Max);
+
+                // Push changes
+                if (check.changed)
+                {
+                    supershape.A = a;
+                    supershape.B = b;
+                    supershape.M = m;
+                    supershape.N1 = n1;
+                    supershape.N2 = n2;
+                    supershape.N3 = n3;
+                }
+
+                if (GUILayout.Button("Randomize", GUILayout.Height(30))) supershape.Randomize();
+
+                EditorGUI.EndDisabledGroup();
+
+            }
         }
 
         public float CustomSlider(string label, float val, ref float min, ref float max)
@@ -54,6 +82,6 @@ namespace CFoS.Supershape
 
             return val;
         }
-    }
 
+    }
 }
