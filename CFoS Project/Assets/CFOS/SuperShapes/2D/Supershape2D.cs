@@ -29,27 +29,27 @@ namespace CFoS.Supershape
         [HideInInspector] public bool Lock = false;
 
         // Parameters and Ranges
-        private float a = 1.0f;
-        [HideInInspector] public float AMin = -1, AMax = 1;
+        [HideInInspector] [SerializeField] private float a = 1.0f;
+        [HideInInspector] public float AMin = 0, AMax = 1;
         public float A { get { return a; } set { VarChangeCheck(ref a, value); } }
 
-        private float b = 1.0f;
-        [HideInInspector] public float BMin = -1, BMax = 1;
+        [HideInInspector] [SerializeField] private float b = 1.0f;
+        [HideInInspector] public float BMin = 0, BMax = 1;
         public float B { get { return b; } set { VarChangeCheck(ref b, value); } }
 
-        private float m  = 0.0f;
+        [HideInInspector] [SerializeField] private float m = 0.0f;
         [HideInInspector] public float MMin = 0, MMax = 50;
         public float M { get { return m; } set { VarChangeCheck(ref m, value); } }
 
-        private float n1 = 1.0f;
+        [HideInInspector] [SerializeField] private float n1 = 1.0f;
         [HideInInspector] public float N1Min = 0, N1Max = 2;
         public float N1 { get { return n1; } set { VarChangeCheck(ref n1, value); } }
 
-        private float n2 = 1.0f;
+        [HideInInspector] [SerializeField] private float n2 = 1.0f;
         [HideInInspector] public float N2Min = 0, N2Max = 2;
         public float N2 { get { return n2; } set { VarChangeCheck(ref n2, value); } }
 
-        private float n3 = 1.0f;
+        [HideInInspector] [SerializeField] private float n3 = 1.0f;
         [HideInInspector] public float N3Min = 0, N3Max = 2;
         public float N3 { get { return n3; } set { VarChangeCheck(ref n3, value); } }
 

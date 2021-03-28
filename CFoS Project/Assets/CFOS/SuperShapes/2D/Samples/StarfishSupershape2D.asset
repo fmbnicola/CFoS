@@ -13,15 +13,21 @@ MonoBehaviour:
   m_Name: StarfishSupershape2D
   m_EditorClassIdentifier: 
   Lock: 1
+  a: 0.634
   AMin: -1
-  AMax: 3
+  AMax: 2
+  b: 1.06
   BMin: -1
-  BMax: 3
+  BMax: 2
+  m: 10
   MMin: 0
   MMax: 50
+  n1: 1
   N1Min: 0
-  N1Max: 2
-  N2Min: -2
+  N1Max: 1
+  n2: 2.13
+  N2Min: 0
   N2Max: 4
+  n3: 1.45
   N3Min: 0
-  N3Max: 4
+  N3Max: 2

@@ -76,6 +76,8 @@ namespace CFoS.Supershape
                             supershapeRenderer.Supershape.N1 = n1;
                             supershapeRenderer.Supershape.N2 = n2;
                             supershapeRenderer.Supershape.N3 = n3;
+
+                            EditorUtility.SetDirty(supershapeRenderer.Supershape);
                         }   
                     }
                 }

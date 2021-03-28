@@ -13,15 +13,21 @@ MonoBehaviour:
   m_Name: CloverSupershape2D
   m_EditorClassIdentifier: 
   Lock: 1
+  a: 1.36
   AMin: 0
-  AMax: 2
-  BMin: 0
+  AMax: 4
+  b: 0.35
+  BMin: -2
   BMax: 2
+  m: 8
   MMin: 0
-  MMax: 50
-  N1Min: -2
-  N1Max: 2
-  N2Min: -2
-  N2Max: 2
-  N3Min: -2
-  N3Max: 2
+  MMax: 10
+  n1: 12.32
+  N1Min: -10
+  N1Max: 20
+  n2: -0.52
+  N2Min: -10
+  N2Max: 10
+  n3: -10
+  N3Min: -10
+  N3Max: 10

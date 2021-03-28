@@ -13,15 +13,21 @@ MonoBehaviour:
   m_Name: SeashellSupershape2D
   m_EditorClassIdentifier: 
   Lock: 1
-  AMin: 1
-  AMax: 5
+  a: 0.332
+  AMin: 0
+  AMax: 1
+  b: 0.006
   BMin: 0
-  BMax: 2
+  BMax: 1
+  m: 0.075672865
   MMin: 0
   MMax: 10
-  N1Min: -5
-  N1Max: 5
-  N2Min: -5
-  N2Max: 5
-  N3Min: -5
-  N3Max: 5
+  n1: -4.41687
+  N1Min: -10
+  N1Max: 10
+  n2: -6.9527054
+  N2Min: -10
+  N2Max: 10
+  n3: -0.8564367
+  N3Min: -10
+  N3Max: 10

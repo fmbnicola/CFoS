@@ -26,9 +26,8 @@ namespace CFoS.Supershape
 
             using (var check = new EditorGUI.ChangeCheckScope())
             {
-                EditorGUILayout.Space(10);
-
                 float a, b, m, n1, n2, n3;
+                EditorGUILayout.Space(10);
                 a = CustomSlider("A", supershape.A, ref supershape.AMin, ref supershape.AMax);
                 b = CustomSlider("B", supershape.B, ref supershape.BMin, ref supershape.BMax);
                 EditorGUILayout.Space(40);
@@ -47,13 +46,17 @@ namespace CFoS.Supershape
                     supershape.N1 = n1;
                     supershape.N2 = n2;
                     supershape.N3 = n3;
+
+                    EditorUtility.SetDirty(target);
                 }
 
-                if (GUILayout.Button("Randomize", GUILayout.Height(30))) supershape.Randomize();
-
-                EditorGUI.EndDisabledGroup();
-
+                if (GUILayout.Button("Randomize", GUILayout.Height(30)))
+                {
+                    supershape.Randomize();
+                    EditorUtility.SetDirty(supershape);
+                }
             }
+            EditorGUI.EndDisabledGroup();
         }
 
         public float CustomSlider(string label, float val, ref float min, ref float max)

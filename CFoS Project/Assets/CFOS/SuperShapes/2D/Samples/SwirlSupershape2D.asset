@@ -13,15 +13,21 @@ MonoBehaviour:
   m_Name: SwirlSupershape2D
   m_EditorClassIdentifier: 
   Lock: 1
-  AMin: 0
-  AMax: 1
-  BMin: 0
-  BMax: 1
+  a: -0.57
+  AMin: -3
+  AMax: 3
+  b: -0.27
+  BMin: -3
+  BMax: 3
+  m: 0.22986889
   MMin: 0
   MMax: 10
-  N1Min: 0
-  N1Max: 2
-  N2Min: 0
-  N2Max: 2
-  N3Min: 0
-  N3Max: 2
+  n1: 9.489765
+  N1Min: -10
+  N1Max: 10
+  n2: 5.6098366
+  N2Min: -10
+  N2Max: 10
+  n3: -7.587183
+  N3Min: -10
+  N3Max: 10

@@ -10,18 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9961e8264da3614c9c12d94f7572513, type: 3}
-  m_Name: GarlicSupershape2D
+  m_Name: HeartSupershape2D
   m_EditorClassIdentifier: 
   Lock: 1
-  AMin: 0
-  AMax: 1
-  BMin: 0
+  a: 0.871
+  AMin: -1
+  AMax: 2
+  b: 0.486
+  BMin: -1
   BMax: 2
+  m: 2
   MMin: 0
   MMax: 50
-  N1Min: -40
-  N1Max: 30
-  N2Min: -30
-  N2Max: 30
-  N3Min: -30
-  N3Max: 50
+  n1: 1.77
+  N1Min: -5
+  N1Max: 5
+  n2: -1.54
+  N2Min: -5
+  N2Max: 5
+  n3: 0.469
+  N3Min: 0
+  N3Max: 2

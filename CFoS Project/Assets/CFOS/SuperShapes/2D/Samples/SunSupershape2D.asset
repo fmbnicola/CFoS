@@ -13,15 +13,21 @@ MonoBehaviour:
   m_Name: SunSupershape2D
   m_EditorClassIdentifier: 
   Lock: 1
-  AMin: -1
+  a: 0.946
+  AMin: 0
   AMax: 1
-  BMin: -1
+  b: 0.926
+  BMin: 0
   BMax: 1
+  m: 20
   MMin: 0
   MMax: 50
+  n1: 1
   N1Min: 0
   N1Max: 2
+  n2: 1.343
   N2Min: 0
   N2Max: 2
+  n3: 1.441
   N3Min: 0
   N3Max: 2
