@@ -16,6 +16,7 @@ namespace CFoS.Supershape
         }
 
         // Supershape Reference
+        [SerializeReference] [HideInInspector]
         private Supershape2D supershape;
         public Supershape2D Supershape
         {
