@@ -11,7 +11,7 @@ TagManager:
   - PlayerBody
   - Water
   - UI
-  - PlayerHands
+  - Grabbable
   - CameraIgnore
   - Terrain
   - 

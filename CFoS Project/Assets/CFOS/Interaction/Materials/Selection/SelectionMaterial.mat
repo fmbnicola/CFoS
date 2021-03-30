@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TtransparentPurpleMaterial
-  m_Shader: {fileID: 4800000, guid: eb36d8383614b2747a251c90b6a9e824, type: 3}
+  m_Name: SelectionMaterial
+  m_Shader: {fileID: 4800000, guid: 3cd54661b1f4eb6488b9853275e0dab7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -83,8 +83,8 @@ Material:
     - _Float12: -40.29
     - _Frequency: 5
     - _FresnelIntensity: 2
-    - _FresnelPower: 3
-    - _FresnelScale: 2
+    - _FresnelPower: 3.26
+    - _FresnelScale: 0.6
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -114,11 +114,11 @@ Material:
     - _pwer: 1
     - _tiling: 1
     m_Colors:
-    - _BaseColor: {r: 0.5140828, g: 0.09019607, b: 1, a: 1}
+    - _BaseColor: {r: 0, g: 0, b: 0, a: 0}
     - _Bottom: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 0.06844188, b: 0, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FresnelColor: {r: 0.7496516, g: 0.4666667, b: 1, a: 0}
+    - _FresnelColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Top: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
