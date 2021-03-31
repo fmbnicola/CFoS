@@ -15,7 +15,7 @@ namespace CFoS.Interaction
         public float Size = 0.5f;
         public float PointerDistance = 0.5f;
 
-        public Color HoverColor;
+        public Data.ColorReference HoverColor;
 
         // Cosmetic elements
         private Shapes.Line outlineRenderer;
@@ -44,7 +44,7 @@ namespace CFoS.Interaction
         // Methods
         public void Hover(bool val)
         {
-            var color = val ? HoverColor : Color.white;
+            var color = val ? HoverColor.Value : Color.white;
             propBlock.SetColor("_Color", color);
 
             outlineRenderer.Color = color;

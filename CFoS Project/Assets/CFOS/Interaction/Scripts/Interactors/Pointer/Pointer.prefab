@@ -241,7 +241,10 @@ MonoBehaviour:
   Outline: {fileID: 2949083547526381654}
   Size: 0.1
   PointerDistance: 0.2
-  HoverColor: {r: 0, g: 1, b: 0.952054, a: 1}
+  HoverColor:
+    UseConstant: 0
+    ConstantValue: {r: 0, g: 0, b: 0, a: 0}
+    Variable: {fileID: 11400000, guid: 7e8472365d29b5742b676ea72fe79873, type: 2}
 --- !u!114 &2661459571213525881
 MonoBehaviour:
   m_ObjectHideFlags: 0

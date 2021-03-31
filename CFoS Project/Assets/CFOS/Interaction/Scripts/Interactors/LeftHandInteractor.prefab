@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1101331772782628571}
   - component: {fileID: 1101331772782628570}
   m_Layer: 3
-  m_Name: LeftInteractor
+  m_Name: LeftHandInteractor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,14 +139,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1101331772782628571}
     m_Modifications:
-    - target: {fileID: 2661459571213525881, guid: 73919388767dc394f8987c0a48c82cc1, type: 3}
-      propertyPath: m_ControllerRef
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2661459571213525881, guid: 73919388767dc394f8987c0a48c82cc1, type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2949083549310409121, guid: 73919388767dc394f8987c0a48c82cc1, type: 3}
       propertyPath: m_Name
       value: LeftPointer
