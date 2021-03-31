@@ -9,14 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7974525343237299959}
-  - component: {fileID: 7974525343237299954}
   - component: {fileID: 7974525343237299956}
-  - component: {fileID: 7974525343237299953}
+  - component: {fileID: 7974525343237299954}
   - component: {fileID: 7974525343237299957}
   - component: {fileID: 7974525343237299958}
-  - component: {fileID: 7974525343237299955}
   m_Layer: 5
-  m_Name: Pannel
+  m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,19 +34,6 @@ Transform:
   m_Father: {fileID: 7974525343417437168}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7974525343237299954
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7974525343237299960}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.50530136, y: 0.5052936, z: 0.042489707}
-  m_Center: {x: -0.0000007748604, y: 0.000006020069, z: 0.0003747046}
 --- !u!114 &7974525343237299956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,23 +65,19 @@ MonoBehaviour:
   cornerRadiusMode: 0
   cornerRadii: {x: 0.03, y: 0.03, z: 0.03, w: 0.03}
   thickness: 0.1
---- !u!114 &7974525343237299953
-MonoBehaviour:
+--- !u!65 &7974525343237299954
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7974525343237299960}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56427543e8fbfd444994a77e50ad099d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShapeRenderer: {fileID: 7974525343237299956}
-  Color:
-    UseConstant: 0
-    ConstantValue: {r: 0, g: 0.09945315, b: 0.122641504, a: 1}
-    Variable: {fileID: 11400000, guid: a02838d24323f7f4b8771a0a2f8fbbee, type: 2}
+  serializedVersion: 2
+  m_Size: {x: 0.50530136, y: 0.5052936, z: 0.042489707}
+  m_Center: {x: -0.0000007748604, y: 0.000006020069, z: 0.0003747046}
 --- !u!33 &7974525343237299957
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -146,75 +127,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7974525343237299955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7974525343237299960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 0}
-  m_Colliders: []
-  m_InteractionLayerMask:
-    serializedVersion: 2
-    m_Bits: 32
-  m_CustomReticle: {fileID: 0}
-  m_FirstHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_LastHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_HoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_HoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_SelectEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_SelectExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Activated:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Deactivated:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnFirstHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnLastHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectCanceled:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnActivate:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnDeactivate:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &7974525343279345762
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +139,6 @@ GameObject:
   - component: {fileID: 7974525343279345789}
   - component: {fileID: 7974525343279345790}
   - component: {fileID: 7974525343279345791}
-  - component: {fileID: 7974525343279345760}
   m_Layer: 6
   m_Name: Handle
   m_TagString: Untagged
@@ -333,23 +244,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7974525343279345760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7974525343279345762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ded0aeb46934be744ba65809b5a4ea7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShapeRenderer: {fileID: 7974525343279345789}
-  HoverColor:
-    UseConstant: 0
-    ConstantValue: {r: 0, g: 0, b: 0, a: 0}
-    Variable: {fileID: 11400000, guid: 08829bb8bff176d40801ac04dd357cef, type: 2}
 --- !u!1 &7974525343403148388
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,6 +351,7 @@ GameObject:
   - component: {fileID: 7974525343417437168}
   - component: {fileID: 7974525343417437169}
   - component: {fileID: 7974525343417437170}
+  - component: {fileID: 7016578542053121058}
   m_Layer: 6
   m_Name: UIWindow
   m_TagString: Untagged
@@ -528,8 +423,8 @@ MonoBehaviour:
   m_HoverEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7974525343279345760}
-        m_TargetAssemblyTypeName: CFoS.UI.UIHandle, Assembly-CSharp
+      - m_Target: {fileID: 7016578542053121058}
+        m_TargetAssemblyTypeName: CFoS.UI.UIWindow, Assembly-CSharp
         m_MethodName: Hover
         m_Mode: 6
         m_Arguments:
@@ -543,8 +438,8 @@ MonoBehaviour:
   m_HoverExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7974525343279345760}
-        m_TargetAssemblyTypeName: CFoS.UI.UIHandle, Assembly-CSharp
+      - m_Target: {fileID: 7016578542053121058}
+        m_TargetAssemblyTypeName: CFoS.UI.UIWindow, Assembly-CSharp
         m_MethodName: Hover
         m_Mode: 6
         m_Arguments:
@@ -626,6 +521,23 @@ MonoBehaviour:
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
+--- !u!114 &7016578542053121058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7974525343417437171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded0aeb46934be744ba65809b5a4ea7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Handle: {fileID: 7974525343279345789}
+  HandleNormalColor: {fileID: 11400000, guid: 6d79e368c98f34240b1ba5a0abe52bab, type: 2}
+  HandleHoverColor: {fileID: 11400000, guid: 08829bb8bff176d40801ac04dd357cef, type: 2}
+  Panel: {fileID: 7974525343237299956}
+  PanelColor: {fileID: 11400000, guid: a02838d24323f7f4b8771a0a2f8fbbee, type: 2}
 --- !u!1 &7974525343709902751
 GameObject:
   m_ObjectHideFlags: 0

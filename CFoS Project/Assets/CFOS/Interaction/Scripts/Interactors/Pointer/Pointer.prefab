@@ -95,8 +95,8 @@ MonoBehaviour:
   geometry: 1
   colorMode: 0
   colorEnd: {r: 1, g: 1, b: 1, a: 1}
-  start: {x: -0.00000014784746, y: -0.011387331, z: -0.00000014319085}
-  end: {x: 0.00000067055225, y: 0.90951574, z: -0.00000059604645}
+  start: {x: -0.00000051484676, y: 0.022918351, z: -0.00000018859282}
+  end: {x: 0.00000092200935, y: 0.8685312, z: 0}
   thickness: 0.01
   thicknessSpace: 0
   endCaps: 2
@@ -241,10 +241,8 @@ MonoBehaviour:
   Outline: {fileID: 2949083547526381654}
   Size: 0.1
   PointerDistance: 0.2
-  HoverColor:
-    UseConstant: 0
-    ConstantValue: {r: 0, g: 0, b: 0, a: 0}
-    Variable: {fileID: 11400000, guid: 7e8472365d29b5742b676ea72fe79873, type: 2}
+  NormalColor: {fileID: 11400000, guid: 6d79e368c98f34240b1ba5a0abe52bab, type: 2}
+  HoverColor: {fileID: 11400000, guid: 7e8472365d29b5742b676ea72fe79873, type: 2}
 --- !u!114 &2661459571213525881
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -27,9 +27,12 @@ namespace CFoS.Interaction
 
         protected override void Awake()
         {
-            
+            // Run base Awake and suppress warnings
+            Debug.unityLogger.filterLogType = LogType.Assert;
             base.Awake();
+            Debug.unityLogger.filterLogType = LogType.Log;
 
+            // set Controller
             xrController = m_ControllerRef;
 
             // hook events to trigger volume

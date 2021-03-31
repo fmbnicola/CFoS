@@ -49,10 +49,8 @@ MonoBehaviour:
   Volume: {fileID: 1339537359940012570}
   Outline: {fileID: 1339537360698256912}
   Size: 0.12
-  HoverColor:
-    UseConstant: 0
-    ConstantValue: {r: 0, g: 0, b: 0, a: 0}
-    Variable: {fileID: 11400000, guid: 08829bb8bff176d40801ac04dd357cef, type: 2}
+  NormalColor: {fileID: 11400000, guid: 6d79e368c98f34240b1ba5a0abe52bab, type: 2}
+  HoverColor: {fileID: 11400000, guid: 08829bb8bff176d40801ac04dd357cef, type: 2}
 --- !u!114 &738401174
 MonoBehaviour:
   m_ObjectHideFlags: 0

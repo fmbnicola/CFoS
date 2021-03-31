@@ -12,9 +12,12 @@ namespace CFoS.Interaction
         public Transform Volume;
         public Transform Outline;
 
+        [Space(5)]
         public float Size = 0.5f;
 
-        public Data.ColorReference HoverColor;
+        [Space(5)]
+        public Data.ColorVariable NormalColor;
+        public Data.ColorVariable HoverColor;
 
         // Cosmetic elements
         private Shapes.Disc outlineRenderer;
@@ -49,7 +52,7 @@ namespace CFoS.Interaction
         // Methods
         public void Hover(bool val)
         {
-            var color = val ? HoverColor.Value : Color.white;
+            var color = val ? HoverColor.Value : NormalColor.Value;
             propBlock.SetColor("_Color", color);
 
             outlineRenderer.Color = color;

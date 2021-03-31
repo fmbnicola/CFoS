@@ -62,6 +62,18 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 738401174, guid: 023df575c226e4e4385b610e3419717a, type: 3}
+      propertyPath: m_HapticHoverEnterDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 738401174, guid: 023df575c226e4e4385b610e3419717a, type: 3}
+      propertyPath: m_HapticHoverEnterIntensity
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 738401174, guid: 023df575c226e4e4385b610e3419717a, type: 3}
+      propertyPath: m_PlayHapticsOnHoverEntered
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1339537359319528524, guid: 023df575c226e4e4385b610e3419717a, type: 3}
       propertyPath: m_Name
       value: LeftGrabber
@@ -139,6 +151,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1101331772782628571}
     m_Modifications:
+    - target: {fileID: 2661459571213525881, guid: 73919388767dc394f8987c0a48c82cc1, type: 3}
+      propertyPath: m_HapticHoverEnterDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2661459571213525881, guid: 73919388767dc394f8987c0a48c82cc1, type: 3}
+      propertyPath: m_HapticHoverEnterIntensity
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2661459571213525881, guid: 73919388767dc394f8987c0a48c82cc1, type: 3}
+      propertyPath: m_PlayHapticsOnHoverEntered
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2949083549310409121, guid: 73919388767dc394f8987c0a48c82cc1, type: 3}
       propertyPath: m_Name
       value: LeftPointer
