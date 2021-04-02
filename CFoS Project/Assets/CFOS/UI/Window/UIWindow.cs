@@ -15,6 +15,14 @@ namespace CFoS.UI
         public Shapes.ShapeRenderer Panel;
         public Data.ColorVariable PanelColor;
 
+        // Init
+        [ExecuteAlways]
+        private void OnValidate()
+        {
+            Handle.Color = HandleNormalColor.Value;
+            Panel.Color = PanelColor.Value;
+        }
+
         public void Hover(bool val)
         {
             Handle.Color = val ? HandleHoverColor.Value: HandleNormalColor.Value;

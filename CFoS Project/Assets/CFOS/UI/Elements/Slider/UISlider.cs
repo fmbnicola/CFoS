@@ -1,0 +1,149 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.XR.Interaction.Toolkit;
+using static UnityEngine.InputSystem.InputAction;
+
+namespace CFoS.UI
+{
+    public class UISlider : UIElement
+    {
+        [Header("Handle")]
+        public Shapes.ShapeRenderer Handle;
+        public Data.ColorVariable HandleNormalColor;
+        public Data.ColorVariable HandleHoverColor;
+        public Data.ColorVariable HandleSelectColor;
+
+        [Space(10)]
+        public Shapes.ShapeRenderer HandleOutline;
+        public Data.ColorVariable HandleOutlineColor;
+
+        [Space(10)]
+        public TMPro.TextMeshPro HandleText;
+        public Data.ColorVariable HandleTextColor;
+
+        [Header("Track")]
+        public Shapes.Line Track;
+        public Data.ColorVariable TracklColor;
+
+        [Header("Range")]
+        public TMPro.TextMeshPro RangeMinText;
+        public TMPro.TextMeshPro RangeMaxText;
+        public Data.ColorVariable rangeTextColor;
+
+        [Header("Text")]
+        public TMPro.TextMeshPro Text;
+        public Data.ColorVariable TextColor;
+
+        [Header("Variables")]
+        public string StringFormat = "0.0";
+        public float Value = 0.0f;
+        public float Min = 0.0f;
+        public float Max = 1.0f;
+
+        [Space(10)]
+        public UnityEvent ValueChangedEvent;
+
+
+        private Vector3 selectOffset = Vector3.zero;
+
+        // Init
+        [ExecuteAlways]
+        protected override void OnValidate()
+        {
+            // Set Colors
+            Handle.Color = HandleNormalColor.Value;
+            HandleOutline.Color = HandleOutlineColor.Value;
+            HandleText.color = HandleTextColor.Value;
+
+            Track.Color = TracklColor.Value;
+
+            RangeMinText.color = rangeTextColor.Value;
+            RangeMaxText.color = rangeTextColor.Value;
+
+            Text.color = TextColor.Value;
+
+            // position range text
+            var pos = RangeMaxText.transform.localPosition;
+            pos.x = 0.0f;
+            RangeMaxText.transform.localPosition = pos;
+
+            pos = RangeMaxText.transform.localPosition;
+            pos.x = Track.End.x;
+            RangeMaxText.transform.localPosition = pos; 
+        }
+
+        public void Awake()
+        {
+            HandleOutline.gameObject.SetActive(false);
+        }
+
+
+        // Slider Functions
+        public override void Select(bool val)
+        {
+            base.Select(val);
+
+            if (val)
+            {
+                // save local offset from controller to handle
+                var handlePos = Handle.transform.position;
+                selectOffset = controller.transform.InverseTransformPoint(handlePos);
+            }
+        }
+
+
+        // converts handle position to slider value
+        private float HandleToValue(float handlePos)
+        {
+            float value = ExtensionMethods.Remap(handlePos, 0.0f, Track.End.x, Min, Max);
+            return Mathf.Clamp(value, Min, Max);
+        }
+
+        // converts slider value to handle position
+        private float ValueToHandle(float value)
+        {
+            float handlePos = ExtensionMethods.Remap(value, Min, Max, 0.0f, Track.End.x);
+            return Mathf.Clamp(handlePos, 0.0f, Track.End.x);
+        }
+
+        // position handle based on x val
+        private void PositionSlider(float posx)
+        {
+            posx = Mathf.Clamp(posx, 0.0f, Track.End.x);
+
+            var pos = Handle.transform.localPosition;
+            pos.x = posx;
+            Handle.transform.localPosition = pos;
+        }
+
+
+        private void Update()
+        {
+            // Visual Update
+            Handle.Color = selected? HandleSelectColor.Value : hovered? HandleHoverColor.Value : HandleNormalColor.Value;
+            HandleOutline.gameObject.SetActive(hovered || selected);
+
+            HandleText.text   = Value.ToString(StringFormat);
+            RangeMinText.text = Min.ToString(StringFormat);
+            RangeMaxText.text = Max.ToString(StringFormat);
+
+            // If selecting, handle positions changes value
+            if (selected)
+            {
+                // apply selectionOffset to controllerPosition and get x value of local coords
+                var controllerPos = controller.transform.TransformPoint(selectOffset);
+                var handlePos = transform.InverseTransformPoint(controllerPos);
+                
+                PositionSlider(handlePos.x);
+                Value = HandleToValue(handlePos.x);
+            }
+            // If not selecting, value changes handle position
+            else
+            {
+                PositionSlider(ValueToHandle(Value));
+            }
+        }
+    }
+}
