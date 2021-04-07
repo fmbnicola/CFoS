@@ -41,6 +41,7 @@ namespace CFoS.UI
         public float Value = 0.0f;
         public float Min = 0.0f;
         public float Max = 1.0f;
+        private float oldValue;
 
         [Space(10)]
         public UnityEvent ValueChangedEvent;
@@ -77,6 +78,8 @@ namespace CFoS.UI
         public void Awake()
         {
             HandleOutline.gameObject.SetActive(false);
+
+            oldValue = Value;
         }
 
 
@@ -90,6 +93,29 @@ namespace CFoS.UI
                 // save local offset from controller to handle
                 var handlePos = Handle.transform.position;
                 selectOffset = controller.transform.InverseTransformPoint(handlePos);
+            }
+        }
+
+        public override void Enable(bool val)
+        {
+            base.Enable(val);
+
+            if (!val)
+            {
+                var col = HandleTextColor.Value; col.a = 0.3f;
+                HandleText.color = col;
+
+                col = TracklColor.Value; col.a = 0.3f;
+                Track.Color = col;
+
+                col = TextColor.Value; col.a = 0.3f;
+                Text.color = col;
+            }
+            else
+            {
+                HandleText.color = HandleTextColor.Value;
+                Track.Color = TracklColor.Value;
+                Text.color = TextColor.Value;
             }
         }
 
@@ -121,6 +147,15 @@ namespace CFoS.UI
 
         private void Update()
         {
+            if (disabled)
+            {
+                var col = HandleNormalColor.Value; col.a = 0.3f;
+                Handle.Color = col;
+                HandleOutline.gameObject.SetActive(false);
+
+                return;
+            }
+
             // Visual Update
             Handle.Color = selected? HandleSelectColor.Value : hovered? HandleHoverColor.Value : HandleNormalColor.Value;
             HandleOutline.gameObject.SetActive(hovered || selected);
@@ -138,6 +173,12 @@ namespace CFoS.UI
                 
                 PositionSlider(handlePos.x);
                 Value = HandleToValue(handlePos.x);
+
+                if(!Mathf.Approximately(Value, oldValue))
+                {
+                    ValueChangedEvent.Invoke();
+                }
+                oldValue = Value;
             }
             // If not selecting, value changes handle position
             else
@@ -145,5 +186,7 @@ namespace CFoS.UI
                 PositionSlider(ValueToHandle(Value));
             }
         }
+
+
     }
 }

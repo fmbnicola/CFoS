@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 namespace CFoS.UI
-{
+    {
     public class UIButton : UIElement
     {
 
@@ -25,13 +25,13 @@ namespace CFoS.UI
         [Space(5)]
         public UnityEvent ButtonClickEvent;
 
-        //Offsets
+        // Offsets
         private float normalOffsetAmmount;
         private float hoverOffsetAmmount;
 
         private float textOffset;
         private float offset;
-        
+
 
         // Init
         [ExecuteAlways]
@@ -54,14 +54,30 @@ namespace CFoS.UI
         public void Update()
         {
             // Visual Update
-            Element.transform.localPosition = Vector3.forward * offset;
-            Text.transform.localPosition = Vector3.forward * (offset + textOffset);
+            if (disabled)
+            {
+                var col = ElementNormalColor.Value; col.a = 0.3f;
+                Element.Color = col;
+
+                col = TextNormalColor.Value; col.a = 0.3f;
+                Text.color = col;
+
+                offset = normalOffsetAmmount;
+
+                return;
+            }
 
             Element.Color = selected ? ElementSelectColor.Value : hovered ? ElementHoverColor.Value : ElementNormalColor.Value;
             Text.color = selected ? TextNormalColor.Value : hovered ? TextHoverColor.Value : TextNormalColor.Value;
-            offset = hovered? hoverOffsetAmmount : normalOffsetAmmount;
+            offset = hovered ? hoverOffsetAmmount : normalOffsetAmmount;
+
+            // Offset
+            Element.transform.localPosition = Vector3.forward * offset;
+            Text.transform.localPosition = Vector3.forward * (offset + textOffset);
         }
 
+
+        // Actions
         public override void Select(bool val)
         {
             base.Select(val);
@@ -70,7 +86,8 @@ namespace CFoS.UI
             {
                 // Callback and Schedule Deselect
                 ButtonClickEvent.Invoke();
-                StartCoroutine(DeSelect(SelectTime));
+                if(gameObject.activeInHierarchy)
+                    StartCoroutine(DeSelect(SelectTime));
             }
         }
 
@@ -79,7 +96,6 @@ namespace CFoS.UI
             yield return new WaitForSeconds(time);
             Select(false);
         }
-
 
         // TEST CALLBACK
         public void TestCallback()

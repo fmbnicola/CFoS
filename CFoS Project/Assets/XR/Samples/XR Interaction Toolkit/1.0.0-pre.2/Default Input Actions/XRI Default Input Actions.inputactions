@@ -156,18 +156,10 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Thumb",
-                    "type": "Value",
-                    "id": "00c30cb3-f71c-4ad8-8df3-9d08206f362b",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Index",
-                    "type": "Value",
-                    "id": "332d88d1-018f-4eef-88e3-b16c3f62c57a",
-                    "expectedControlType": "",
+                    "name": "Menu",
+                    "type": "Button",
+                    "id": "5446d9dd-e7d0-4752-93d4-530ff7847307",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -439,45 +431,23 @@
                 },
                 {
                     "name": "",
-                    "id": "bd8d06a0-64da-45c9-9b4d-678610e9d9ce",
-                    "path": "<XRController>{LeftHand}/thumbstickTouched",
+                    "id": "14d0c4c5-4b4e-424f-890a-2727ade95c90",
+                    "path": "<XRController>{LeftHand}/menuButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller",
-                    "action": "Thumb",
+                    "action": "Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "c03fcd81-3b36-411d-a5bf-67cd5bdb2cea",
-                    "path": "<XRController>{LeftHand}/primaryTouched",
+                    "id": "8ca802ad-6a2b-4c62-970c-0e3c4aba9bdc",
+                    "path": "<OculusTouchController>{LeftHand}/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller",
-                    "action": "Thumb",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e7a912a5-2666-41b6-a5cb-419caa977646",
-                    "path": "<XRController>{LeftHand}/secondaryTouched",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Thumb",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c8c84fcf-028d-4fa4-9d10-a26a43243abf",
-                    "path": "<XRController>{LeftHand}/triggerTouched",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Index",
+                    "action": "Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -588,22 +558,6 @@
                     "type": "Button",
                     "id": "bb54ed9b-be91-44c9-ad53-4c8c7c5370a1",
                     "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Thumb",
-                    "type": "Value",
-                    "id": "319a5556-0764-4999-960e-440f249e7617",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Index",
-                    "type": "PassThrough",
-                    "id": "b55bd5aa-ddab-4977-9eb8-8c800abff531",
-                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 }
@@ -826,50 +780,6 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f84ee271-2ccd-4538-83a9-ceda1f57db97",
-                    "path": "<XRController>{RightHand}/thumbstickTouched",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Thumb",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "15b7dc9a-d6f3-4985-81c7-032db919b52b",
-                    "path": "<XRController>{RightHand}/primaryTouched",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Thumb",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5230f1a7-2971-4f9a-9d9d-0bfbc359ccaa",
-                    "path": "<XRController>{RightHand}/secondaryTouched",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Thumb",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c6e4d338-7726-416a-a974-1cbe75620e53",
-                    "path": "<XRController>{RightHand}/trigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Index",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

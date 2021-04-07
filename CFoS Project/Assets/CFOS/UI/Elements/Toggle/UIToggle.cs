@@ -71,14 +71,9 @@ namespace CFoS.UI
             Outline.gameObject.SetActive(false);
         }
 
-        public void Update()
-        {
-            // Visual Update
-            element.Color = selected ? ElementSelectColor.Value : hovered? ElementHoverColor.Value : ElementNormalColor.Value;
-            Outline.gameObject.SetActive(hovered || selected);
-        }
 
 
+        // Actions
         public override void Select(bool val)
         {
             base.Select(val);
@@ -98,7 +93,8 @@ namespace CFoS.UI
                 }
 
                 // DeSelect
-                StartCoroutine(DeSelect(SelectTime));
+                if (gameObject.activeInHierarchy)
+                    StartCoroutine(DeSelect(SelectTime));
             }
         }
 
@@ -108,6 +104,45 @@ namespace CFoS.UI
             Select(false);
         }
 
+
+        public override void Enable(bool val)
+        {
+            base.Enable(val);
+
+            if (!val)
+            {
+                var col = ElementNormalColor.Value; col.a = 0.3f;
+                CheckedElement.Color = col;
+
+                col = ElementNormalColor.Value; col.a = 0.3f;
+                UncheckedElement.Color = ElementNormalColor.Value;
+
+                col = TextColor.Value; col.a = 0.3f;
+                Text.color = TextColor.Value;
+            }
+            else
+            {
+                CheckedElement.Color = ElementNormalColor.Value;
+                UncheckedElement.Color = ElementNormalColor.Value;
+                Text.color = TextColor.Value;
+            }
+        }
+
+
+        public void Update()
+        {
+            if (disabled)
+            {
+                var col = ElementNormalColor.Value; col.a = 0.3f;
+                element.Color = col;
+                Outline.gameObject.SetActive(false);
+                return;
+            }
+
+            // Visual Update
+            element.Color = selected ? ElementSelectColor.Value : hovered ? ElementHoverColor.Value : ElementNormalColor.Value;
+            Outline.gameObject.SetActive(hovered || selected);
+        }
 
         // TEST CALLBACK
         public void TestCallback()

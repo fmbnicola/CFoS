@@ -9,23 +9,18 @@ namespace CFoS.UI
     {
         public XRBaseInteractable Interactable;
 
-        protected ActionBasedController controller;
+        protected ActionBasedController controller = null;
 
-        protected bool hovered;
-        protected bool selected;
+        // Flags
+        protected bool hovered = false;
+        protected bool selected = false;
+        public bool disabled = false;
+
 
 
         // Set Initial properties
         [ExecuteAlways]
         protected abstract void OnValidate();
-
-        // Take care of controllers
-        public void Start()
-        {
-            controller = null;
-            hovered = false;
-            selected = false;
-        }
 
         public void OnDestroy()
         {
@@ -54,8 +49,13 @@ namespace CFoS.UI
 
 
         // UI Element Functions
+
+        // Hover 
         public virtual void Hover(bool val)
         {
+            // Cant hover if disabled
+            if (disabled) return;
+
             // Update state
             hovered = val;
 
@@ -76,6 +76,7 @@ namespace CFoS.UI
             }
         }
         
+        // Select
         protected void DoSelect(CallbackContext contex)
         {
             Select(true);
@@ -88,10 +89,19 @@ namespace CFoS.UI
 
         public virtual void Select(bool val)
         {
+            // Cant select if disabled
+            if (disabled) return;
+
             // Update state
             selected = val;
 
             if (!val && !hovered) UnhookController(controller);  
+        }
+
+        // Enable
+        public virtual void Enable(bool val)
+        {
+            disabled = !val;
         }
     }
 }
