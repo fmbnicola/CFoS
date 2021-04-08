@@ -69,5 +69,12 @@ namespace CFoS.UI
 
             Destroy(gameObject);
         }
+
+        // Load Experiment
+        public void LoadExperiment(string experimentName)
+        {
+            UIManager.Instance.CloseMainMenu();
+            Experiments.ExperimentManager.Instance.LoadExperiment(experimentName);
+        }
     }
 }

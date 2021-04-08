@@ -19,6 +19,7 @@ namespace CFoS.UI
         [Header("Properties")]
         public float UIOffsetDistance = 0.5f;
 
+        // INPUT
         [Space(10)]
         [SerializeField]
         [Tooltip("Action to bring up main menu.")]
@@ -67,20 +68,31 @@ namespace CFoS.UI
 
 
         // Main Menu
+        public void CloseMainMenu()
+        {
+            CloseMenu(ref mainMenuInstance);
+        }
+
+        public void OpenMainMenu()
+        {
+            if (mainMenuInstance != null) return;
+            mainMenuInstance = OpenMenu(MainMenuAsset);
+        }
+
         public void ToggleMainMenu(CallbackContext contex)
         {
             if (mainMenuInstance == null)
             {
-                mainMenuInstance = OpenMenu(MainMenuAsset);
+                OpenMainMenu();
             }
             else
             {
-                CloseMenu(ref mainMenuInstance);
+                CloseMainMenu();
             }
         }
 
 
-        // Open new Menu
+        // Open new menu
         public static GameObject OpenMenu(GameObject menuObj)
         {
             // position window in front of player
@@ -99,7 +111,7 @@ namespace CFoS.UI
             return obj;
         }
 
-        // Close Menu
+        // Close existing menu
         public static void CloseMenu(ref GameObject menuInstance)
         {
             var menu = menuInstance.GetComponent<UIMenu>();
