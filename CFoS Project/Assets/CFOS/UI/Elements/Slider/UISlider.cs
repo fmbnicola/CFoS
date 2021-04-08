@@ -41,13 +41,13 @@ namespace CFoS.UI
         public float Value = 0.0f;
         public float Min = 0.0f;
         public float Max = 1.0f;
-        private float oldValue;
+        protected float oldValue;
 
         [Space(10)]
         public UnityEvent ValueChangedEvent;
 
 
-        private Vector3 selectOffset = Vector3.zero;
+        protected Vector3 selectOffset = Vector3.zero;
 
         // Init
         [ExecuteAlways]
@@ -121,21 +121,21 @@ namespace CFoS.UI
 
 
         // converts handle position to slider value
-        private float HandleToValue(float handlePos)
+        protected float HandleToValue(float handlePos)
         {
             float value = ExtensionMethods.Remap(handlePos, 0.0f, Track.End.x, Min, Max);
             return Mathf.Clamp(value, Min, Max);
         }
 
         // converts slider value to handle position
-        private float ValueToHandle(float value)
+        protected float ValueToHandle(float value)
         {
             float handlePos = ExtensionMethods.Remap(value, Min, Max, 0.0f, Track.End.x);
             return Mathf.Clamp(handlePos, 0.0f, Track.End.x);
         }
 
         // position handle based on x val
-        private void PositionSlider(float posx)
+        protected void PositionSlider(float posx)
         {
             posx = Mathf.Clamp(posx, 0.0f, Track.End.x);
 
@@ -145,7 +145,7 @@ namespace CFoS.UI
         }
 
 
-        private void Update()
+        protected void VisualUpdate()
         {
             if (disabled)
             {
@@ -157,12 +157,17 @@ namespace CFoS.UI
             }
 
             // Visual Update
-            Handle.Color = selected? HandleSelectColor.Value : hovered? HandleHoverColor.Value : HandleNormalColor.Value;
+            Handle.Color = selected ? HandleSelectColor.Value : hovered ? HandleHoverColor.Value : HandleNormalColor.Value;
             HandleOutline.gameObject.SetActive(hovered || selected);
 
-            HandleText.text   = Value.ToString(StringFormat);
+            HandleText.text = Value.ToString(StringFormat);
             RangeMinText.text = Min.ToString(StringFormat);
             RangeMaxText.text = Max.ToString(StringFormat);
+        }
+
+        protected virtual void Update()
+        {
+            VisualUpdate();
 
             // If selecting, handle positions changes value
             if (selected)

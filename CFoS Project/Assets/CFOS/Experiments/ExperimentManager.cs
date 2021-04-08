@@ -58,6 +58,7 @@ namespace CFoS.Experiments
                 {
                     LoadedExperiment = exp;
                     LoadedExperiment.gameObject.SetActive(true);
+                    LoadedExperiment.Init();
                     return;
                 }
             }

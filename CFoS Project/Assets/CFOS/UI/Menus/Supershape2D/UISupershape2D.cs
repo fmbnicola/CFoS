@@ -15,9 +15,9 @@ namespace CFoS.UI.Menus
         [Space(5)]
         public CFoS.UI.UISlider MSlider;
 
-        private bool needUpdate = false;
+        protected bool needUpdate = false;
 
-        void Start()
+        protected virtual void Start()
         {
             // Init sliders
             N1Slider.Min = Renderer.Supershape.N1Min;
@@ -43,13 +43,7 @@ namespace CFoS.UI.Menus
             MSlider.ValueChangedEvent.AddListener(UpdateValues);
         }
 
-        public void UpdateValues()
-        {
-            needUpdate = true;
-        }
-
-
-        void Update()
+        protected virtual void Update()
         {
             if (needUpdate)
             {
@@ -59,6 +53,11 @@ namespace CFoS.UI.Menus
                 Renderer.Supershape.M = MSlider.Value;
             }
             needUpdate = false;
+        }
+
+        protected void UpdateValues()
+        {
+            needUpdate = true;
         }
     }
 }
