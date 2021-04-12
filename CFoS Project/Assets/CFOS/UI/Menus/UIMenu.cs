@@ -11,6 +11,8 @@ namespace CFoS.UI
 
         public bool Hidden { get; set; } = false;
 
+        public float DelayTime = 0.25f;
+
         // Init
         protected void Awake()
         {
@@ -29,6 +31,7 @@ namespace CFoS.UI
         public void Show() { SetVisibility(true); }
         public void Hide() { SetVisibility(false); }
 
+
         // Open Sub-menu
         public void OpenSubMenu(GameObject subMenuObj)
         {
@@ -46,6 +49,18 @@ namespace CFoS.UI
             }
             Hide();
         }
+
+        public void OpenSubMenuDelayed(GameObject subMenuObj)
+        {
+            StartCoroutine(DoOpenSubMenuDelayed(subMenuObj, DelayTime));
+        }
+
+        protected IEnumerator DoOpenSubMenuDelayed(GameObject subMenuObj, float time)
+        {
+            yield return new WaitForSeconds(time);
+            OpenSubMenu(subMenuObj);
+        }
+
 
         // Close menu
         public void CloseMenu()
@@ -69,6 +84,18 @@ namespace CFoS.UI
 
             Destroy(gameObject);
         }
+
+        public void CloseMenuDelayed()
+        {
+            StartCoroutine(DoCloseMenuDelayed(DelayTime));
+        }
+
+        protected IEnumerator DoCloseMenuDelayed(float time)
+        {
+            yield return new WaitForSeconds(time);
+            CloseMenu();
+        }
+
 
         // Load Experiment
         public void LoadExperiment(string experimentName)

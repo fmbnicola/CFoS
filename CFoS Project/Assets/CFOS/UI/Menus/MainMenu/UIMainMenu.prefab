@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc57bd96a7aef8448bf948c8ef704a12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DelayTime: 0.25
 --- !u!1001 &3503669202360993249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -288,7 +289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6067194605720534127, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
       propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenSubMenu
+      value: OpenSubMenuDelayed
       objectReference: {fileID: 0}
     - target: {fileID: 6067194605720534127, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
       propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -517,19 +518,43 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6067194605720534127, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
+      propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6067194605720534127, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
       propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6067194605720534127, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
+      propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6067194605720534127, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
       propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6272965511710128634}
     - target: {fileID: 6067194605720534127, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
+      propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 6788257379743632914}
+    - target: {fileID: 6067194605720534127, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
+      propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6067194605720534127, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
       propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenSubMenu
+      value: OpenSubMenuDelayed
+      objectReference: {fileID: 0}
+    - target: {fileID: 6067194605720534127, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
+      propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6067194605720534127, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
       propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CFoS.UI.UIMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6067194605720534127, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
+      propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: CFoS.UI.UIMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6067194605720534127, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
@@ -537,8 +562,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5225186144252643481, guid: a182336be76afee409d9d0ba4bcf2bf0, type: 3}
     - target: {fileID: 6067194605720534127, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
+      propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6067194605720534127, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
       propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6067194605720534127, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
+      propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}

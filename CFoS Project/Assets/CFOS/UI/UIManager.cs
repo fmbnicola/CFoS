@@ -75,6 +75,7 @@ namespace CFoS.UI
             }
         }
 
+
         // Main Menu
         public void CloseMainMenu()
         {
