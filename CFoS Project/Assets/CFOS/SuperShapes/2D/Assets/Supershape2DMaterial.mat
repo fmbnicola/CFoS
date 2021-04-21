@@ -27,11 +27,11 @@ Material:
     - _A: 1
     - _Antialias: 1
     - _B: 1
-    - _M: 14.8
+    - _M: 40.6
     - _N1: 1
-    - _N2: 0.81
-    - _N3: 0
-    - _Scale: 1
+    - _N2: 1
+    - _N3: 0.11
+    - _Scale: 0.5
     - _Thickness: 1
     - _a: 1
     - _b: 1

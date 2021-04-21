@@ -25,7 +25,7 @@ namespace CFoS.UI
 
         [Header("Track")]
         public Shapes.Line Track;
-        public Data.ColorVariable TracklColor;
+        public Data.ColorVariable TrackColor;
 
         [Header("Range")]
         public TMPro.TextMeshPro RangeMinText;
@@ -58,7 +58,7 @@ namespace CFoS.UI
             HandleOutline.Color = HandleOutlineColor.Value;
             HandleText.color = HandleTextColor.Value;
 
-            Track.Color = TracklColor.Value;
+            Track.Color = TrackColor.Value;
 
             RangeMinText.color = rangeTextColor.Value;
             RangeMaxText.color = rangeTextColor.Value;
@@ -75,7 +75,7 @@ namespace CFoS.UI
             RangeMaxText.transform.localPosition = pos; 
         }
 
-        public void Awake()
+        protected virtual void Awake()
         {
             HandleOutline.gameObject.SetActive(false);
 
@@ -105,7 +105,7 @@ namespace CFoS.UI
                 var col = HandleTextColor.Value; col.a = 0.3f;
                 HandleText.color = col;
 
-                col = TracklColor.Value; col.a = 0.3f;
+                col = TrackColor.Value; col.a = 0.3f;
                 Track.Color = col;
 
                 col = TextColor.Value; col.a = 0.3f;
@@ -114,28 +114,28 @@ namespace CFoS.UI
             else
             {
                 HandleText.color = HandleTextColor.Value;
-                Track.Color = TracklColor.Value;
+                Track.Color = TrackColor.Value;
                 Text.color = TextColor.Value;
             }
         }
 
 
         // converts handle position to slider value
-        protected float HandleToValue(float handlePos)
+        protected virtual float HandleToValue(float handlePos)
         {
             float value = ExtensionMethods.Remap(handlePos, 0.0f, Track.End.x, Min, Max);
             return Mathf.Clamp(value, Min, Max);
         }
 
         // converts slider value to handle position
-        protected float ValueToHandle(float value)
+        protected virtual float ValueToHandle(float value)
         {
             float handlePos = ExtensionMethods.Remap(value, Min, Max, 0.0f, Track.End.x);
             return Mathf.Clamp(handlePos, 0.0f, Track.End.x);
         }
 
         // position handle based on x val
-        protected void PositionSlider(float posx)
+        protected virtual void PositionSlider(float posx)
         {
             posx = Mathf.Clamp(posx, 0.0f, Track.End.x);
 

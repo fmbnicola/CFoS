@@ -154,7 +154,7 @@ MonoBehaviour:
   HandleText: {fileID: 1349116037138762444}
   HandleTextColor: {fileID: 11400000, guid: a6f01b11dc9532e419e6551821c28e9c, type: 2}
   Track: {fileID: 7582665044881489851}
-  TracklColor: {fileID: 11400000, guid: 7e3ef38f6ce91a24cad46591c30cad91, type: 2}
+  TrackColor: {fileID: 11400000, guid: 7e3ef38f6ce91a24cad46591c30cad91, type: 2}
   RangeMinText: {fileID: 1349116037980082301}
   RangeMaxText: {fileID: 1349116036067582463}
   rangeTextColor: {fileID: 11400000, guid: 9704baa2edcf40149906bc2093829163, type: 2}

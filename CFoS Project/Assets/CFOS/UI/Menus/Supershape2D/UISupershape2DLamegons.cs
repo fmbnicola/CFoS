@@ -59,9 +59,15 @@ namespace CFoS.UI.Menus
             {
                 var m   = MSlider.Value;
                 var n1  = N1Slider.Value;
+
+                //*
                 var div = Mathf.Pow(m / 4, 2);
                 div = Mathf.Approximately(div, 0.0f) ? Mathf.Epsilon : div;
                 var n23 = n1 / div;
+                /*/
+                m = Mathf.Approximately(m, 0.0f) ? Mathf.Epsilon : m;
+                var n23 = -n1 * (2 * Mathf.Log(Mathf.Cos(Mathf.PI / m), 2)) + 2;
+                //*/
 
                 MSlider.Value = m;
                 N1Slider.Value = n1;
@@ -76,7 +82,20 @@ namespace CFoS.UI.Menus
             {
                 var m   = MSlider.Value;
                 var n23 = N23Slider.Value;
+
+                ///*
                 var n1  = Mathf.Pow(m / 4, 2) * n23;
+                /*/
+                m = Mathf.Approximately(m, 0.0f) ? Mathf.Epsilon : m;
+
+                var log = Mathf.Log(Mathf.Cos(Mathf.PI / m), 2.0f);
+                log = float.IsNaN(log) ? 1.0f : log;
+
+                var div = (2.0f * log);
+                div = Mathf.Approximately(div, 0.0f) ? Mathf.Epsilon : div;
+
+                var n1 = -(n23 - 2) / div;
+                //*/
 
                 MSlider.Value = m;
                 N1Slider.Value = n1;

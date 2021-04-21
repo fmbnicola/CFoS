@@ -48,11 +48,12 @@ Shader "Supershape2DShader"
             };
 
 
-			float _Scale;
 			float _Antialias;
-			float4 _Color;
 
 			UNITY_INSTANCING_BUFFER_START(Props)
+				UNITY_DEFINE_INSTANCED_PROP(float, _Scale)
+				UNITY_DEFINE_INSTANCED_PROP(float4, _Color)
+
 				UNITY_DEFINE_INSTANCED_PROP(float, _A)
 				UNITY_DEFINE_INSTANCED_PROP(float, _B)
 				UNITY_DEFINE_INSTANCED_PROP(float, _N1)
@@ -105,6 +106,9 @@ Shader "Supershape2DShader"
 				UNITY_SETUP_INSTANCE_ID(i);
 
 				// Get instanced props
+				float  scale = UNITY_ACCESS_INSTANCED_PROP(Props, _Scale);
+				float4 color = UNITY_ACCESS_INSTANCED_PROP(Props, _Color);
+			
 				float b  = UNITY_ACCESS_INSTANCED_PROP(Props, _B);
 				float a  = UNITY_ACCESS_INSTANCED_PROP(Props, _A);
 				float n1 = UNITY_ACCESS_INSTANCED_PROP(Props, _N1);
@@ -120,8 +124,8 @@ Shader "Supershape2DShader"
 				// Calculate r
 				float r = super(uv.x, a, b, n1, n2, n3, m);
 				
-				// Scaling 
-				r = r * _Scale;
+				// Scaling
+				r = r * scale;
 
 				// signed distance
 				float d = (uv.y - r);
@@ -129,11 +133,11 @@ Shader "Supershape2DShader"
 				// outline
 				// float val = outline(d, 0.02, _Antialias * 0.01);
 
-				// fill 
+				// fill
 				float val = smoothstep(-_Antialias, _Antialias, -d / fwidth(-d));
 
 				// Set color and alpha
-				float4 col = float4(_Color.r * val, _Color.g * val, _Color.b * val, val);
+				float4 col = float4(color.r * val, color.g * val, color.b * val, val);
                 
 				// apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
