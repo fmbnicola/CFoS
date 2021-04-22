@@ -32,10 +32,14 @@ namespace CFoS.Supershape
 
             if (showProperties)
             {
-                supershapeRenderer.SamplePoints = EditorGUILayout.IntField("Sample Points", supershapeRenderer.SamplePoints);
-                supershapeRenderer.LineThickness = EditorGUILayout.FloatField("Line Thickness", supershapeRenderer.LineThickness);
-                supershapeRenderer.LineColor = EditorGUILayout.ColorField("Line Color", supershapeRenderer.LineColor);
-                
+                using (var check = new EditorGUI.ChangeCheckScope())
+                {
+                    supershapeRenderer.SamplePoints = EditorGUILayout.IntField("Sample Points", supershapeRenderer.SamplePoints);
+                    supershapeRenderer.LineThickness = EditorGUILayout.FloatField("Line Thickness", supershapeRenderer.LineThickness);
+                    supershapeRenderer.LineColor = EditorGUILayout.ColorField("Line Color", supershapeRenderer.LineColor);
+
+                    if(check.changed) EditorUtility.SetDirty(supershapeRenderer);
+                }
             }
             EditorGUILayout.EndFoldoutHeaderGroup();
 
@@ -50,6 +54,8 @@ namespace CFoS.Supershape
                         renderer.SamplePoints = supershapeRenderer.SamplePoints;
                         renderer.LineThickness = supershapeRenderer.LineThickness;
                         renderer.LineColor = supershapeRenderer.LineColor;
+
+                        EditorUtility.SetDirty(renderer);
                     }
                 }
                 SceneView.RepaintAll();

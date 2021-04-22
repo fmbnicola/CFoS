@@ -137,7 +137,7 @@ Shader "Supershape2DShader"
 				float val = smoothstep(-_Antialias, _Antialias, -d / fwidth(-d));
 
 				// Set color and alpha
-				float4 col = float4(color.r * val, color.g * val, color.b * val, val);
+				float4 col = float4(color.r * val, color.g * val, color.b * val, color.a * val);
                 
 				// apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);

@@ -10,14 +10,14 @@ namespace CFoS.Supershape
     {
 
         // Render Properties
-        protected Color color = Color.white;
+        [HideInInspector] [SerializeField] protected Color color = Color.white;
         public Color Color
         {
             get { return color; }
             set { VarChangeCheck(ref color, value, UpdateRenderProperties); }
         }
 
-        protected float scale = 0.5f;
+        [HideInInspector] [SerializeField] protected float scale = 0.5f;
         public float Scale
         {
             get { return scale; }
@@ -48,6 +48,9 @@ namespace CFoS.Supershape
                 propBlock = new MaterialPropertyBlock();
             }
 
+            propBlock.SetColor("_Color", color);
+            propBlock.SetFloat("_Scale", scale);
+
             propBlock.SetFloat("_A",supershape.A);
             propBlock.SetFloat("_B",supershape.B);
             propBlock.SetFloat("_N1",supershape.N1);
@@ -64,9 +67,9 @@ namespace CFoS.Supershape
             base.Clean();
         }
 
-        protected override void UpdateRender()
+        protected override void UpdateRender(Supershape2D.Parameter p)
         {
-            base.UpdateRender();
+            base.UpdateRender(p);
 
             if (MeshRenderer == null) Init();
 

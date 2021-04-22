@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 namespace CFoS.UI
 {
@@ -23,11 +23,15 @@ namespace CFoS.UI
 
     public class UISliderZones : UISlider
     {
+        [Space(10)]
+        public UnityEvent ZoneChangedEvent;
 
         [SerializeField]
         public List<Zone> Zones;
-        private Zone currentZone;
+
         private Zone oldZone;
+        private Zone currentZone;
+        public int ZoneIndex { get; set; }
 
         [ExecuteAlways]
         protected override void OnValidate()
@@ -52,28 +56,43 @@ namespace CFoS.UI
         {
             base.Awake();
 
-            var zone_i = GetZoneIndexFromValue(Value);
-            currentZone = Zones[zone_i];
+            ZoneIndex = GetZoneIndexFromValue(Value);
+            currentZone = Zones[ZoneIndex];
             oldZone = currentZone;
         }
 
-        protected override float HandleToValue(float handlePos)
+        public override float SampleValueWorldCoords(Vector3 coords)
+        {
+            Vector3 localPos = transform.InverseTransformPoint(coords);
+            return HandleToValueAux(localPos.x, out int i);
+        }
+
+
+        private float HandleToValueAux(float handlePos, out int zone_i)
         {
             // Determine in which zone handle is in
             float zoneSize = (Track.End.x / Zones.Count);
-            int zone_i = Mathf.Clamp(Mathf.FloorToInt(handlePos / zoneSize), 0, Zones.Count-1);
+            zone_i = Mathf.Clamp(Mathf.FloorToInt(handlePos / zoneSize), 0, Zones.Count - 1);
             Zone zone = Zones[zone_i];
 
-            //register current zone
-            currentZone = zone;
-
             // Get Zone limits
-            float zoneStart = zoneSize *  zone_i;
-            float zoneEnd   = zoneSize * (zone_i + 1);
+            float zoneStart = zoneSize * zone_i;
+            float zoneEnd = zoneSize * (zone_i + 1);
 
             // Remap value
             float value = ExtensionMethods.Remap(handlePos, zoneStart, zoneEnd, zone.Min, zone.Max);
             return Mathf.Clamp(value, zone.Min, zone.Max);
+        }
+
+        protected override float HandleToValue(float handlePos)
+        {
+            var val = HandleToValueAux(handlePos, out int zone_i);
+
+            //register current zone
+            ZoneIndex = zone_i;
+            currentZone = Zones[ZoneIndex];
+
+            return val;
         }
 
         private int GetZoneIndexFromValue(float value)
@@ -116,6 +135,7 @@ namespace CFoS.UI
             // check zone change
             if (oldZone != currentZone)
             {
+                ZoneChangedEvent.Invoke();
                 if (selected) controller.SendHapticImpulse(0.8f, 0.02f);
             }
             oldZone = currentZone;

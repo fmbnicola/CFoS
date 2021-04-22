@@ -9,10 +9,11 @@ namespace CFoS.Supershape
     public class Supershape2D : ScriptableObject
     {
         // Check that parameter was changed and evoke update
-        public delegate void OnUpdateDelegate();
+        public enum Parameter { A, B, M, N1, N2, N3, Any};
+        public delegate void OnUpdateDelegate(Parameter p);
         public event OnUpdateDelegate OnUpdate;
-
-        public void VarChangeCheck(ref float var, float val)
+        
+        public void VarChangeCheck(Parameter p, ref float var, float val)
         {
             if (Lock)
             {
@@ -22,7 +23,7 @@ namespace CFoS.Supershape
             if (var != val)
             {
                 var = val;
-                OnUpdate?.Invoke();
+                OnUpdate?.Invoke(p);
             }
         }
 
@@ -31,27 +32,27 @@ namespace CFoS.Supershape
         // Parameters and Ranges
         [HideInInspector] [SerializeField] private float a = 1.0f;
         [HideInInspector] public float AMin = 0, AMax = 1;
-        public float A { get { return a; } set { VarChangeCheck(ref a, value); } }
+        public float A { get { return a; } set { VarChangeCheck(Parameter.A, ref a, value); } }
 
         [HideInInspector] [SerializeField] private float b = 1.0f;
         [HideInInspector] public float BMin = 0, BMax = 1;
-        public float B { get { return b; } set { VarChangeCheck(ref b, value); } }
+        public float B { get { return b; } set { VarChangeCheck(Parameter.B, ref b, value); } }
 
         [HideInInspector] [SerializeField] private float m = 0.0f;
         [HideInInspector] public float MMin = 0, MMax = 50;
-        public float M { get { return m; } set { VarChangeCheck(ref m, value); } }
+        public float M { get { return m; } set { VarChangeCheck(Parameter.M, ref m, value); } }
 
         [HideInInspector] [SerializeField] private float n1 = 1.0f;
         [HideInInspector] public float N1Min = 0, N1Max = 2;
-        public float N1 { get { return n1; } set { VarChangeCheck(ref n1, value); } }
+        public float N1 { get { return n1; } set { VarChangeCheck(Parameter.N1, ref n1, value); } }
 
         [HideInInspector] [SerializeField] private float n2 = 1.0f;
         [HideInInspector] public float N2Min = 0, N2Max = 2;
-        public float N2 { get { return n2; } set { VarChangeCheck(ref n2, value); } }
+        public float N2 { get { return n2; } set { VarChangeCheck(Parameter.N2, ref n2, value); } }
 
         [HideInInspector] [SerializeField] private float n3 = 1.0f;
         [HideInInspector] public float N3Min = 0, N3Max = 2;
-        public float N3 { get { return n3; } set { VarChangeCheck(ref n3, value); } }
+        public float N3 { get { return n3; } set { VarChangeCheck(Parameter.N3, ref n3, value); } }
 
 
         // Methods
@@ -102,7 +103,7 @@ namespace CFoS.Supershape
             n2 = Random.Range(N2Min, N2Max);
             n3 = Random.Range(N3Min, N3Max);
 
-            OnUpdate?.Invoke();
+            OnUpdate?.Invoke(Parameter.Any);
 
             Debug.Log("Randomize");
         }

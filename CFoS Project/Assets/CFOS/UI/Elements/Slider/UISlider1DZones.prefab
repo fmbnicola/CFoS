@@ -36,6 +36,9 @@ MonoBehaviour:
   ValueChangedEvent:
     m_PersistentCalls:
       m_Calls: []
+  ZoneChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   Zones:
   - Name: Zone
     Min: 0

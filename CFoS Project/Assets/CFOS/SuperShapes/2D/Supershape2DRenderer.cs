@@ -68,7 +68,7 @@ namespace CFoS.Supershape
                 supershape.OnUpdate -= UpdateRender;
         }
 
-        protected virtual void UpdateRender()
+        protected virtual void UpdateRender(Supershape2D.Parameter p)
         {
             if (DebugEnabled) Debug.Log("Update: " + supershape);
 

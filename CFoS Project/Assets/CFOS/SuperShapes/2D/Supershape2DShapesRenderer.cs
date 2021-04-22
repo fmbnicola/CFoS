@@ -10,21 +10,21 @@ namespace CFoS.Supershape
     public class Supershape2DShapesRenderer : Supershape2DRenderer
     {
         // Render Properties
-        protected int samplePoints = 360;
+        [HideInInspector] [SerializeField] protected int samplePoints = 360;
         public int SamplePoints
         {
             get { return samplePoints; }
             set { VarChangeCheck(ref samplePoints, value, Init); }
         }
 
-        protected float lineThickness = 0.05f;
+        [HideInInspector] [SerializeField] protected float lineThickness = 0.05f;
         public float LineThickness
         {
             get { return lineThickness; }
             set { VarChangeCheck(ref lineThickness, value, UpdateRenderProperties); }
         }
 
-        protected Color lineColor = Color.white;
+        [HideInInspector] [SerializeField] protected Color lineColor = Color.white;
         public Color LineColor
         {
             get { return lineColor; }
@@ -69,9 +69,9 @@ namespace CFoS.Supershape
                 Polyline.points.Clear();
         }
 
-        protected override void UpdateRender()
+        protected override void UpdateRender(Supershape2D.Parameter p)
         {
-            base.UpdateRender();
+            base.UpdateRender(p);
 
             if (Polyline == null) Init();
 

@@ -32,8 +32,13 @@ namespace CFoS.Supershape
 
             if (showProperties)
             {
-                supershapeRenderer.Color = EditorGUILayout.ColorField("Color", supershapeRenderer.Color);
-                supershapeRenderer.Scale = EditorGUILayout.FloatField("Scale", supershapeRenderer.Scale);
+                using (var check = new EditorGUI.ChangeCheckScope())
+                {
+                    supershapeRenderer.Color = EditorGUILayout.ColorField("Color", supershapeRenderer.Color);
+                    supershapeRenderer.Scale = EditorGUILayout.FloatField("Scale", supershapeRenderer.Scale);
+
+                    if (check.changed) EditorUtility.SetDirty(supershapeRenderer);
+                }
             }
             EditorGUILayout.EndFoldoutHeaderGroup();
 
@@ -47,6 +52,8 @@ namespace CFoS.Supershape
                         Supershape2DQuadRenderer renderer = (Supershape2DQuadRenderer)obj;
                         renderer.Color = supershapeRenderer.Color;
                         renderer.Scale = supershapeRenderer.Scale;
+
+                        EditorUtility.SetDirty(renderer);
                     }
                 }
                 SceneView.RepaintAll();

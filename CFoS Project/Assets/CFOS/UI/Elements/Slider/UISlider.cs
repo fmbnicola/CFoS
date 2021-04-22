@@ -119,6 +119,13 @@ namespace CFoS.UI
             }
         }
 
+        // Get Closest Value in slider from a point in space
+        public virtual float SampleValueWorldCoords(Vector3 coords)
+        {
+            Vector3 localPos = transform.InverseTransformPoint(coords);
+            return HandleToValue(localPos.x);
+        }
+
 
         // converts handle position to slider value
         protected virtual float HandleToValue(float handlePos)
@@ -143,6 +150,7 @@ namespace CFoS.UI
             pos.x = posx;
             Handle.transform.localPosition = pos;
         }
+
 
 
         protected void VisualUpdate()
