@@ -64,19 +64,6 @@ namespace CFoS.UI.Menus
             return new float[] { a, b, m, n123, n123, n123 };
         }
 
-        protected void InitThumbnails()
-        {
-            Thumbnail1.Supershape = new Supershape2D();
-            Thumbnail2.Supershape = new Supershape2D();
-            Thumbnail3.Supershape = new Supershape2D();
-            Thumbnail4.Supershape = new Supershape2D();
-            Thumbnail5.Supershape = new Supershape2D();
-            Thumbnail6.Supershape = new Supershape2D();
-            Thumbnail7.Supershape = new Supershape2D();
-
-            UpdateThumbnails(Supershape2D.Parameter.Any);
-        }
-
         protected void SetThumbnail(Supershape2D supershape, Vector3 pos)
         {
             var paramameters = ParametersFromSlider(pos);
@@ -105,6 +92,18 @@ namespace CFoS.UI.Menus
             }
         }
 
+        protected void InitThumbnails()
+        {
+            Thumbnail1.Supershape = ScriptableObject.CreateInstance<Supershape2D>();
+            Thumbnail3.Supershape = ScriptableObject.CreateInstance<Supershape2D>();
+            Thumbnail4.Supershape = ScriptableObject.CreateInstance<Supershape2D>();
+            Thumbnail2.Supershape = ScriptableObject.CreateInstance<Supershape2D>();
+            Thumbnail5.Supershape = ScriptableObject.CreateInstance<Supershape2D>();
+            Thumbnail6.Supershape = ScriptableObject.CreateInstance<Supershape2D>();
+            Thumbnail7.Supershape = ScriptableObject.CreateInstance<Supershape2D>();
+
+            UpdateThumbnails(Supershape2D.Parameter.Any);
+        }
 
         protected void ZoneChange()
         {

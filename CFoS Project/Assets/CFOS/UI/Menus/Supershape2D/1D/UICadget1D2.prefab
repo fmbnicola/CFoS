@@ -1920,7 +1920,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1084022796576402442, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: m_Name
-      value: Supershape2DQuadRenderer (1)
+      value: Thumbnail (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1346113907204275838, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: supershape
@@ -2009,7 +2009,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1084022796576402442, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: m_Name
-      value: Supershape2DQuadRenderer (3)
+      value: Thumbnail (3)
       objectReference: {fileID: 0}
     - target: {fileID: 1346113907204275838, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: supershape
@@ -2197,7 +2197,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1084022796576402442, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: m_Name
-      value: Supershape2DQuadRenderer (6)
+      value: Thumbnail (6)
       objectReference: {fileID: 0}
     - target: {fileID: 1346113907204275838, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: supershape
@@ -2286,7 +2286,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1084022796576402442, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: m_Name
-      value: Supershape2DQuadRenderer (7)
+      value: Thumbnail (7)
       objectReference: {fileID: 0}
     - target: {fileID: 1346113907204275838, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: supershape
@@ -2375,7 +2375,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1084022796576402442, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: m_Name
-      value: Supershape2DQuadRenderer (2)
+      value: Thumbnail (2)
       objectReference: {fileID: 0}
     - target: {fileID: 1346113907204275838, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: supershape
@@ -2464,7 +2464,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1084022796576402442, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: m_Name
-      value: Supershape2DQuadRenderer (5)
+      value: Thumbnail (5)
       objectReference: {fileID: 0}
     - target: {fileID: 1346113907204275838, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: supershape
@@ -2553,7 +2553,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1084022796576402442, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: m_Name
-      value: Supershape2DQuadRenderer (4)
+      value: Thumbnail (4)
       objectReference: {fileID: 0}
     - target: {fileID: 1346113907204275838, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: supershape
@@ -2730,6 +2730,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1555497027042105195, guid: 3e8305038c8524a44a709cd5793267bf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555497027744095493, guid: 3e8305038c8524a44a709cd5793267bf, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1555497027744095494, guid: 3e8305038c8524a44a709cd5793267bf, type: 3}

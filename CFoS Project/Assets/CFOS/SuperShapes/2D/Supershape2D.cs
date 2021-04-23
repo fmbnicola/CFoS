@@ -13,6 +13,17 @@ namespace CFoS.Supershape
         public delegate void OnUpdateDelegate(Parameter p);
         public event OnUpdateDelegate OnUpdate;
         
+        // Data structure to be used as a representation of a SShape2D
+        public struct Data
+        {
+            public float A;
+            public float B;
+            public float M;
+            public float N1;
+            public float N2;
+            public float N3;
+        }
+
         public void VarChangeCheck(Parameter p, ref float var, float val)
         {
             if (Lock)
@@ -56,6 +67,22 @@ namespace CFoS.Supershape
 
 
         // Methods
+        public void SetData(Data data)
+        {
+            if (Lock)
+            {
+                Debug.LogError("Supershape " + name + " is locked! [Trying to set parameters]");
+                return;
+            }
+
+            a = data.A;
+            b = data.B;
+            m = data.M;
+            n1 = data.N1;
+            n2 = data.N2;
+            n3 = data.N3;
+        }
+
         public override string ToString()
         {
             return "Supershape2D { a: " + a + ", b: " + b + ", m: " + m + ", n1: " + n1 + ", n2: " + n2 + ", n3: " + n3 + " }";

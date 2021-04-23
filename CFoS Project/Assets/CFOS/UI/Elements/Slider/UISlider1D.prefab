@@ -518,6 +518,7 @@ GameObject:
   - component: {fileID: 1349116036129653883}
   - component: {fileID: 1349116036129653882}
   - component: {fileID: 1349116036129653885}
+  - component: {fileID: 8250184132791145603}
   m_Layer: 5
   m_Name: Handle
   m_TagString: Untagged
@@ -634,6 +635,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8250184132791145603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349116036129653887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8937984486493478616c85cea00166, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Interactable: {fileID: 108453178299762128}
+  disabled: 0
+  Handle: {fileID: 1349116036129653883}
+  HandleNormalColor: {fileID: 11400000, guid: 9704baa2edcf40149906bc2093829163, type: 2}
+  HandleHoverColor: {fileID: 11400000, guid: e9a4b3b8bdd85184eac2573f6b9bf201, type: 2}
+  HandleSelectColor: {fileID: 11400000, guid: 47d71db28377b1d45b73a585b0740c81, type: 2}
+  HandleOutline: {fileID: 1349116037241820844}
+  HandleOutlineColor: {fileID: 11400000, guid: 169e74c7f8773dd4c8f6436b767e9efa, type: 2}
+  HandleText: {fileID: 1349116037138762444}
+  HandleTextColor: {fileID: 11400000, guid: a6f01b11dc9532e419e6551821c28e9c, type: 2}
+  size: 0.03
 --- !u!1 &1349116037138762446
 GameObject:
   m_ObjectHideFlags: 0
