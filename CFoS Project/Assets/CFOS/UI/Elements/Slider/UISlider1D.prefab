@@ -145,14 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Interactable: {fileID: 108453178299762128}
   disabled: 0
-  Handle: {fileID: 1349116036129653883}
-  HandleNormalColor: {fileID: 11400000, guid: 9704baa2edcf40149906bc2093829163, type: 2}
-  HandleHoverColor: {fileID: 11400000, guid: e9a4b3b8bdd85184eac2573f6b9bf201, type: 2}
-  HandleSelectColor: {fileID: 11400000, guid: 47d71db28377b1d45b73a585b0740c81, type: 2}
-  HandleOutline: {fileID: 1349116037241820844}
-  HandleOutlineColor: {fileID: 11400000, guid: 169e74c7f8773dd4c8f6436b767e9efa, type: 2}
-  HandleText: {fileID: 1349116037138762444}
-  HandleTextColor: {fileID: 11400000, guid: a6f01b11dc9532e419e6551821c28e9c, type: 2}
+  Handle: {fileID: 8250184132791145603}
   Track: {fileID: 7582665044881489851}
   TrackColor: {fileID: 11400000, guid: 7e3ef38f6ce91a24cad46591c30cad91, type: 2}
   RangeMinText: {fileID: 1349116037980082301}
@@ -588,7 +581,7 @@ MonoBehaviour:
   thickness: 0.1
 --- !u!33 &1349116036129653882
 MeshFilter:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -596,7 +589,7 @@ MeshFilter:
   m_Mesh: {fileID: 43100795730674332, guid: a3d1f56cebf202c448b6fb479f61a9dc, type: 2}
 --- !u!23 &1349116036129653885
 MeshRenderer:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -657,7 +650,7 @@ MonoBehaviour:
   HandleOutlineColor: {fileID: 11400000, guid: 169e74c7f8773dd4c8f6436b767e9efa, type: 2}
   HandleText: {fileID: 1349116037138762444}
   HandleTextColor: {fileID: 11400000, guid: a6f01b11dc9532e419e6551821c28e9c, type: 2}
-  size: 0.03
+  Size: 0.03
 --- !u!1 &1349116037138762446
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,8 +892,8 @@ MonoBehaviour:
   stencilReadMask: 255
   stencilWriteMask: 255
   pivot: 1
-  width: 0.033
-  height: 0.033
+  width: 0.03
+  height: 0.03
   type: 3
   cornerRadiusMode: 0
   cornerRadii: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}

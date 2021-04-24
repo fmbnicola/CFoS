@@ -22,6 +22,9 @@ namespace CFoS.UI.Menus
 
             // Update Mini-map Thumbnails
             Slider.ValueChangedEvent.AddListener(UpdateMinimapThumbnails);
+
+            var scalableHandle = (UISliderHandleScalable) Slider.Handle;
+            scalableHandle.SizeChangedEvent.AddListener(UpdateMinimapThumbnails);
             InitMinimapThumbnails();
         }
 
@@ -39,8 +42,7 @@ namespace CFoS.UI.Menus
 
         protected void UpdateMinimapThumbnails()
         {
-            //float maxOffset = Slider.HandleSize;
-            float maxOffset = 0.03f;
+            float maxOffset = Slider.Handle.Size;
             float midOffset = maxOffset / 2;
 
             var slider = Slider.transform;

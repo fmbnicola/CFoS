@@ -10,19 +10,8 @@ namespace CFoS.UI
     public class UISlider : UIElement
     {
         [Header("Handle")]
-        public Shapes.ShapeRenderer Handle;
-        public Data.ColorVariable HandleNormalColor;
-        public Data.ColorVariable HandleHoverColor;
-        public Data.ColorVariable HandleSelectColor;
-
-        [Space(10)]
-        public Shapes.ShapeRenderer HandleOutline;
-        public Data.ColorVariable HandleOutlineColor;
-
-        [Space(10)]
-        public TMPro.TextMeshPro HandleText;
-        public Data.ColorVariable HandleTextColor;
-
+        public UISliderHandle Handle;
+       
         [Header("Track")]
         public Shapes.Line Track;
         public Data.ColorVariable TrackColor;
@@ -53,11 +42,6 @@ namespace CFoS.UI
         [ExecuteAlways]
         protected override void OnValidate()
         {
-            // Set Colors
-            Handle.Color = HandleNormalColor.Value;
-            HandleOutline.Color = HandleOutlineColor.Value;
-            HandleText.color = HandleTextColor.Value;
-
             Track.Color = TrackColor.Value;
 
             RangeMinText.color = rangeTextColor.Value;
@@ -77,8 +61,6 @@ namespace CFoS.UI
 
         protected virtual void Awake()
         {
-            HandleOutline.gameObject.SetActive(false);
-
             oldValue = Value;
         }
 
@@ -102,22 +84,27 @@ namespace CFoS.UI
 
             if (!val)
             {
-                var col = HandleTextColor.Value; col.a = 0.3f;
-                HandleText.color = col;
-
-                col = TrackColor.Value; col.a = 0.3f;
+                var col = TrackColor.Value; col.a = 0.3f;
                 Track.Color = col;
 
                 col = TextColor.Value; col.a = 0.3f;
                 Text.color = col;
             }
             else
-            {
-                HandleText.color = HandleTextColor.Value;
+            {   
                 Track.Color = TrackColor.Value;
                 Text.color = TextColor.Value;
             }
+            Handle.Enable(val);
         }
+
+        public override void Hover(bool val)
+        {
+            base.Hover(val);
+
+            Handle.Hover(val);
+        }
+
 
         // Get Closest Value in slider from a point in space
         public virtual float SampleValueWorldCoords(Vector3 coords)
@@ -157,18 +144,11 @@ namespace CFoS.UI
         {
             if (disabled)
             {
-                var col = HandleNormalColor.Value; col.a = 0.3f;
-                Handle.Color = col;
-                HandleOutline.gameObject.SetActive(false);
-
                 return;
             }
 
             // Visual Update
-            Handle.Color = selected ? HandleSelectColor.Value : hovered ? HandleHoverColor.Value : HandleNormalColor.Value;
-            HandleOutline.gameObject.SetActive(hovered || selected);
-
-            HandleText.text = Value.ToString(StringFormat);
+            Handle.HandleText.text = Value.ToString(StringFormat);
             RangeMinText.text = Min.ToString(StringFormat);
             RangeMaxText.text = Max.ToString(StringFormat);
         }

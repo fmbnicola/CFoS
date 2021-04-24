@@ -538,6 +538,7 @@ MonoBehaviour:
   HandleHoverColor: {fileID: 11400000, guid: 08829bb8bff176d40801ac04dd357cef, type: 2}
   Panel: {fileID: 7974525343237299956}
   PanelColor: {fileID: 11400000, guid: a02838d24323f7f4b8771a0a2f8fbbee, type: 2}
+  Content: {fileID: 7974525344001419407}
 --- !u!1 &7974525343709902751
 GameObject:
   m_ObjectHideFlags: 0
