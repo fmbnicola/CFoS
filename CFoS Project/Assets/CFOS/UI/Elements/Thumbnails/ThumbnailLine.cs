@@ -7,15 +7,16 @@ namespace CFoS.UI
 {
     public class ThumbnailLine : MonoBehaviour
     {
-        [SerializeField]
-        public List<Supershape2DRenderer> Thumbnails = new List<Supershape2DRenderer>();
-
         public GameObject ThumbnailAsset;
 
+        public float Spacing = 1.0f;
+
+        [SerializeField]
+        public List<Thumbnail> Thumbnails = new List<Thumbnail>();
+        private bool countChanged = false;
+
         protected delegate Supershape2D.Data samplingFunction(float pos);
-
         protected samplingFunction function;
-
 
 
         void Start()
@@ -23,16 +24,16 @@ namespace CFoS.UI
 
         }
 
-
-
-        protected void AddThumbnail()
+        public void AddThumbnail()
         {
-            var newObject       = Instantiate(ThumbnailAsset);
-            var newThumbnail    = newObject.GetComponent<Supershape2DRenderer>();
+            var newObject       = Instantiate(ThumbnailAsset, transform);
+            var newThumbnail    = newObject.GetComponent<Thumbnail>();
             Thumbnails.Add(newThumbnail);
+
+            countChanged = true;
         }
 
-        protected void AddThumbnails(int num)
+        public void AddThumbnails(int num)
         {
             for (var i = 0; i < num; i++)
             {
@@ -40,17 +41,25 @@ namespace CFoS.UI
             }
         }
 
-        protected void RemoveThumbnail()
+        public void RemoveThumbnail()
         {
             var count = Thumbnails.Count;
             if (count != 0)
             {
                 var thumbnail = Thumbnails[count - 1];
+                Thumbnails.Remove(thumbnail);
+
+#if UNITY_EDITOR
+                DestroyImmediate(thumbnail.gameObject);
+#else
                 Destroy(thumbnail.gameObject);
+#endif
+
+                countChanged = true;
             }
         }
 
-        protected void RemoveThumbnails(int num)
+        public void RemoveThumbnails(int num)
         {
             for (var i = 0; i < num; i++)
             {
@@ -58,16 +67,23 @@ namespace CFoS.UI
             }
         }
 
-        protected void ClearAllThumbnails()
+        public void ClearAllThumbnails()
         {
             foreach (var thumbnail in Thumbnails)
             {
+
+#if UNITY_EDITOR
+                DestroyImmediate(thumbnail.gameObject);
+#else
                 Destroy(thumbnail.gameObject);
+#endif
             }
             Thumbnails.Clear();
+
+            countChanged = true;
         }
 
-        protected void SetThumbnailNumber(int num)
+        public void SetThumbnailNumber(int num)
         {
             var count = Thumbnails.Count;
             if ( count < num )
@@ -80,9 +96,46 @@ namespace CFoS.UI
             }
         }
 
+        public void PositionThumbnails()
+        {
+            var count  = Thumbnails.Count;
+            var space  = (Spacing * transform.localScale);
+            var offset = -(space * (count - 1)) / 2;
+
+            for (var i = 0; i < count; i++)
+            {
+                var thumbnail = Thumbnails[i];
+                thumbnail.transform.localPosition = Vector3.Scale(Vector3.right, (offset + (space * i)));
+            }
+        }
+
+        public void UpdatePosition()
+        {
+            if (countChanged || transform.hasChanged)
+            {
+                PositionThumbnails();
+            }
+        }
+
+        public void UpdateSampling()
+        {
+            foreach (var thumbnail in Thumbnails)
+            {
+                var parameters = function(thumbnail.transform.localPosition.x);
+                thumbnail.UpdateParameters(parameters);
+            }
+        }
+
+        [ExecuteAlways]
+        private void OnValidate()
+        {
+            UpdatePosition();
+        }
+
         void Update()
         {
-
+            UpdatePosition();
+            UpdateSampling();
         }
 
 
