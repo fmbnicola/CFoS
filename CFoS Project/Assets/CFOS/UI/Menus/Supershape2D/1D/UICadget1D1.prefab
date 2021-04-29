@@ -26,6 +26,14 @@ PrefabInstance:
       propertyPath: Max
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 108453178299762129, guid: 905db4a54d648714a88b2003d44d8ca8, type: 3}
+      propertyPath: Min
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 108453178299762129, guid: 905db4a54d648714a88b2003d44d8ca8, type: 3}
+      propertyPath: Value
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 108453178299762131, guid: 905db4a54d648714a88b2003d44d8ca8, type: 3}
       propertyPath: m_Name
       value: UISlider1D

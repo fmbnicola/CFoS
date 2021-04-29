@@ -22,6 +22,16 @@ namespace CFoS.Supershape
             public float N1;
             public float N2;
             public float N3;
+
+            public Data(float a, float b, float m, float n1, float n2, float n3)
+            {
+                A = a;
+                B = b;
+                M = m;
+                N1 = n1;
+                N2 = n2;
+                N3 = n3;
+            }
         }
 
         public void VarChangeCheck(Parameter p, ref float var, float val)
@@ -81,6 +91,13 @@ namespace CFoS.Supershape
             n1 = data.N1;
             n2 = data.N2;
             n3 = data.N3;
+
+            OnUpdate?.Invoke(Parameter.Any);
+        }
+
+        public Data GetData()
+        {
+            return new Data(A, B, M, N1, N2, N3);
         }
 
         public override string ToString()

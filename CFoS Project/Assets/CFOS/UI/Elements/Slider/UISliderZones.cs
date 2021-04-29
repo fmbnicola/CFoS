@@ -106,7 +106,7 @@ namespace CFoS.UI
                     return i;
                 }
             }
-            return -1;
+            return 0;
         }
 
         protected override float ValueToHandle(float value)
@@ -115,7 +115,6 @@ namespace CFoS.UI
             float zoneSize = (Track.End.x / Zones.Count);
 
             int zone_i = GetZoneIndexFromValue(value);
-            if (zone_i == -1) return 0;
 
             Zone zone = Zones[zone_i];
 

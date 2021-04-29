@@ -10,24 +10,21 @@ namespace CFoS.UI
         public GameObject ThumbnailAsset;
 
         public float Spacing = 1.0f;
+        public float Scaling = 0.5f;
 
         [SerializeField]
         public List<Thumbnail> Thumbnails = new List<Thumbnail>();
         private bool countChanged = false;
 
-        protected delegate Supershape2D.Data samplingFunction(float pos);
-        protected samplingFunction function;
+        public Thumbnail.SamplingFunction Function;
 
-
-        void Start()
-        {
-
-        }
 
         public void AddThumbnail()
         {
             var newObject       = Instantiate(ThumbnailAsset, transform);
             var newThumbnail    = newObject.GetComponent<Thumbnail>();
+
+            newThumbnail.Index = new Vector3(Thumbnails.Count, 0 , 0);
             Thumbnails.Add(newThumbnail);
 
             countChanged = true;
@@ -96,24 +93,20 @@ namespace CFoS.UI
             }
         }
 
-        public void PositionThumbnails()
+        public void UpdateTransforms()
         {
-            var count  = Thumbnails.Count;
-            var space  = (Spacing * transform.localScale);
-            var offset = -(space * (count - 1)) / 2;
+            var count = Thumbnails.Count;
+            var offset = -(Spacing * (count - 1)) / 2;
 
             for (var i = 0; i < count; i++)
             {
                 var thumbnail = Thumbnails[i];
-                thumbnail.transform.localPosition = Vector3.Scale(Vector3.right, (offset + (space * i)));
-            }
-        }
 
-        public void UpdatePosition()
-        {
-            if (countChanged || transform.hasChanged)
-            {
-                PositionThumbnails();
+                // position
+                thumbnail.transform.localPosition = Vector3.right * (offset + (Spacing * i));
+
+                // scale
+                thumbnail.transform.localScale = Vector3.one * Scaling;
             }
         }
 
@@ -121,23 +114,15 @@ namespace CFoS.UI
         {
             foreach (var thumbnail in Thumbnails)
             {
-                var parameters = function(thumbnail.transform.localPosition.x);
-                thumbnail.UpdateParameters(parameters);
+                thumbnail.Function = Function;
+                thumbnail.UpdateSampling();
             }
         }
 
         [ExecuteAlways]
         private void OnValidate()
         {
-            UpdatePosition();
+            UpdateTransforms();
         }
-
-        void Update()
-        {
-            UpdatePosition();
-            UpdateSampling();
-        }
-
-
     }
 }

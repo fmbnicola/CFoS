@@ -19,13 +19,13 @@ namespace CFoS.UI
             if (GUILayout.Button("Add Thumbnail", GUILayout.Height(30)))
             {
                 line.AddThumbnail();
-                line.UpdatePosition();
+                line.UpdateTransforms();
             }
 
             if (GUILayout.Button("Remove Thumbnail", GUILayout.Height(30)))
             {
                 line.RemoveThumbnail();
-                line.UpdatePosition();
+                line.UpdateTransforms();
             }
 
             if (GUILayout.Button("Clear", GUILayout.Height(30)))

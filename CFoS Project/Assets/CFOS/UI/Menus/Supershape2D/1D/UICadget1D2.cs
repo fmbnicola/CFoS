@@ -8,13 +8,7 @@ namespace CFoS.UI.Menus
     public class UICadget1D2 : UICadget1D1
     {
         [Header("Thumbnails")]
-        public Supershape2DRenderer Thumbnail1;
-        public Supershape2DRenderer Thumbnail2;
-        public Supershape2DRenderer Thumbnail3;
-        public Supershape2DRenderer Thumbnail4;
-        public Supershape2DRenderer Thumbnail5;
-        public Supershape2DRenderer Thumbnail6;
-        public Supershape2DRenderer Thumbnail7;
+        public ThumbnailLine Thumbnails;
 
         [Header("Zones")]
         public Data.ColorVariable TextActiveColor;
@@ -53,58 +47,37 @@ namespace CFoS.UI.Menus
             Renderer.Supershape.OnUpdate -= UpdateThumbnails;
         }
 
-
-        protected float[] ParametersFromSlider(Vector3 pos)
+    
+        // THUMBNAILS
+        public Supershape2D.Data SampleSlider(Thumbnail thumbnail)
         {
-            var a = Renderer.Supershape.A;
-            var b = Renderer.Supershape.B;
-            var m = Renderer.Supershape.M;
-            var n123 = Slider.SampleValueWorldCoords(pos);
-           
-            return new float[] { a, b, m, n123, n123, n123 };
-        }
+            var data = Renderer.Supershape.GetData();
+            var n123 = Slider.SampleValueWorldCoords(thumbnail.transform.position);
+            data.N1 = n123;
+            data.N2 = n123;
+            data.N3 = n123;
 
-        protected void SetThumbnail(Supershape2D supershape, Vector3 pos)
-        {
-            var paramameters = ParametersFromSlider(pos);
-
-            supershape.A = paramameters[0];
-            supershape.B = paramameters[1];
-            supershape.M = paramameters[2];
-            supershape.N1 = paramameters[3];
-            supershape.N2 = paramameters[4];
-            supershape.N3 = paramameters[5];
-        }
-
-        protected void UpdateThumbnails(Supershape2D.Parameter p)
-        {
-            if( p != Supershape2D.Parameter.N1 &&
-                p != Supershape2D.Parameter.N2 &&
-                p != Supershape2D.Parameter.N3  )
-            {
-                SetThumbnail(Thumbnail1.Supershape, Thumbnail1.transform.position);
-                SetThumbnail(Thumbnail2.Supershape, Thumbnail2.transform.position);
-                SetThumbnail(Thumbnail3.Supershape, Thumbnail3.transform.position);
-                SetThumbnail(Thumbnail4.Supershape, Thumbnail4.transform.position);
-                SetThumbnail(Thumbnail5.Supershape, Thumbnail5.transform.position);
-                SetThumbnail(Thumbnail6.Supershape, Thumbnail6.transform.position);
-                SetThumbnail(Thumbnail7.Supershape, Thumbnail7.transform.position);
-            }
+            return data;
         }
 
         protected void InitThumbnails()
         {
-            Thumbnail1.Supershape = ScriptableObject.CreateInstance<Supershape2D>();
-            Thumbnail3.Supershape = ScriptableObject.CreateInstance<Supershape2D>();
-            Thumbnail4.Supershape = ScriptableObject.CreateInstance<Supershape2D>();
-            Thumbnail2.Supershape = ScriptableObject.CreateInstance<Supershape2D>();
-            Thumbnail5.Supershape = ScriptableObject.CreateInstance<Supershape2D>();
-            Thumbnail6.Supershape = ScriptableObject.CreateInstance<Supershape2D>();
-            Thumbnail7.Supershape = ScriptableObject.CreateInstance<Supershape2D>();
-
+            Thumbnails.Function = SampleSlider;
             UpdateThumbnails(Supershape2D.Parameter.Any);
         }
 
+        protected void UpdateThumbnails(Supershape2D.Parameter p)
+        {
+            if (p != Supershape2D.Parameter.N1 &&
+                p != Supershape2D.Parameter.N2 &&
+                p != Supershape2D.Parameter.N3)
+            {
+                Thumbnails.UpdateSampling();
+            }
+        }
+
+
+        // ZONES
         protected void ZoneChange()
         {
             Starness.color      = TextInactiveColor.Value;

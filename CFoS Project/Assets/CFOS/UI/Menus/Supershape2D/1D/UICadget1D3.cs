@@ -9,11 +9,7 @@ namespace CFoS.UI.Menus
     {
         [Header("Mini-map")]
         public Transform Minimap;
-        public Supershape2DRenderer MinimapThumbnail1;
-        public Supershape2DRenderer MinimapThumbnail2;
-        public Supershape2DRenderer MinimapThumbnail3;
-        public Supershape2DRenderer MinimapThumbnail4;
-        public Supershape2DRenderer MinimapThumbnail5;
+        public ThumbnailLine MinimapThumbnails;
 
 
         protected override void Start()
@@ -28,48 +24,39 @@ namespace CFoS.UI.Menus
             InitMinimapThumbnails();
         }
 
-        protected void SetMinimapThumbnail(Supershape2D supershape, Vector3 pos)
+        // MINIMAP
+        public Supershape2D.Data SampleMinimap(Thumbnail thumbnail)
         {
-            var paramameters = ParametersFromSlider(pos);
+            // figure out position on slider based on index and handle size
+            int index = Mathf.RoundToInt(thumbnail.Index.x);
+            int count = MinimapThumbnails.Thumbnails.Count;
 
-            supershape.A  = paramameters[0];
-            supershape.B  = paramameters[1];
-            supershape.M  = paramameters[2];
-            supershape.N1 = paramameters[3];
-            supershape.N2 = paramameters[4];
-            supershape.N3 = paramameters[5];
-        }
+            float i_offset = index - ((float)(count - 1))/2;
+            float offset = (count == 1) ? 0.0f : Slider.Handle.Size / (count - 1);
 
-        protected void UpdateMinimapThumbnails()
-        {
-            float maxOffset = Slider.Handle.Size;
-            float midOffset = maxOffset / 2;
+            Vector3 centerPos = Slider.Handle.transform.position;
+            var pos = centerPos + (Vector3.right * (i_offset * offset));
 
-            var slider = Slider.transform;
-            Vector3 leftMaxPos  = slider.TransformVector(Vector3.left * maxOffset);
-            Vector3 leftMidPos  = slider.TransformVector(Vector3.left * midOffset);
-            Vector3 centerPos   = Slider.Handle.transform.position;
-            Vector3 rightMidPos = slider.TransformVector(Vector3.right * midOffset);
-            Vector3 rightMaxPos = slider.TransformVector(Vector3.right * maxOffset);
+            // Get parameters from position
+            var data = Renderer.Supershape.GetData();
+            var n123 = Slider.SampleValueWorldCoords(pos);
+            data.N1 = n123;
+            data.N2 = n123;
+            data.N3 = n123;
 
-            SetMinimapThumbnail(MinimapThumbnail1.Supershape, centerPos + leftMaxPos);
-            SetMinimapThumbnail(MinimapThumbnail2.Supershape, centerPos + leftMidPos);
-            SetMinimapThumbnail(MinimapThumbnail3.Supershape, centerPos);
-            SetMinimapThumbnail(MinimapThumbnail4.Supershape, centerPos + rightMidPos);
-            SetMinimapThumbnail(MinimapThumbnail5.Supershape, centerPos + rightMaxPos);
+            return data;
         }
 
         protected void InitMinimapThumbnails()
         {
-            MinimapThumbnail1.Supershape = ScriptableObject.CreateInstance<Supershape2D>();
-            MinimapThumbnail2.Supershape = ScriptableObject.CreateInstance<Supershape2D>();
-            MinimapThumbnail3.Supershape = ScriptableObject.CreateInstance<Supershape2D>();
-            MinimapThumbnail4.Supershape = ScriptableObject.CreateInstance<Supershape2D>();
-            MinimapThumbnail5.Supershape = ScriptableObject.CreateInstance<Supershape2D>();
-
+            MinimapThumbnails.Function = SampleMinimap;
             UpdateMinimapThumbnails();
         }
+
+        protected void UpdateMinimapThumbnails()
+        {
+            MinimapThumbnails.UpdateSampling();
+        }
+
     }
-
-
 }
