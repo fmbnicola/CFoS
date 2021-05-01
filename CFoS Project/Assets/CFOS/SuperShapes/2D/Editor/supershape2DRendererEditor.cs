@@ -5,21 +5,11 @@ using UnityEngine;
 
 namespace CFoS.Supershape
 {
-    [CustomEditor(typeof(Supershape2DRenderer))]
+    [CustomEditor(typeof(Supershape2DRenderer),true)]
     [CanEditMultipleObjects]
     public class Supershape2DRendererEditor : Editor
     {
         bool showParameters = false;
-        bool showProperties = true;
-
-        SerializedProperty thickness;
-        SerializedProperty color;
-
-        public void OnEnable()
-        {
-            thickness = serializedObject.FindProperty("LineThickness");
-            color = serializedObject.FindProperty("LineColor");
-        }
 
         public override void OnInspectorGUI()
         {            
@@ -84,36 +74,6 @@ namespace CFoS.Supershape
                 EditorGUILayout.EndFoldoutHeaderGroup();
                 EditorGUI.EndDisabledGroup();
             }
-
-            // Render Properties
-            EditorGUILayout.Space(5);
-            showProperties = EditorGUILayout.BeginFoldoutHeaderGroup(showProperties, "Render Properties");
-
-            if (showProperties)
-            {
-                supershapeRenderer.SamplePoints = EditorGUILayout.IntField("Sample Points", supershapeRenderer.SamplePoints);
-                supershapeRenderer.LineThickness = EditorGUILayout.FloatField("Line Thickness", supershapeRenderer.LineThickness);
-                supershapeRenderer.LineColor = EditorGUILayout.ColorField("Line Color", supershapeRenderer.LineColor);
-                
-            }
-            EditorGUILayout.EndFoldoutHeaderGroup();
-
-            //Propagate to multi-obj editing
-            if (EditorGUI.EndChangeCheck())
-            {
-                if(targets.Length > 1)
-                {
-                    foreach (var obj in targets)
-                    {
-                        Supershape2DRenderer renderer = (Supershape2DRenderer)obj;
-                        renderer.SamplePoints = supershapeRenderer.SamplePoints;
-                        renderer.LineThickness = supershapeRenderer.LineThickness;
-                        renderer.LineColor = supershapeRenderer.LineColor;
-                    }
-                }
-                SceneView.RepaintAll();
-            }
-
         }
     }
 }
