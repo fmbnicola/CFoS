@@ -8,7 +8,7 @@ namespace CFoS.UI.Menus
     public class UICadget2D2 : UIMenu
     {
         [Header("2D Slider")]
-        public CFoS.UI.UISlider2D SliderN1xN23;
+        public CFoS.UI.UISlider2D SliderN1_N23;
 
         [Header("Supershape")]
         public Supershape2DRenderer Renderer;
@@ -17,7 +17,7 @@ namespace CFoS.UI.Menus
         protected void Start()
         {
             // Render Update
-            SliderN1xN23.ValueChangedEvent.AddListener(ValueChangeN123);
+            SliderN1_N23.ValueChangedEvent.AddListener(ValueChangeN123);
 
         }
 
@@ -25,9 +25,9 @@ namespace CFoS.UI.Menus
         // SLIDER 
         protected virtual void ValueChangeN123()
         {
-            Renderer.Supershape.N1 = SliderN1xN23.Value.x;
-            Renderer.Supershape.N2 = SliderN1xN23.Value.y;
-            Renderer.Supershape.N3 = SliderN1xN23.Value.y;
+            Renderer.Supershape.N1 = SliderN1_N23.Value.x;
+            Renderer.Supershape.N2 = SliderN1_N23.Value.y;
+            Renderer.Supershape.N3 = SliderN1_N23.Value.y;
         }
 
 

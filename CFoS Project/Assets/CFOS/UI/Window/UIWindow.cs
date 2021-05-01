@@ -38,11 +38,6 @@ namespace CFoS.UI
             var scale = transform.localScale;
             Content.localScale = new Vector3(1.0f / scale.x, 1.0f / scale.y, 1.0f / scale.z);
         }
-
-        private void Update()
-        {
-            if (transform.hasChanged) RescaleContent();
-        }
     }
 }
 

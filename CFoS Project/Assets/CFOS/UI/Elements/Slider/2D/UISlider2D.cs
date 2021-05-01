@@ -24,7 +24,8 @@ namespace CFoS.UI
         public Data.ColorVariable rangeTextColor;
 
         [Header("Text")]
-        public TMPro.TextMeshPro Text;
+        public TMPro.TextMeshPro XText;
+        public TMPro.TextMeshPro YText;
         public Data.ColorVariable TextColor;
 
         [Header("Variables")]
@@ -52,7 +53,8 @@ namespace CFoS.UI
             RangeYMinText.color = rangeTextColor.Value;
             RangeYMaxText.color = rangeTextColor.Value;
 
-            Text.color = TextColor.Value;
+            XText.color = TextColor.Value;
+            YText.color = TextColor.Value;
 
             // position range text
             var pos = RangeXMaxText.transform.localPosition;
@@ -100,12 +102,14 @@ namespace CFoS.UI
                 Track.Color = col;
 
                 col = TextColor.Value; col.a = 0.3f;
-                Text.color = col;
+                XText.color = col;
+                YText.color = col;
             }
             else
             {   
                 Track.Color = TrackColor.Value;
-                Text.color = TextColor.Value;
+                XText.color = TextColor.Value;
+                YText.color = TextColor.Value;
             }
             Handle.Enable(val);
         }

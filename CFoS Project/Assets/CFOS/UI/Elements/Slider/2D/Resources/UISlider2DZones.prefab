@@ -518,7 +518,8 @@ MonoBehaviour:
   RangeYMinText: {fileID: 1945724914294194941}
   RangeYMaxText: {fileID: 1945724915489455872}
   rangeTextColor: {fileID: 11400000, guid: 9704baa2edcf40149906bc2093829163, type: 2}
-  Text: {fileID: 863405196568197319}
+  XText: {fileID: 5661736675582356353}
+  YText: {fileID: 2430495679708593499}
   TextColor: {fileID: 11400000, guid: a6f01b11dc9532e419e6551821c28e9c, type: 2}
   StringFormat: 0.00
   Value: {x: 0, y: 0}
@@ -638,22 +639,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4966210176516177275, guid: 44def15484d776e4e81755daeee37737, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 44def15484d776e4e81755daeee37737, type: 3}
---- !u!1 &863405196178748055 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4966210176516177276, guid: 44def15484d776e4e81755daeee37737, type: 3}
+--- !u!4 &1945724914790940877 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6057465898999287590, guid: 44def15484d776e4e81755daeee37737, type: 3}
   m_PrefabInstance: {fileID: 5697312619914383339}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &863405196178748052 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4966210176516177279, guid: 44def15484d776e4e81755daeee37737, type: 3}
-  m_PrefabInstance: {fileID: 5697312619914383339}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 863405196178748055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8648223161486189511 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3968870294560992300, guid: 44def15484d776e4e81755daeee37737, type: 3}
@@ -665,11 +655,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8937984486493478616c85cea00166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1945724914790940877 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6057465898999287590, guid: 44def15484d776e4e81755daeee37737, type: 3}
+--- !u!114 &863405196178748052 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4966210176516177279, guid: 44def15484d776e4e81755daeee37737, type: 3}
   m_PrefabInstance: {fileID: 5697312619914383339}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863405196178748055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1945724914790940872 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6057465898999287587, guid: 44def15484d776e4e81755daeee37737, type: 3}
@@ -725,9 +721,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &863405196568197319 stripped
+--- !u!114 &5661736675582356353 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4966210175841384236, guid: 44def15484d776e4e81755daeee37737, type: 3}
+  m_CorrespondingSourceObject: {fileID: 108768252477039722, guid: 44def15484d776e4e81755daeee37737, type: 3}
   m_PrefabInstance: {fileID: 5697312619914383339}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -736,3 +732,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2430495679708593499 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7974240335205118640, guid: 44def15484d776e4e81755daeee37737, type: 3}
+  m_PrefabInstance: {fileID: 5697312619914383339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &863405196178748055 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4966210176516177276, guid: 44def15484d776e4e81755daeee37737, type: 3}
+  m_PrefabInstance: {fileID: 5697312619914383339}
+  m_PrefabAsset: {fileID: 0}
