@@ -8,8 +8,13 @@ namespace CFoS.UI
 {
     public class Thumbnail : UIElement
     {
+        [Header("Renderer")]
         public Supershape2DRenderer Renderer;
         public Supershape2D Supershape { get; private set; }
+
+        [Header("Selection")]
+        public Shapes.Rectangle Selection;
+        public Data.ColorVariable SelectionHoverColor;
 
         public delegate Supershape2D.Data SamplingFunction(Thumbnail thumbnail);
         public SamplingFunction SampleFunction;
@@ -32,6 +37,8 @@ namespace CFoS.UI
         protected override void OnValidate()
         {
             //Reset visuals
+            Selection.enabled = false;
+            Selection.Color = SelectionHoverColor.Value;
         }
 
         // Sampling
@@ -40,6 +47,7 @@ namespace CFoS.UI
             var data = SampleFunction(this);
             Supershape.SetData(data);
         }
+
 
         // Selection
         public override void Select(bool val)
@@ -60,6 +68,11 @@ namespace CFoS.UI
         {
             yield return new WaitForSeconds(time);
             Select(false);
+        }
+
+        public void Update()
+        {
+            Selection.enabled = (hovered || selected);
         }
     }
 }
