@@ -25,21 +25,21 @@ namespace CFoS.UI.Menus
         }
 
         // MINIMAP
-        public Supershape2D.Data SampleMinimap(Thumbnail thumbnail)
+        public Supershape2D.Data MinimapThumbnailSample(Thumbnail thumbnail)
         {
             // figure out position on slider based on index and handle size
-            int index = Mathf.RoundToInt(thumbnail.Index.x);
+            int index = thumbnail.Index.x;
             int count = MinimapThumbnails.Thumbnails.Count;
 
             float i_offset = index - ((float)(count - 1))/2;
             float offset = (count == 1) ? 0.0f : Slider.Handle.Size / (count - 1);
 
-            Vector3 centerPos = Slider.Handle.transform.position;
+            Vector3 centerPos = Slider.ValueToWorldCoords(Slider.Value);
             var pos = centerPos + (Vector3.right * (i_offset * offset));
 
             // Get parameters from position
             var data = Renderer.Supershape.GetData();
-            var n123 = Slider.SampleValueWorldCoords(pos);
+            var n123 = Slider.WorldCoordsToValue(pos);
             data.N1 = n123;
             data.N2 = n123;
             data.N3 = n123;
@@ -47,10 +47,11 @@ namespace CFoS.UI.Menus
             return data;
         }
 
+
         protected void InitMinimapThumbnails()
         {
-            MinimapThumbnails.Function = SampleMinimap;
-            UpdateMinimapThumbnails();
+            MinimapThumbnails.SetSampleFunction(MinimapThumbnailSample);
+            MinimapThumbnails.SetSelectFunction(ThumbnailSelect);
         }
 
         protected void UpdateMinimapThumbnails()

@@ -60,11 +60,12 @@ namespace CFoS.UI
             oldYZone = currentYZone;
         }
 
-        public override Vector2 SampleValueWorldCoords(Vector3 coords)
+        public override Vector2 WorldCoordsToValue(Vector3 coords)
         {
             Vector3 localPos = transform.InverseTransformPoint(coords);
             return HandleToValueAux(localPos.x, localPos.y, out Vector2Int zone_i);
         }
+
 
         private Vector2 HandleToValueAux(float handlePosX, float handlePosY, out Vector2Int zone_i)
         {

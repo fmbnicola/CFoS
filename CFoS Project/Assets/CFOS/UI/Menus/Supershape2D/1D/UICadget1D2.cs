@@ -49,10 +49,10 @@ namespace CFoS.UI.Menus
 
     
         // THUMBNAILS
-        public Supershape2D.Data SampleSlider(Thumbnail thumbnail)
+        public Supershape2D.Data ThumbnailSample(Thumbnail thumbnail)
         {
             var data = Renderer.Supershape.GetData();
-            var n123 = Slider.SampleValueWorldCoords(thumbnail.transform.position);
+            var n123 = Slider.WorldCoordsToValue(thumbnail.transform.position);
             data.N1 = n123;
             data.N2 = n123;
             data.N3 = n123;
@@ -60,10 +60,18 @@ namespace CFoS.UI.Menus
             return data;
         }
 
+        public void ThumbnailSelect(Thumbnail thumbnail)
+        {
+            var data = thumbnail.Supershape.GetData();
+            Slider.Value = data.N1;
+            Slider.ForceValueUpdate();
+        }
+
+
         protected void InitThumbnails()
         {
-            Thumbnails.Function = SampleSlider;
-            UpdateThumbnails(Supershape2D.Parameter.Any);
+            Thumbnails.SetSampleFunction(ThumbnailSample);
+            Thumbnails.SetSelectFunction(ThumbnailSelect);
         }
 
         protected void UpdateThumbnails(Supershape2D.Parameter p)

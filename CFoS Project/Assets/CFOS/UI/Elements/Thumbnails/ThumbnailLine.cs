@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CFoS.Supershape;
+using UnityEditor;
 
 namespace CFoS.UI
 {
@@ -14,20 +15,19 @@ namespace CFoS.UI
 
         [SerializeField]
         public List<Thumbnail> Thumbnails = new List<Thumbnail>();
-        private bool countChanged = false;
 
-        public Thumbnail.SamplingFunction Function;
-
-
+        // Manage Thumbnails
         public void AddThumbnail()
         {
+#if UNITY_EDITOR
+            var newObject       = PrefabUtility.InstantiatePrefab(ThumbnailAsset, transform) as GameObject;
+#else
             var newObject       = Instantiate(ThumbnailAsset, transform);
-            var newThumbnail    = newObject.GetComponent<Thumbnail>();
+#endif
+            var newThumbnail    = newObject. GetComponent<Thumbnail>();
 
-            newThumbnail.Index = new Vector3(Thumbnails.Count, 0 , 0);
+            newThumbnail.Index = new Vector3Int(Thumbnails.Count, 0 , 0);
             Thumbnails.Add(newThumbnail);
-
-            countChanged = true;
         }
 
         public void AddThumbnails(int num)
@@ -51,8 +51,6 @@ namespace CFoS.UI
 #else
                 Destroy(thumbnail.gameObject);
 #endif
-
-                countChanged = true;
             }
         }
 
@@ -76,8 +74,6 @@ namespace CFoS.UI
 #endif
             }
             Thumbnails.Clear();
-
-            countChanged = true;
         }
 
         public void SetThumbnailNumber(int num)
@@ -110,14 +106,33 @@ namespace CFoS.UI
             }
         }
 
+        // Sampling + Selection
+        public void SetSampleFunction(Thumbnail.SamplingFunction function)
+        {
+            foreach (var thumbnail in Thumbnails)
+            {
+                thumbnail.SampleFunction = function;
+                thumbnail.UpdateSampling();
+            }
+        }
+
         public void UpdateSampling()
         {
             foreach (var thumbnail in Thumbnails)
             {
-                thumbnail.Function = Function;
                 thumbnail.UpdateSampling();
             }
         }
+
+        public void SetSelectFunction(Thumbnail.SelectingFunction function)
+        {
+            foreach (var thumbnail in Thumbnails)
+            {
+                thumbnail.SelectFunction = function;
+            }
+        }
+
+
 
         [ExecuteAlways]
         private void OnValidate()

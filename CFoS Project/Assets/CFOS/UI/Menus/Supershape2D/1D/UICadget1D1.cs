@@ -22,9 +22,10 @@ namespace CFoS.UI.Menus
 
         protected virtual void ValueChange()
         {
-            Renderer.Supershape.N1 = Slider.Value;
-            Renderer.Supershape.N2 = Slider.Value;
-            Renderer.Supershape.N3 = Slider.Value;
+            var val = Slider.Value;
+            Renderer.Supershape.N1 = val;
+            Renderer.Supershape.N2 = val;
+            Renderer.Supershape.N3 = val;
         }
     }
 }

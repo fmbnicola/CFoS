@@ -27,8 +27,10 @@ namespace CFoS.UI
 
         [Header("Variables")]
         public string StringFormat = "0.0";
+
         public float Value = 0.0f;
         protected float oldValue;
+
         public float Min = 0.0f;
         public float Max = 1.0f;
 
@@ -55,11 +57,7 @@ namespace CFoS.UI
             RangeMaxText.transform.localPosition = pos;
 
             // manually update slider
-            if (!Mathf.Approximately(Value, oldValue))
-            {
-                ValueChangedEvent.Invoke();
-            }
-            oldValue = Value;
+            ForceValueUpdate();
         }
 
         protected virtual void Awake()
@@ -110,10 +108,18 @@ namespace CFoS.UI
 
 
         // Get Closest Value in slider from a point in space
-        public virtual float SampleValueWorldCoords(Vector3 coords)
+        public virtual float WorldCoordsToValue(Vector3 coords)
         {
             Vector3 localPos = transform.InverseTransformPoint(coords);
             return HandleToValue(localPos.x);
+        }
+
+        // Get handle world coords from Value
+        public virtual Vector3 ValueToWorldCoords(float value)
+        {
+            var x = ValueToHandle(value);
+            Vector3 pos = new Vector3(x,0,0);
+            return transform.TransformPoint(pos);
         }
 
 
@@ -142,7 +148,6 @@ namespace CFoS.UI
         }
 
 
-
         protected void VisualUpdate()
         {
             if (disabled)
@@ -154,6 +159,12 @@ namespace CFoS.UI
             Handle.HandleText.text = Value.ToString(StringFormat);
             RangeMinText.text = Min.ToString(StringFormat);
             RangeMaxText.text = Max.ToString(StringFormat);
+        }
+
+        public virtual void ForceValueUpdate()
+        {
+            oldValue = Value;
+            ValueChangedEvent.Invoke();
         }
 
         protected virtual void Update()
@@ -172,9 +183,8 @@ namespace CFoS.UI
 
                 if(!Mathf.Approximately(Value, oldValue))
                 {
-                    ValueChangedEvent.Invoke();
+                    ForceValueUpdate();
                 }
-                oldValue = Value;
             }
             // If not selecting, value changes handle position
             else

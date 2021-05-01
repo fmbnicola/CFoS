@@ -58,7 +58,7 @@ namespace CFoS.UI
             oldZone = currentZone;
         }
 
-        public override float SampleValueWorldCoords(Vector3 coords)
+        public override float WorldCoordsToValue(Vector3 coords)
         {
             Vector3 localPos = transform.InverseTransformPoint(coords);
             return HandleToValueAux(localPos.x, out int i);

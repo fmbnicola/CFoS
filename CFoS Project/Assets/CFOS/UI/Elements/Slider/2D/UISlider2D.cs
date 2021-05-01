@@ -66,11 +66,7 @@ namespace CFoS.UI
             RangeYMaxText.transform.localPosition = pos;
 
             // manually update slider
-            if (Value != oldValue)
-            {
-                ValueChangedEvent.Invoke();
-            }
-            oldValue = Value;
+            ForceValueUpdate();
         }
 
         protected virtual void Awake()
@@ -123,12 +119,19 @@ namespace CFoS.UI
 
 
         // Get Closest Value in slider from a point in space
-        public virtual Vector2 SampleValueWorldCoords(Vector3 coords)
+        public virtual Vector2 WorldCoordsToValue(Vector3 coords)
         {
             Vector3 localPos = transform.InverseTransformPoint(coords);
             return HandleToValue(localPos.x, localPos.y);
         }
 
+        // Get handle world coords from Value
+        public virtual Vector3 ValueToWorldCoords(Vector2 value)
+        {
+            var xy = ValueToHandle(value);
+            Vector3 pos = new Vector3(xy.x, xy.y, 0);
+            return transform.TransformPoint(pos);
+        }
 
         // converts handle position to slider value
         protected virtual Vector2 HandleToValue(float handleX, float handleY)
@@ -165,7 +168,6 @@ namespace CFoS.UI
         }
 
 
-
         protected void VisualUpdate()
         {
             if (disabled)
@@ -179,6 +181,12 @@ namespace CFoS.UI
             RangeXMaxText.text = XMax.ToString(StringFormat);
             RangeYMinText.text = YMin.ToString(StringFormat);
             RangeYMaxText.text = YMax.ToString(StringFormat);
+        }
+
+        public virtual void ForceValueUpdate()
+        {
+            oldValue = Value;
+            ValueChangedEvent.Invoke();
         }
 
         protected virtual void Update()
@@ -197,9 +205,8 @@ namespace CFoS.UI
 
                 if(Value != oldValue)
                 {
-                    ValueChangedEvent.Invoke();
+                    ForceValueUpdate();
                 }
-                oldValue = Value;
             }
             // If not selecting, value changes handle position
             else
