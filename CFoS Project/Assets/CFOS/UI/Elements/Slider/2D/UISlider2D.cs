@@ -7,18 +7,20 @@ using static UnityEngine.InputSystem.InputAction;
 
 namespace CFoS.UI
 {
-    public class UISlider : UIElement
+    public class UISlider2D : UIElement
     {
         [Header("Handle")]
         public UISliderHandle Handle;
        
         [Header("Track")]
-        public Shapes.Line Track;
+        public Shapes.Rectangle Track;
         public Data.ColorVariable TrackColor;
 
-        [Header("Range")]
-        public TMPro.TextMeshPro RangeMinText;
-        public TMPro.TextMeshPro RangeMaxText;
+        [Header("Ranges")]
+        public TMPro.TextMeshPro RangeXMinText;
+        public TMPro.TextMeshPro RangeXMaxText;
+        public TMPro.TextMeshPro RangeYMinText;
+        public TMPro.TextMeshPro RangeYMaxText;
         public Data.ColorVariable rangeTextColor;
 
         [Header("Text")]
@@ -26,15 +28,16 @@ namespace CFoS.UI
         public Data.ColorVariable TextColor;
 
         [Header("Variables")]
-        public string StringFormat = "0.0";
-        public float Value = 0.0f;
-        public float Min = 0.0f;
-        public float Max = 1.0f;
-        protected float oldValue;
+        public string StringFormat = "0.00";
+        public Vector2 Value = new Vector2(0,0);
+        protected Vector2 oldValue;
+        public float XMin = 0.0f;
+        public float XMax = 1.0f;
+        public float YMin = 0.0f;
+        public float YMax = 1.0f;
 
         [Space(10)]
         public UnityEvent ValueChangedEvent;
-
 
         protected Vector3 selectOffset = Vector3.zero;
 
@@ -44,19 +47,28 @@ namespace CFoS.UI
         {
             Track.Color = TrackColor.Value;
 
-            RangeMinText.color = rangeTextColor.Value;
-            RangeMaxText.color = rangeTextColor.Value;
+            RangeXMinText.color = rangeTextColor.Value;
+            RangeXMaxText.color = rangeTextColor.Value;
+            RangeYMinText.color = rangeTextColor.Value;
+            RangeYMaxText.color = rangeTextColor.Value;
 
             Text.color = TextColor.Value;
 
             // position range text
-            var pos = RangeMaxText.transform.localPosition;
-            pos.x = 0.0f;
-            RangeMaxText.transform.localPosition = pos;
+            var pos = RangeXMaxText.transform.localPosition;
+            pos.x = Track.Width;
+            RangeXMaxText.transform.localPosition = pos;
 
-            pos = RangeMaxText.transform.localPosition;
-            pos.x = Track.End.x;
-            RangeMaxText.transform.localPosition = pos; 
+            pos = RangeYMaxText.transform.localPosition;
+            pos.y = Track.Height;
+            RangeYMaxText.transform.localPosition = pos;
+
+            // manually update slider
+            if (Value != oldValue)
+            {
+                ValueChangedEvent.Invoke();
+            }
+            oldValue = Value;
         }
 
         protected virtual void Awake()
@@ -107,34 +119,44 @@ namespace CFoS.UI
 
 
         // Get Closest Value in slider from a point in space
-        public virtual float SampleValueWorldCoords(Vector3 coords)
+        public virtual Vector2 SampleValueWorldCoords(Vector3 coords)
         {
             Vector3 localPos = transform.InverseTransformPoint(coords);
-            return HandleToValue(localPos.x);
+            return HandleToValue(localPos.x, localPos.y);
         }
 
 
         // converts handle position to slider value
-        protected virtual float HandleToValue(float handlePos)
+        protected virtual Vector2 HandleToValue(float handleX, float handleY)
         {
-            float value = ExtensionMethods.Remap(handlePos, 0.0f, Track.End.x, Min, Max);
-            return Mathf.Clamp(value, Min, Max);
+            float xValue = ExtensionMethods.Remap(handleX, 0.0f, Track.Width, XMin, XMax);
+            float yValue = ExtensionMethods.Remap(handleY, 0.0f, Track.Height, YMin, YMax);
+            xValue = Mathf.Clamp(xValue, XMin, XMax);
+            yValue = Mathf.Clamp(yValue, YMin, YMax);
+
+            return new Vector2(xValue, yValue);
         }
 
         // converts slider value to handle position
-        protected virtual float ValueToHandle(float value)
+        protected virtual Vector2 ValueToHandle(Vector2 value)
         {
-            float handlePos = ExtensionMethods.Remap(value, Min, Max, 0.0f, Track.End.x);
-            return Mathf.Clamp(handlePos, 0.0f, Track.End.x);
+            float handleX = ExtensionMethods.Remap(value.x, XMin, XMax, 0.0f, Track.Width);
+            float handleY = ExtensionMethods.Remap(value.y, YMin, YMax, 0.0f, Track.Height);
+            handleX = Mathf.Clamp(handleX, 0.0f, Track.Width);
+            handleY = Mathf.Clamp(handleY, 0.0f, Track.Height);
+
+            return new Vector2(handleX, handleY);
         }
 
-        // position handle based on x val
-        protected virtual void PositionSlider(float posx)
+        // position handle based on (x,y) val
+        protected virtual void PositionSlider(float posx, float posy)
         {
-            posx = Mathf.Clamp(posx, 0.0f, Track.End.x);
+            posx = Mathf.Clamp(posx, 0.0f, Track.Width);
+            posy = Mathf.Clamp(posy, 0.0f, Track.Height);
 
             var pos = Handle.transform.localPosition;
             pos.x = posx;
+            pos.y = posy;
             Handle.transform.localPosition = pos;
         }
 
@@ -149,8 +171,10 @@ namespace CFoS.UI
 
             // Visual Update
             Handle.HandleText.text = Value.ToString(StringFormat);
-            RangeMinText.text = Min.ToString(StringFormat);
-            RangeMaxText.text = Max.ToString(StringFormat);
+            RangeXMinText.text = XMin.ToString(StringFormat);
+            RangeXMaxText.text = XMax.ToString(StringFormat);
+            RangeYMinText.text = YMin.ToString(StringFormat);
+            RangeYMaxText.text = YMax.ToString(StringFormat);
         }
 
         protected virtual void Update()
@@ -164,10 +188,10 @@ namespace CFoS.UI
                 var controllerPos = controller.transform.TransformPoint(selectOffset);
                 var handlePos = transform.InverseTransformPoint(controllerPos);
                 
-                PositionSlider(handlePos.x);
-                Value = HandleToValue(handlePos.x);
+                PositionSlider(handlePos.x, handlePos.y);
+                Value = HandleToValue(handlePos.x, handlePos.y);
 
-                if(!Mathf.Approximately(Value, oldValue))
+                if(Value != oldValue)
                 {
                     ValueChangedEvent.Invoke();
                 }
@@ -176,10 +200,9 @@ namespace CFoS.UI
             // If not selecting, value changes handle position
             else
             {
-                PositionSlider(ValueToHandle(Value));
+                var pos = ValueToHandle(Value);
+                PositionSlider(pos.x, pos.y);
             }
         }
-
-
     }
 }

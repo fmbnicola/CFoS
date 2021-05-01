@@ -8,7 +8,7 @@ namespace CFoS.UI.Menus
     public class UICadget1D1 : UIMenu
     {
         [Header("Slider")]
-        public CFoS.UI.UISlider Slider;
+        public CFoS.UI.UISlider1D Slider;
 
         [Header("Supershape")]
         public Supershape2DRenderer Renderer;

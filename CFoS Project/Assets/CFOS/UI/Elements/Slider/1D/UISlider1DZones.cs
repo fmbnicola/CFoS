@@ -21,7 +21,7 @@ namespace CFoS.UI
         }
     }
 
-    public class UISliderZones : UISlider
+    public class UISlider1DZones : UISlider1D
     {
         [Space(10)]
         public UnityEvent ZoneChangedEvent;
@@ -44,11 +44,8 @@ namespace CFoS.UI
             }
             else
             {
-                var first = Zones[0];
-                first.Min = Min;
-
-                var last = Zones[Zones.Count - 1];
-                last.Max = Max;
+                Zones[0].Min = Min;
+                Zones[Zones.Count - 1].Max = Max;
             }
         }
 
@@ -112,13 +109,11 @@ namespace CFoS.UI
         protected override float ValueToHandle(float value)
         {
             // Determine in which zone the value is in
-            float zoneSize = (Track.End.x / Zones.Count);
-
             int zone_i = GetZoneIndexFromValue(value);
-
             Zone zone = Zones[zone_i];
 
             // Get zone limits
+            float zoneSize = (Track.End.x / Zones.Count);
             float zoneStart = zoneSize * zone_i;
             float zoneEnd   = zoneSize * (zone_i + 1);
 

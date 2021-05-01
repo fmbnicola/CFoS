@@ -30,7 +30,7 @@ namespace CFoS.UI.Menus
             base.Start();
 
             // Zones
-            var slider = (UISliderZones) Slider;
+            var slider = (UISlider1DZones) Slider;
             slider.ZoneChangedEvent.AddListener(ZoneChange);
             ZoneChange();
 
@@ -88,7 +88,7 @@ namespace CFoS.UI.Menus
             Inscribed.color     = TextInactiveColor.Value;
             Circumscribed.color = TextInactiveColor.Value;
 
-            var slider = (UISliderZones) Slider;
+            var slider = (UISlider1DZones) Slider;
             switch (slider.ZoneIndex)
             {
                 case 0:

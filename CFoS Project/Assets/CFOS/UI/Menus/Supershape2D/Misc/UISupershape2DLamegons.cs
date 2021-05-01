@@ -9,11 +9,11 @@ namespace CFoS.UI.Menus
         public CFoS.Supershape.Supershape2DRenderer Renderer;
 
         [Space(10)]
-        public CFoS.UI.UISlider N1Slider;
-        public CFoS.UI.UISlider N23Slider;
+        public CFoS.UI.UISlider1D N1Slider;
+        public CFoS.UI.UISlider1D N23Slider;
 
         [Space(5)]
-        public CFoS.UI.UISlider MSlider;
+        public CFoS.UI.UISlider1D MSlider;
 
         protected bool N1changed = false;
         protected bool N23changed = false;

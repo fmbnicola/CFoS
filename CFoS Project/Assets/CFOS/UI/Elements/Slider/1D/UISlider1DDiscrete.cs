@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace CFoS.UI
 {
-    public class UISliderDiscrete : UISlider
+    public class UISlider1DDiscrete : UISlider1D
     {
 
         public float DiscreteInterval = 1.0f;
