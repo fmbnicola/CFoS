@@ -10,8 +10,12 @@ namespace CFoS.UI
     {
         public GameObject ThumbnailAsset;
 
-        public float Spacing = 1.0f;
+        [Header("Properties")]
+        public float Length  = 1.0f;
         public float Scaling = 0.5f;
+
+        [Space(10)][SerializeField]
+        public Vector2Int Index = Vector2Int.zero;
 
         [SerializeField]
         public List<Thumbnail> Thumbnails = new List<Thumbnail>();
@@ -24,10 +28,12 @@ namespace CFoS.UI
 #else
             var newObject       = Instantiate(ThumbnailAsset, transform);
 #endif
-            var newThumbnail    = newObject. GetComponent<Thumbnail>();
+            var newThumbnail    = newObject.GetComponent<Thumbnail>();
 
-            newThumbnail.Index = new Vector3Int(Thumbnails.Count, 0 , 0);
+            newThumbnail.Index = new Vector3Int(Thumbnails.Count, Index.x, Index.y);
             Thumbnails.Add(newThumbnail);
+
+            UpdateTransforms();
         }
 
         public void AddThumbnails(int num)
@@ -51,6 +57,7 @@ namespace CFoS.UI
 #else
                 Destroy(thumbnail.gameObject);
 #endif
+                UpdateTransforms();
             }
         }
 
@@ -89,22 +96,6 @@ namespace CFoS.UI
             }
         }
 
-        public void UpdateTransforms()
-        {
-            var count = Thumbnails.Count;
-            var offset = -(Spacing * (count - 1)) / 2;
-
-            for (var i = 0; i < count; i++)
-            {
-                var thumbnail = Thumbnails[i];
-
-                // position
-                thumbnail.transform.localPosition = Vector3.right * (offset + (Spacing * i));
-
-                // scale
-                thumbnail.transform.localScale = Vector3.one * Scaling;
-            }
-        }
 
         // Sampling + Selection
         public void SetSampleFunction(Thumbnail.SamplingFunction function)
@@ -133,11 +124,30 @@ namespace CFoS.UI
         }
 
 
+        // Update
+        public void UpdateTransforms()
+        {
+            var count = Thumbnails.Count;
+            var offset = (count <= 1) ? 0.0f : Length / (count - 1);
+
+            for (var i = 0; i < count; i++)
+            {
+                var thumbnail = Thumbnails[i];
+
+                // position
+                thumbnail.transform.localPosition = Vector3.right * (offset * i);
+
+                // scale
+                thumbnail.transform.localScale = Vector3.one * Scaling;
+            }
+        }
 
         [ExecuteAlways]
         private void OnValidate()
         {
+            if (Thumbnails.Count == 0) return;
             UpdateTransforms();
         }
+
     }
 }
