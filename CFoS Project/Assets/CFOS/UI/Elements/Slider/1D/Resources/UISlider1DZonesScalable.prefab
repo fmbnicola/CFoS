@@ -272,8 +272,8 @@ MonoBehaviour:
   HandleText: {fileID: 1510363669195987169}
   HandleTextColor: {fileID: 11400000, guid: a6f01b11dc9532e419e6551821c28e9c, type: 2}
   Size: 0.03
-  MaxSize: 0.1
-  MinSize: 0.01
+  MaxSize: 0.08
+  MinSize: 0.02
   SizeChangeRate: 0.001
   SizeChangedEvent:
     m_PersistentCalls:

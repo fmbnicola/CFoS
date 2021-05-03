@@ -130,7 +130,7 @@ namespace CFoS.UI
             if (oldZone != currentZone)
             {
                 ZoneChangedEvent.Invoke();
-                if (selected) controller.SendHapticImpulse(0.8f, 0.02f);
+                if (selected) controller.SendHapticImpulse(0.4f, 0.02f);
             }
             oldZone = currentZone;
         }

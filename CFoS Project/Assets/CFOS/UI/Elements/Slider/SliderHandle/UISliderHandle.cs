@@ -35,7 +35,7 @@ namespace CFoS.UI
             Handle.Height = Size;
             Handle.Width  = Size;
             HandleOutline.Height = Size;
-            HandleOutline.Height = Size;
+            HandleOutline.Width  = Size;
         }
 
         public override void Enable(bool val)

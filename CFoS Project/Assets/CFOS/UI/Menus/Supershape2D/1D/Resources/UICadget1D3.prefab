@@ -1503,7 +1503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f210828086c1a4398856e1ba65627c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blendMode: 1
+  blendMode: 0
   scaleMode: 0
   color: {r: 0.17254902, g: 0.17254902, b: 0.17254902, a: 0.54901963}
   detailLevel: 2
@@ -1549,7 +1549,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7a2265fc202676141a8729ed7751f445, type: 2}
+  - {fileID: 2100000, guid: 08dcfbb090c2fc94ca0c118fdbf2d5f3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1827,7 +1827,6 @@ MonoBehaviour:
   Convex: {fileID: 678445835}
   Inscribed: {fileID: 2036383863}
   Circumscribed: {fileID: 1139143688}
-  Minimap: {fileID: 1212716413}
   MinimapThumbnails: {fileID: 109730843374711954}
 --- !u!1 &8807815656737991599
 GameObject:

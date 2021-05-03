@@ -14,10 +14,17 @@ namespace CFoS.UI
 
         public UnityEvent SizeChangedEvent;
 
+        [ExecuteAlways]
+        protected override void OnValidate()
+        {
+            base.OnValidate();
+
+            SizeChangedEvent.Invoke();
+        }
+
         protected override void Update()
         {
             base.Update();
-
 
             if (selected)
             {
@@ -29,9 +36,9 @@ namespace CFoS.UI
                 Size = Mathf.Clamp(Size + delta * SizeChangeRate, MinSize, MaxSize);
                 
                 Handle.Height = Size;
-                Handle.Width = Size;
+                Handle.Width  = Size;
                 HandleOutline.Height = Size;
-                HandleOutline.Width = Size;
+                HandleOutline.Width  = Size;
             }
         }
 

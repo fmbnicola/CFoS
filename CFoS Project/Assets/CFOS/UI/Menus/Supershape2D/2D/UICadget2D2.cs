@@ -17,7 +17,7 @@ namespace CFoS.UI.Menus
         public ThumbnailQuad Thumbnails;
 
         // Init
-        protected void Start()
+        protected virtual void Start()
         {
             // Render Update
             Slider.ValueChangedEvent.AddListener(ValueChange);
