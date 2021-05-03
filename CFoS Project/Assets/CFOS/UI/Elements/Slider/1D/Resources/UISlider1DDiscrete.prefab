@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Interactable: {fileID: 6005560295732446148}
   disabled: 0
-  Handle: {fileID: 2353075913498284695}
+  Handle: {fileID: 7826185086752094087}
   Track: {fileID: 4315096593950701999}
   TrackColor: {fileID: 11400000, guid: 7e3ef38f6ce91a24cad46591c30cad91, type: 2}
   RangeMinText: {fileID: 4638779295363667561}
@@ -184,9 +184,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2353075913498284695 stripped
+--- !u!114 &7826185086752094087 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8250184132791145603, guid: 905db4a54d648714a88b2003d44d8ca8, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4487121304542130579, guid: 905db4a54d648714a88b2003d44d8ca8, type: 3}
   m_PrefabInstance: {fileID: 5969878451518391828}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

@@ -19,7 +19,8 @@ MonoBehaviour:
   HandleHoverColor: {fileID: 11400000, guid: e9a4b3b8bdd85184eac2573f6b9bf201, type: 2}
   HandleSelectColor: {fileID: 11400000, guid: 47d71db28377b1d45b73a585b0740c81, type: 2}
   HandleOutline: {fileID: 7004858794592716491}
-  HandleOutlineColor: {fileID: 11400000, guid: 169e74c7f8773dd4c8f6436b767e9efa, type: 2}
+  HandleOutlineNormalColor: {fileID: 11400000, guid: 1439b32c2a3b6a0409c4a51d0bcb5df1, type: 2}
+  HandleOutlineHoverColor: {fileID: 11400000, guid: 169e74c7f8773dd4c8f6436b767e9efa, type: 2}
   HandleText: {fileID: 7004858794226014891}
   HandleTextColor: {fileID: 11400000, guid: a6f01b11dc9532e419e6551821c28e9c, type: 2}
   Size: 0.03
@@ -87,6 +88,10 @@ PrefabInstance:
     - target: {fileID: 863405196178748074, guid: d0b1e4aa803c4bf49a39b4cc05cbcf53, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1784311692338836283, guid: d0b1e4aa803c4bf49a39b4cc05cbcf53, type: 3}
+      propertyPath: m_Name
+      value: Handle
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8648223161486189511, guid: d0b1e4aa803c4bf49a39b4cc05cbcf53, type: 3}

@@ -14,7 +14,8 @@ namespace CFoS.UI
 
         [Space(10)]
         public Shapes.Rectangle HandleOutline;
-        public Data.ColorVariable HandleOutlineColor;
+        public Data.ColorVariable HandleOutlineNormalColor;
+        public Data.ColorVariable HandleOutlineHoverColor;
 
         [Space(10)]
         public TMPro.TextMeshPro HandleText;
@@ -28,18 +29,13 @@ namespace CFoS.UI
         {
             // Set Colors
             Handle.Color = HandleNormalColor.Value;
-            HandleOutline.Color = HandleOutlineColor.Value;
+            HandleOutline.Color = HandleOutlineNormalColor.Value;
             HandleText.color = HandleTextColor.Value;
 
             Handle.Height = Size;
             Handle.Width  = Size;
             HandleOutline.Height = Size;
-            HandleOutline.Height = Size;
-        }
-
-        protected virtual void Awake()
-        {
-            HandleOutline.gameObject.SetActive(false);
+            HandleOutline.Width  = Size;
         }
 
         public override void Enable(bool val)
@@ -63,13 +59,12 @@ namespace CFoS.UI
             {
                 var col = HandleNormalColor.Value; col.a = 0.3f;
                 Handle.Color = col;
-                HandleOutline.gameObject.SetActive(false);
                 return;
             }
 
             // Visual Update
             Handle.Color = selected ? HandleSelectColor.Value : hovered ? HandleHoverColor.Value : HandleNormalColor.Value;
-            HandleOutline.gameObject.SetActive(hovered || selected);
+            HandleOutline.Color = selected ? HandleOutlineHoverColor.Value : hovered ? HandleOutlineHoverColor.Value : HandleOutlineNormalColor.Value;
         }
 
         protected virtual void Update()

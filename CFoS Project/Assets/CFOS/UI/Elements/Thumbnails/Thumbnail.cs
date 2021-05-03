@@ -23,7 +23,7 @@ namespace CFoS.UI
         public SelectingFunction SelectFunction;
 
         // Position index in line, quad or cube
-        [SerializeField]
+        [Space(10)][SerializeField]
         public Vector3Int Index = Vector3Int.zero;
 
         // Init
