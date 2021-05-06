@@ -34,7 +34,7 @@ namespace CFoS.Experiments
             foreach(Transform child in transform)
             {
                 var exp = child.GetComponent<Experiment>();
-                Experiments.Add(exp);
+                if(exp) Experiments.Add(exp);
             }
         }
 
