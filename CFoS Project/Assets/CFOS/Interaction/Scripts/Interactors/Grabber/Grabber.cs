@@ -26,8 +26,17 @@ namespace CFoS.Interaction
 
         // Properties
         public bool Activated { get; protected set; } = true;
+        public void Activate(bool val) { Activated = val; }
+
+        public bool Hovered { get; protected set; } = true;
+        public void Hover(bool val) { Hovered = val; }
+
+        public bool Selected { get => (Interactor.selectTarget != null); }
+
         public XRBaseInteractor Interactor { get; set; }
 
+
+        // Methods
         private void Awake()
         {
             Interactor = GetComponent<XRBaseInteractor>();
@@ -37,42 +46,36 @@ namespace CFoS.Interaction
             propBlock = new MaterialPropertyBlock();
         }
 
+        private void VisualUpdate()
+        {
+            // Color or not
+            var val = (Hovered || Selected);
+            var color = val ? HoverColor.Value : NormalColor.Value;
+            propBlock.SetColor("_Color", color);
+            outlineRenderer.Color = color;
+            volumeRenderer.SetPropertyBlock(propBlock);
+
+            // Visible or not
+            outlineRenderer.enabled = Activated;
+            volumeRenderer.enabled = Activated;
+        }
+
         void Update()
         {
             var scale = Vector3.one * Size;
             Pivot.transform.localScale = scale;
 
-            // Disable hover/select when deactivated
+            // Disable hover/select
             Interactor.allowHover = Activated;
             Interactor.allowSelect = Activated;
+
+            VisualUpdate();
         }
 
         void LateUpdate()
         {
             var forward = transform.position - Camera.main.transform.position;
             Outline.rotation = Quaternion.LookRotation(forward, Vector3.up);
-        }
-
-
-        // Methods
-        public void Hover(bool val)
-        {
-            var color = val ? HoverColor.Value : NormalColor.Value;
-            propBlock.SetColor("_Color", color);
-
-            outlineRenderer.Color = color;
-            volumeRenderer.SetPropertyBlock(propBlock);
-        }
-
-        public void Show(bool val)
-        {
-            outlineRenderer.enabled = val;
-            volumeRenderer.enabled = val;
-        }
-
-        public void Activate(bool val)
-        {
-            Activated = val;
         }
     }
 }

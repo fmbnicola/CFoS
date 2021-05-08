@@ -46,14 +46,14 @@ namespace CFoS.UI
             }
         }
 
-        // Pointer Interactor Selected Element
-        private void RegisterElement(bool val)
+        // Register selected element in Pointer Interactor 
+        private void RegisterSelection(bool val)
         {
             if(controller != null)
             {
                 var pointer = controller.GetComponentInChildren<Pointer>();
-                if (val) pointer.SelectedElement = this;
-                else pointer.SelectedElement = null;
+                var element = (val) ? this: null;
+                pointer.Select(element);
             }
         }
 
@@ -105,8 +105,8 @@ namespace CFoS.UI
             // Update state
             selected = val;
 
-            // Register interactible in pointer
-            RegisterElement(val);
+            // Register/Unregister selected element
+            RegisterSelection(val);
 
             if (!val && !hovered) UnhookController(controller);  
         }

@@ -28,9 +28,18 @@ namespace CFoS.Interaction
 
         // Properties
         public bool Activated { get; protected set; } = true;
-        public XRBaseInteractor Interactor { get; set; }
-        public UIElement SelectedElement { get; set; } = null;
+        public void Activate(bool val) { Activated = val; }
 
+        public bool Hovered { get; protected set; } = true;
+        public void Hover(bool val){ Hovered = val; }
+
+        public UIElement SelectedElement { get; set; } = null;
+        public bool Selected { get => (SelectedElement != null); }
+        public void Select(UIElement element) { SelectedElement = element; }
+
+        public XRBaseInteractor Interactor { get; set; }
+
+        // Methods
         private void Awake()
         {
             Interactor = GetComponent<XRBaseInteractor>();
@@ -40,43 +49,31 @@ namespace CFoS.Interaction
             propBlock = new MaterialPropertyBlock();
         }
 
+        private void VisualUpdate()
+        {
+            // Color or not
+            var val = ( Hovered || Selected );
+            var color = val ? HoverColor.Value : NormalColor.Value;
+            propBlock.SetColor("_Color", color);
+            outlineRenderer.Color = color;
+            volumeRenderer.SetPropertyBlock(propBlock);
+           
+            // Visible or not
+            outlineRenderer.enabled = Activated;
+            volumeRenderer.enabled = Activated;
+        }
+
         private void Update()
         {
             var scale = Vector3.one * Size;
             Pivot.transform.localScale = scale;
 
-            //if not activated or selecting, disable hover/select
-            if(Activated && SelectedElement == null)
-            { 
-                Interactor.allowHover = true;
-                Interactor.allowSelect = true;
-            }
-            else
-            {
-                Interactor.allowHover = false;
-                Interactor.allowSelect = false;
-            }
-        }
+            // disable hover/select
+            var val = (Activated && !Selected);
+            Interactor.allowHover = val;
+            Interactor.allowSelect = val;
 
-        // Methods
-        public void Hover(bool val)
-        {
-            var color = val ? HoverColor.Value : NormalColor.Value;
-            propBlock.SetColor("_Color", color);
-
-            outlineRenderer.Color = color;
-            volumeRenderer.SetPropertyBlock(propBlock);
-        }
-
-        public void Show(bool val)
-        {
-            outlineRenderer.enabled = val;
-            volumeRenderer.enabled = val;
-        }
-
-        public void Activate(bool val)
-        {
-            Activated = val;
+            VisualUpdate();
         }
     }
 }

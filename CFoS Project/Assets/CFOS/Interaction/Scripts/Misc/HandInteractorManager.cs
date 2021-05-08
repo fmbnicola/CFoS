@@ -9,11 +9,8 @@ namespace CFoS.Interaction
     public class HandInteractorManager : MonoBehaviour
     {
         public Grabber Grabber;
-        private XRBaseInteractor grabberInteractor;
 
         public Pointer Pointer;
-        private XRBaseInteractor pointerInteractor;
-        private GameObject pointed;
 
         public enum InteractorState { GrabberMode, PointerMode };
         private InteractorState state;
@@ -41,13 +38,12 @@ namespace CFoS.Interaction
         bool GrabberModeCheck()
         {
             // if not near UI element and not currently selecting UI element
-            return (!CheckUINear() && Pointer.Interactor.selectTarget == null);
+            return (!CheckUINear() && Pointer.SelectedElement == null);
         }
 
         void GrabberModeInit()
         {
             Grabber.Activate(true);
-            Grabber.Show(true);
             Grabber.Hover(false);
 
             state = InteractorState.GrabberMode;
@@ -56,7 +52,6 @@ namespace CFoS.Interaction
         void GrabberModeEnd()
         {
             Grabber.Activate(false);
-            Grabber.Show(false);
         }
 
 
@@ -70,7 +65,6 @@ namespace CFoS.Interaction
         void PointerModeInit()
         {
             Pointer.Activate(true);
-            Pointer.Show(true);
             Pointer.Hover(false);
 
             state = InteractorState.PointerMode;
@@ -79,7 +73,6 @@ namespace CFoS.Interaction
         void PointerModeEnd()
         {
             Pointer.Activate(false);
-            Pointer.Show(false);
         }
 
 

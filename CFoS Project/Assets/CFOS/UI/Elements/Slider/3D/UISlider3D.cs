@@ -125,7 +125,7 @@ namespace CFoS.UI
         // Get Closest Value in slider from a point in space
         public virtual Vector3 WorldCoordsToValue(Vector3 coords)
         {
-            Vector3 localPos = Track.InverseTransformPoint(coords);
+            Vector3 localPos = transform.InverseTransformPoint(coords);
             return HandleToValue(localPos.x, localPos.y, localPos.z);
         }
 
