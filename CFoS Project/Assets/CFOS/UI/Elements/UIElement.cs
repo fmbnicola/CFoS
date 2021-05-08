@@ -1,3 +1,4 @@
+using CFoS.Interaction;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using static UnityEngine.InputSystem.InputAction;
@@ -15,8 +16,6 @@ namespace CFoS.UI
         protected bool hovered = false;
         protected bool selected = false;
         public bool disabled = false;
-
-
 
         // Set Initial properties
         [ExecuteAlways]
@@ -44,6 +43,17 @@ namespace CFoS.UI
             {
                 controller.uiPressAction.action.performed -= DoSelect;
                 controller.uiPressAction.action.canceled -= DoDeSelect;
+            }
+        }
+
+        // Pointer Interactor Selected Element
+        private void RegisterElement(bool val)
+        {
+            if(controller != null)
+            {
+                var pointer = controller.GetComponentInChildren<Pointer>();
+                if (val) pointer.SelectedElement = this;
+                else pointer.SelectedElement = null;
             }
         }
 
@@ -94,6 +104,9 @@ namespace CFoS.UI
 
             // Update state
             selected = val;
+
+            // Register interactible in pointer
+            RegisterElement(val);
 
             if (!val && !hovered) UnhookController(controller);  
         }

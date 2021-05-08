@@ -24,7 +24,8 @@ namespace CFoS.Interaction
         private Renderer volumeRenderer;
         MaterialPropertyBlock propBlock;
 
-        // Interactor
+        // Properties
+        public bool Activated { get; protected set; } = true;
         public XRBaseInteractor Interactor { get; set; }
 
         private void Awake()
@@ -40,12 +41,16 @@ namespace CFoS.Interaction
         {
             var scale = Vector3.one * Size;
             Pivot.transform.localScale = scale;
+
+            // Disable hover/select when deactivated
+            Interactor.allowHover = Activated;
+            Interactor.allowSelect = Activated;
         }
 
         void LateUpdate()
         {
-            var foward = transform.position - Camera.main.transform.position;
-            Outline.rotation = Quaternion.LookRotation(foward, Vector3.up);
+            var forward = transform.position - Camera.main.transform.position;
+            Outline.rotation = Quaternion.LookRotation(forward, Vector3.up);
         }
 
 
@@ -63,6 +68,11 @@ namespace CFoS.Interaction
         {
             outlineRenderer.enabled = val;
             volumeRenderer.enabled = val;
+        }
+
+        public void Activate(bool val)
+        {
+            Activated = val;
         }
     }
 }

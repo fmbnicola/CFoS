@@ -5,13 +5,9 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace CFoS.UI
 {
-    [RequireComponent(typeof(BoxCollider))]
     public class OutlineCube : MonoBehaviour
     {
         public XRRig Rig;
-
-        [Space(10)]
-        public BoxCollider CubeCollider;
 
         [Space(10)][SerializeField]
         public List<Shapes.Line> Front;
@@ -22,11 +18,6 @@ namespace CFoS.UI
         public List<Shapes.Line> Bottom;
 
         private readonly float val = 0.2f;
-       
-        private void Start()
-        {
-            if(!CubeCollider) CubeCollider = GetComponent<BoxCollider>();
-        }
 
         protected void SetLinesFront(List<Shapes.Line> lines)
         {

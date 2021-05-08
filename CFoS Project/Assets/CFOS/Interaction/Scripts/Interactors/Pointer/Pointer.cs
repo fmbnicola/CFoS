@@ -1,3 +1,4 @@
+using CFoS.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,9 +26,10 @@ namespace CFoS.Interaction
         private Renderer volumeRenderer;
         MaterialPropertyBlock propBlock;
 
-
-        // Interactor
+        // Properties
+        public bool Activated { get; protected set; } = true;
         public XRBaseInteractor Interactor { get; set; }
+        public UIElement SelectedElement { get; set; } = null;
 
         private void Awake()
         {
@@ -42,6 +44,18 @@ namespace CFoS.Interaction
         {
             var scale = Vector3.one * Size;
             Pivot.transform.localScale = scale;
+
+            //if not activated or selecting, disable hover/select
+            if(Activated && SelectedElement == null)
+            { 
+                Interactor.allowHover = true;
+                Interactor.allowSelect = true;
+            }
+            else
+            {
+                Interactor.allowHover = false;
+                Interactor.allowSelect = false;
+            }
         }
 
         // Methods
@@ -58,6 +72,11 @@ namespace CFoS.Interaction
         {
             outlineRenderer.enabled = val;
             volumeRenderer.enabled = val;
+        }
+
+        public void Activate(bool val)
+        {
+            Activated = val;
         }
     }
 }

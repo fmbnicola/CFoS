@@ -13,6 +13,7 @@ namespace CFoS.Interaction
 
         public Pointer Pointer;
         private XRBaseInteractor pointerInteractor;
+        private GameObject pointed;
 
         public enum InteractorState { GrabberMode, PointerMode };
         private InteractorState state;
@@ -21,6 +22,7 @@ namespace CFoS.Interaction
         private void Start()
         {
             GrabberModeInit();
+            PointerModeEnd();
         }
 
 
@@ -44,11 +46,17 @@ namespace CFoS.Interaction
 
         void GrabberModeInit()
         {
-            Pointer.gameObject.SetActive(false);
-            Grabber.gameObject.SetActive(true);
+            Grabber.Activate(true);
+            Grabber.Show(true);
             Grabber.Hover(false);
 
             state = InteractorState.GrabberMode;
+        }
+
+        void GrabberModeEnd()
+        {
+            Grabber.Activate(false);
+            Grabber.Show(false);
         }
 
 
@@ -61,11 +69,17 @@ namespace CFoS.Interaction
 
         void PointerModeInit()
         {
-            Grabber.gameObject.SetActive(false);
-            Pointer.gameObject.SetActive(true);
+            Pointer.Activate(true);
+            Pointer.Show(true);
             Pointer.Hover(false);
 
             state = InteractorState.PointerMode;
+        }
+
+        void PointerModeEnd()
+        {
+            Pointer.Activate(false);
+            Pointer.Show(false);
         }
 
 
@@ -78,6 +92,7 @@ namespace CFoS.Interaction
 
                     if (PointerModeCheck())
                     {
+                        GrabberModeEnd();
                         PointerModeInit();
                     }
                     break;
@@ -86,6 +101,7 @@ namespace CFoS.Interaction
 
                     if (GrabberModeCheck())
                     {
+                        PointerModeEnd();
                         GrabberModeInit();
                     }
                     break;

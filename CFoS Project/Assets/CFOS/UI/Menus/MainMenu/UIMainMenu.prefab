@@ -861,7 +861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6067194605720534127, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
       propertyPath: disabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6067194605720534127, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
       propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.size
