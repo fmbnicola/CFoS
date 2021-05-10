@@ -7,8 +7,6 @@ namespace CFoS.UI
 {
     public class OutlineCube : MonoBehaviour
     {
-        public XRRig Rig;
-
         [Space(10)][SerializeField]
         public List<Shapes.Line> Front;
         public List<Shapes.Line> Back;
@@ -47,7 +45,7 @@ namespace CFoS.UI
 
         private void Update()
         {
-            var cameraPos = Rig.cameraGameObject.transform.position;
+            var cameraPos = Camera.main.transform.position;
             var lookAt    = cameraPos - transform.position;
 
             SetAllBackLines();
