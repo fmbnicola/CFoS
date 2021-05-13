@@ -11,7 +11,7 @@ namespace CFoS.UI
         public GameObject ThumbnailAsset;
 
         [Header("Properties")]
-        public float Length  = 1.0f;
+        public float Width  = 1.0f;
         public float Scaling = 0.5f;
 
         [Space(10)][SerializeField]
@@ -135,7 +135,7 @@ namespace CFoS.UI
         public void UpdateTransforms()
         {
             var count = Thumbnails.Count;
-            var offset = (count <= 1) ? 0.0f : Length / (count - 1);
+            var offset = (count <= 1) ? 0.0f : Width / (count - 1);
 
             for (var i = 0; i < count; i++)
             {
