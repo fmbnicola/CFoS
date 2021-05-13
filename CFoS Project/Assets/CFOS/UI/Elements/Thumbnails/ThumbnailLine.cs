@@ -97,7 +97,7 @@ namespace CFoS.UI
         }
 
 
-        // Sampling + Selection
+        // Sampling + Selection + Update
         public void SetSampleFunction(Thumbnail.SamplingFunction function)
         {
             foreach (var thumbnail in Thumbnails)
@@ -123,6 +123,13 @@ namespace CFoS.UI
             }
         }
 
+        public void SetUpdateFunction(Thumbnail.UpdatingFunction function)
+        {
+            foreach (var thumbnail in Thumbnails)
+            {
+                thumbnail.UpdateFunction = function;
+            }
+        }
 
         // Update
         public void UpdateTransforms()

@@ -172,6 +172,14 @@ namespace CFoS.UI
             }
         }
 
+        public void SetUpdateFunction(Thumbnail.UpdatingFunction function)
+        {
+            foreach (var line in Lines)
+            {
+                line.SetUpdateFunction(function);
+            }
+        }
+
 
         // Update
         public void UpdateTransforms()

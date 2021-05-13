@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CFoS.Supershape;
+using CFoS.Data;
 
 namespace CFoS.UI.Menus
 {
@@ -9,7 +10,7 @@ namespace CFoS.UI.Menus
     {
         [Header("Mini-map")]
         public ThumbnailLine MinimapThumbnails;
-
+        public ColorVariable MinimapThumbnailColor;
 
         protected override void Start()
         {
@@ -46,10 +47,27 @@ namespace CFoS.UI.Menus
             return data;
         }
 
+        public void MinimapThumbnailUpdate(Thumbnail thumbnail)
+        {
+            int index = thumbnail.Index.x;
+            int count = MinimapThumbnails.Thumbnails.Count;
+            float i_offset = Mathf.Abs(index - ((float)(count - 1)) / 2);
+
+            var renderer = (Supershape2DQuadRenderer)thumbnail.Renderer;
+
+            var col = MinimapThumbnailColor.Value;
+            col.a = 1.0f - (0.4f * i_offset);
+            renderer.Color = col;
+
+            var scale = 0.8f - (0.2f * i_offset);
+            renderer.Scale = scale;
+        }
+
 
         protected void InitMinimapThumbnails()
         {
             MinimapThumbnails.SetSampleFunction(MinimapThumbnailSample);
+            MinimapThumbnails.SetUpdateFunction(MinimapThumbnailUpdate);
             MinimapThumbnails.SetSelectFunction(ThumbnailSelect);
         }
 
