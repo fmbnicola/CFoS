@@ -92,8 +92,10 @@ namespace CFoS.UI.Menus
 
         protected void UpdateThumbnailsPosition()
         {
+            var handlePos = Slider.ValueToWorldCoords(Slider.Value);
+
             var pos = Thumbnails.transform.position;
-            pos.z = Slider.Handle.transform.position.z;
+            pos.z = handlePos.z;
             Thumbnails.transform.position = pos;
         }
 
