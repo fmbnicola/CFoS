@@ -11,7 +11,7 @@ namespace CFoS.UI
         public GameObject ThumbnailAsset;
 
         [Header("Properties")]
-        public float Length  = 1.0f;
+        public float Width  = 1.0f;
         public float Scaling = 0.5f;
 
         [Space(10)][SerializeField]
@@ -97,7 +97,7 @@ namespace CFoS.UI
         }
 
 
-        // Sampling + Selection
+        // Sampling + Selection + Update
         public void SetSampleFunction(Thumbnail.SamplingFunction function)
         {
             foreach (var thumbnail in Thumbnails)
@@ -123,12 +123,19 @@ namespace CFoS.UI
             }
         }
 
+        public void SetUpdateFunction(Thumbnail.UpdatingFunction function)
+        {
+            foreach (var thumbnail in Thumbnails)
+            {
+                thumbnail.UpdateFunction = function;
+            }
+        }
 
         // Update
         public void UpdateTransforms()
         {
             var count = Thumbnails.Count;
-            var offset = (count <= 1) ? 0.0f : Length / (count - 1);
+            var offset = (count <= 1) ? 0.0f : Width / (count - 1);
 
             for (var i = 0; i < count; i++)
             {

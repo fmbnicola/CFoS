@@ -1791,7 +1791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThumbnailAsset: {fileID: 8514952957213605077, guid: a3223e5f2beeca946b5d079c4374fcc2, type: 3}
-  Length: 0.4
+  Width: 0.4
   Scaling: 0.04
   Index: {x: 0, y: 0}
   Thumbnails:
@@ -1818,6 +1818,8 @@ MonoBehaviour:
   Slider: {fileID: 4867758121874655561}
   Renderer: {fileID: 0}
   Thumbnails: {fileID: 490004737378745884}
+  ThumbnailColor1: {fileID: 11400000, guid: 2d53b61a07b37df4f838af6eabedd8d2, type: 2}
+  ThumbnailColor2: {fileID: 11400000, guid: 7f3f6fe2cb8279f4db6002584a8ef4db, type: 2}
   TextActiveColor: {fileID: 11400000, guid: 1439b32c2a3b6a0409c4a51d0bcb5df1, type: 2}
   TextInactiveColor: {fileID: 11400000, guid: 45e0f8c6d7565224e9997fa483112308, type: 2}
   Starness: {fileID: 1092154689}
@@ -1828,6 +1830,7 @@ MonoBehaviour:
   Inscribed: {fileID: 2036383863}
   Circumscribed: {fileID: 1139143688}
   MinimapThumbnails: {fileID: 109730843374711954}
+  MinimapThumbnailColor: {fileID: 0}
 --- !u!1 &8807815656737991599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1877,7 +1880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThumbnailAsset: {fileID: 8514952957213605077, guid: a3223e5f2beeca946b5d079c4374fcc2, type: 3}
-  Length: 0.4
+  Width: 0.4
   Scaling: 0.1
   Index: {x: 0, y: 0}
   Thumbnails:

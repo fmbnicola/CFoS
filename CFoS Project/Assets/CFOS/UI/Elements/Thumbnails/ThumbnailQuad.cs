@@ -33,7 +33,7 @@ namespace CFoS.UI
 
             // Set Properties
             newLine.Index = new Vector2Int(Lines.Count, Index);
-            newLine.Length = Width;
+            newLine.Width = Width;
             newLine.Scaling = Scaling;
 
             // Set Thumbnails
@@ -172,6 +172,14 @@ namespace CFoS.UI
             }
         }
 
+        public void SetUpdateFunction(Thumbnail.UpdatingFunction function)
+        {
+            foreach (var line in Lines)
+            {
+                line.SetUpdateFunction(function);
+            }
+        }
+
 
         // Update
         public void UpdateTransforms()
@@ -182,7 +190,7 @@ namespace CFoS.UI
             for (var i = 0; i < count; i++)
             {
                 var line = Lines[i];
-                line.Length = Width;
+                line.Width = Width;
                 line.Scaling = Scaling;
 
                 // row position
