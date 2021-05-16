@@ -41,7 +41,7 @@ namespace CFoS.UI
             Text.color = TextNormalColor.Value;
         }
 
-        public void Awake()
+        public virtual void Awake()
         {
             // Offsets
             normalOffsetAmmount = Element.transform.localPosition.z; ;
@@ -51,7 +51,7 @@ namespace CFoS.UI
             offset = normalOffsetAmmount;
         }
 
-        public void Update()
+        public virtual void Update()
         {
             // Visual Update
             if (disabled)
@@ -78,20 +78,25 @@ namespace CFoS.UI
 
 
         // Actions
-        public override void Select(bool val)
+        public virtual void SelectAux(bool val)
         {
-            base.Select(val);
-
             if (val)
             {
                 // Callback and Schedule Deselect
                 ButtonClickEvent.Invoke();
-                if(gameObject.activeInHierarchy)
+                if (gameObject.activeInHierarchy)
                     StartCoroutine(DeSelect(SelectTime));
             }
         }
 
-        private IEnumerator DeSelect(float time)
+        public override void Select(bool val)
+        {
+            base.Select(val);
+
+            SelectAux(val);
+        }
+
+        protected IEnumerator DeSelect(float time)
         {
             yield return new WaitForSeconds(time);
             Select(false);

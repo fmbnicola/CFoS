@@ -80,7 +80,7 @@ namespace CFoS.UI.Menus
             col.a = 1.0f - (0.6f * i_offset);
             renderer.Color = col;
 
-            var scale = 1.0f - (0.4f * i_offset);
+            var scale = 0.8f - (0.4f * i_offset);
             renderer.Scale = scale;
         }
 

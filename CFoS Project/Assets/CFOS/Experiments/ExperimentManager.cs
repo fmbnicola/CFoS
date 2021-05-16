@@ -10,10 +10,13 @@ namespace CFoS.Experiments
         public static ExperimentManager Instance { get; private set; }
 
         [SerializeField]
+        public bool LoadOnStart = true;
         public List<Experiment> Experiments;
 
         [HideInInspector]
         public Experiment LoadedExperiment = null;
+        [HideInInspector]
+        public int loadedExperimentIndex = -1;
 
         void Awake()
         {
@@ -26,6 +29,12 @@ namespace CFoS.Experiments
             {
                 Instance = this;
             }
+        }
+
+        private void Start()
+        {
+            if (!LoadOnStart) return;
+            LoadExperiment(0);
         }
 
         public void Refresh()
@@ -44,12 +53,15 @@ namespace CFoS.Experiments
 
             if (LoadedExperiment.gameObject.activeInHierarchy)
                 LoadedExperiment.gameObject.SetActive(false);
+
+            loadedExperimentIndex = -1;
         }
 
         public void LoadExperiment(string experimentName)
         {
             Unload();
 
+            int index = 0;
             foreach (var exp in Experiments)
             {
                 Debug.Log(exp.name);
@@ -57,12 +69,54 @@ namespace CFoS.Experiments
                 if(exp.name.Equals(experimentName) && exp.Included)
                 {
                     LoadedExperiment = exp;
+                    loadedExperimentIndex = index;
+
                     LoadedExperiment.gameObject.SetActive(true);
                     LoadedExperiment.Init();
                     return;
                 }
+                index++;
             }
             Debug.LogError("Experiment \"" + experimentName + "\" Not Found (or not included)");
+        }
+
+        public void LoadExperiment(int experimentIndex)
+        {
+            Unload();
+
+            if (experimentIndex >= 0 && experimentIndex < Experiments.Count)
+            {
+                var exp = Experiments[experimentIndex];
+                if (exp.Included)
+                {
+                    LoadedExperiment = exp;
+                    loadedExperimentIndex = experimentIndex;
+
+                    LoadedExperiment.gameObject.SetActive(true);
+                    LoadedExperiment.Init();
+                    return;
+                }
+            } 
+
+            Debug.LogError("Experiment index: " + experimentIndex + " Not Found (or not included)");
+        }
+
+        public void NextExperiment()
+        {
+            LoadExperiment(loadedExperimentIndex + 1);
+        }
+
+        public void PreviousExperiment()
+        {
+            LoadExperiment(loadedExperimentIndex - 1);
+        }
+
+        public void NextTask()
+        {
+            if(LoadedExperiment != null)
+            {
+                LoadedExperiment.NextTask();
+            }
         }
     }
 }

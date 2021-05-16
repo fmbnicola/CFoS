@@ -16,6 +16,7 @@ namespace CFoS.UI
         public GameObject MainMenuAsset;
         private GameObject mainMenuInstance;
         public bool MainMenuStartOpen = true;
+        public bool MainMenuEnabled = true;
 
         [Header("Properties")]
         public float UIOffsetDistance = 0.5f;
@@ -90,6 +91,8 @@ namespace CFoS.UI
 
         public void ToggleMainMenu(CallbackContext contex)
         {
+            if (!MainMenuEnabled) return;
+
             if (mainMenuInstance == null)
             {
                 OpenMainMenu();

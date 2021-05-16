@@ -108,7 +108,7 @@ namespace CFoS.UI
             // Register/Unregister selected element
             RegisterSelection(val);
 
-            if (!val && !hovered) UnhookController(controller);  
+            if (!val && !hovered) UnhookController(controller);
         }
 
         // Enable

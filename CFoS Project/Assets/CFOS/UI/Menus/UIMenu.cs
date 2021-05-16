@@ -103,5 +103,16 @@ namespace CFoS.UI
             UIManager.Instance.CloseMainMenu();
             Experiments.ExperimentManager.Instance.LoadExperiment(experimentName);
         }
+
+        public void LoadExperiment(int experimentIndex)
+        {
+            UIManager.Instance.CloseMainMenu();
+            Experiments.ExperimentManager.Instance.LoadExperiment(experimentIndex);
+        }
+
+        public void NextTask()
+        {
+            Experiments.ExperimentManager.Instance.NextTask();
+        }
     }
 }
