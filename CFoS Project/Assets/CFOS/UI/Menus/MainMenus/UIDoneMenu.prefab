@@ -21,6 +21,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2851141580087097898}
     m_Modifications:
     - target: {fileID: 79004302, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
+      propertyPath: SelectTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 79004302, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
       propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -62,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1159955041, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
       propertyPath: height
-      value: 0.08
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 2615532239635931923, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
       propertyPath: m_text

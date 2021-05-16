@@ -43,7 +43,7 @@ namespace CFoS.Experiments
             foreach(Transform child in transform)
             {
                 var exp = child.GetComponent<Experiment>();
-                if(exp) Experiments.Add(exp);
+                if(exp && exp.Included) Experiments.Add(exp);
             }
         }
 
@@ -96,7 +96,13 @@ namespace CFoS.Experiments
                     LoadedExperiment.Init();
                     return;
                 }
-            } 
+            }
+
+            if (experimentIndex >= Experiments.Count)
+            {
+                Unload();
+                return;
+            }
 
             Debug.LogError("Experiment index: " + experimentIndex + " Not Found (or not included)");
         }
