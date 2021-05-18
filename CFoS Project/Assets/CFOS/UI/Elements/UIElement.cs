@@ -64,7 +64,7 @@ namespace CFoS.UI
         public virtual void Hover(bool val)
         {
             // Cant hover if disabled
-            if (disabled) return;
+            if (val && disabled) return;
 
             // Update state
             hovered = val;
@@ -100,7 +100,7 @@ namespace CFoS.UI
         public virtual void Select(bool val)
         {
             // Cant select if disabled
-            if (disabled) return;
+            if (val && disabled) return;
 
             // Update state
             selected = val;
@@ -108,13 +108,20 @@ namespace CFoS.UI
             // Register/Unregister selected element
             RegisterSelection(val);
 
-            if (!val && !hovered) UnhookController(controller);
+            if (!val) UnhookController(controller);
         }
 
         // Enable
         public virtual void Enable(bool val)
         {
             disabled = !val;
+
+            // deselect on disable
+            if (disabled)
+            {
+                Hover(false);
+                Select(false);
+            }
         }
     }
 }
