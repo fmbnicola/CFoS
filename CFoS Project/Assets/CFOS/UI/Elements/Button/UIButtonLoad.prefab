@@ -163,6 +163,85 @@ Transform:
   m_Father: {fileID: 3079696441658915950}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1585932811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3079696441658915923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac60dad6811647a429caa94165b1afa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Interactable: {fileID: 3079696441658915920}
+  disabled: 0
+  Element: {fileID: 4757775519362205232}
+  ElementNormalColor: {fileID: 11400000, guid: 7e3ef38f6ce91a24cad46591c30cad91, type: 2}
+  ElementHoverColor: {fileID: 11400000, guid: b70e6c5f8d0a00f4c82141bee5f3010c, type: 2}
+  ElementSelectColor: {fileID: 11400000, guid: 6edde36debd85114aaeac5d4ef74fc96, type: 2}
+  Text: {fileID: 3079696442324203011}
+  TextNormalColor: {fileID: 11400000, guid: a6f01b11dc9532e419e6551821c28e9c, type: 2}
+  TextHoverColor: {fileID: 11400000, guid: 169e74c7f8773dd4c8f6436b767e9efa, type: 2}
+  TextSelectColor: {fileID: 11400000, guid: 1439b32c2a3b6a0409c4a51d0bcb5df1, type: 2}
+  SelectTime: 0.1
+  ButtonClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1585932811}
+        m_TargetAssemblyTypeName: CFoS.UI.UIButton, Assembly-CSharp
+        m_MethodName: TestCallback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  LoadIcon: {fileID: 516499910}
+  LoadIconColor: {fileID: 11400000, guid: a6f01b11dc9532e419e6551821c28e9c, type: 2}
+  SuccessIcon: {fileID: 6391968677210620574}
+  SuccessIconColor: {fileID: 11400000, guid: f8e625c7d722cdb418d908189c06ff21, type: 2}
+  FailureIcon1: {fileID: 906604068247198042}
+  FailureIcon2: {fileID: 354932258438564674}
+  FailureIconColor: {fileID: 11400000, guid: 4b0cdd3a5570d654cafe3744a31f9c65, type: 2}
+  LoadIconSpeed: -500
+  LoadingMessage: Loading...
+  FailureMessage: Failure
+  SuccessMessage: Success
+  ButtonSuccessEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1585932811}
+        m_TargetAssemblyTypeName: CFoS.UI.UIButtonLoad, Assembly-CSharp
+        m_MethodName: TestSuccessCallback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ButtonFailureEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1585932811}
+        m_TargetAssemblyTypeName: CFoS.UI.UIButtonLoad, Assembly-CSharp
+        m_MethodName: TestFailureCallback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4129517345512377254
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blendMode: 1
   scaleMode: 0
-  color: {r: 0.83137256, g: 0.10573077, b: 0, a: 1}
+  color: {r: 0.7647059, g: 0, b: 0.3137255, a: 1}
   detailLevel: 2
   zTest: 4
   zOffsetFactor: 0
@@ -234,7 +313,7 @@ MonoBehaviour:
   thicknessSpace: 0
 --- !u!33 &6083678766320272044
 MeshFilter:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -242,7 +321,7 @@ MeshFilter:
   m_Mesh: {fileID: 0}
 --- !u!23 &1251034246237228214
 MeshRenderer:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -328,7 +407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blendMode: 1
   scaleMode: 0
-  color: {r: 0.83137256, g: 0.10573077, b: 0, a: 1}
+  color: {r: 0.7647059, g: 0, b: 0.3137255, a: 1}
   detailLevel: 2
   zTest: 4
   zOffsetFactor: 0
@@ -352,7 +431,7 @@ MonoBehaviour:
   thicknessSpace: 0
 --- !u!33 &6916520180371910640
 MeshFilter:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -360,7 +439,7 @@ MeshFilter:
   m_Mesh: {fileID: 0}
 --- !u!23 &6584524697725790956
 MeshRenderer:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -446,7 +525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blendMode: 1
   scaleMode: 0
-  color: {r: 0, g: 0.8301887, b: 0.13669944, a: 1}
+  color: {r: 0.2627451, g: 0.6431373, b: 0, a: 1}
   detailLevel: 2
   zTest: 4
   zOffsetFactor: 0
@@ -473,7 +552,7 @@ MonoBehaviour:
   thicknessSpace: 0
 --- !u!33 &8893199592024183599
 MeshFilter:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -481,7 +560,7 @@ MeshFilter:
   m_Mesh: {fileID: 0}
 --- !u!23 &6460400054945947335
 MeshRenderer:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -552,85 +631,6 @@ Transform:
   m_Father: {fileID: 7108973033863165465}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1585932811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3079696441658915923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac60dad6811647a429caa94165b1afa2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Interactable: {fileID: 3079696441658915920}
-  disabled: 0
-  Element: {fileID: 4757775519362205232}
-  ElementNormalColor: {fileID: 11400000, guid: 7e3ef38f6ce91a24cad46591c30cad91, type: 2}
-  ElementHoverColor: {fileID: 11400000, guid: b70e6c5f8d0a00f4c82141bee5f3010c, type: 2}
-  ElementSelectColor: {fileID: 11400000, guid: 6edde36debd85114aaeac5d4ef74fc96, type: 2}
-  Text: {fileID: 3079696442324203011}
-  TextNormalColor: {fileID: 11400000, guid: a6f01b11dc9532e419e6551821c28e9c, type: 2}
-  TextHoverColor: {fileID: 11400000, guid: 169e74c7f8773dd4c8f6436b767e9efa, type: 2}
-  TextSelectColor: {fileID: 11400000, guid: 1439b32c2a3b6a0409c4a51d0bcb5df1, type: 2}
-  SelectTime: 0.1
-  ButtonClickEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1585932811}
-        m_TargetAssemblyTypeName: CFoS.UI.UIButton, Assembly-CSharp
-        m_MethodName: TestCallback
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  LoadIcon: {fileID: 516499910}
-  LoadIconColor: {fileID: 11400000, guid: a6f01b11dc9532e419e6551821c28e9c, type: 2}
-  SuccessIcon: {fileID: 6391968677210620574}
-  SuccessIconColor: {fileID: 0}
-  FailureIcon1: {fileID: 906604068247198042}
-  FailureIcon2: {fileID: 354932258438564674}
-  FailureIconColor: {fileID: 0}
-  LoadIconSpeed: -500
-  LoadingMessage: Loading...
-  FailureMessage: Failure
-  SuccessMessage: Success
-  ButtonSuccessEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1585932811}
-        m_TargetAssemblyTypeName: CFoS.UI.UIButtonLoad, Assembly-CSharp
-        m_MethodName: TestSuccessCallback
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  ButtonFailureEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1585932811}
-        m_TargetAssemblyTypeName: CFoS.UI.UIButtonLoad, Assembly-CSharp
-        m_MethodName: TestFailureCallback
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &9119304094446403584
 PrefabInstance:
   m_ObjectHideFlags: 0

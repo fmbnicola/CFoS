@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace CFoS.Supershape
 {
-    [CreateAssetMenu(fileName = "Supershape2D",menuName ="CFoS/Supershape2D")]
+    [CreateAssetMenu(fileName = "Supershape2D",menuName ="CFoS/Supershape/Supershape2D")]
     public class Supershape2D : ScriptableObject
     {
         // Check that parameter was changed and evoke update

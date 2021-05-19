@@ -3,7 +3,7 @@ using CFoS.Supershape;
 
 namespace CFoS.Data
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(fileName = "TaskSupershape2D", menuName = "CFoS/Task/TaskSupershape2D")]
     public class TaskSupershape2D : Task
     {
         [SerializeField][HideInInspector]

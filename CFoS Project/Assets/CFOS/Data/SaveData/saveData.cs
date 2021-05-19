@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CFoS.Data
 {
-    public class Task : ScriptableObject
+    public class SaveData : ScriptableObject
     {
 
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CFoS.Supershape;
-using System.Net;
+using UnityEngine.Networking;
 
 namespace CFoS.UI.Menus
 {
@@ -13,7 +13,7 @@ namespace CFoS.UI.Menus
 
         [Header("Exit Button")]
         public UIButton ExitButton;
-       
+
 
         protected virtual void Start()
         {
@@ -31,12 +31,13 @@ namespace CFoS.UI.Menus
 
         protected void Submit()
         {
-            //var request = WebRequest.CreateHttp("https://api.pageclip.co/data/UserTesting_0");
+            var manager = SaveData.SaveManager.Instance;
+            manager.SubmitData();
         }
 
         protected void Exit()
         {
-            
+            //...
         }
     }
 }
