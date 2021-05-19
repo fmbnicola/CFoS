@@ -21,7 +21,7 @@ namespace CFoS.UI.Menus
             SubmitButton.ButtonClickEvent.AddListener(Submit);
             SubmitButton.LoadingFunction = SubmitDataLoadFunction;
 
-            ExitButton.ButtonClickEvent.AddListener(Submit);
+            ExitButton.ButtonClickEvent.AddListener(Exit);
         }
 
         protected UIButtonLoad.LoadState SubmitDataLoadFunction()
@@ -32,12 +32,30 @@ namespace CFoS.UI.Menus
         protected void Submit()
         {
             var manager = SaveData.SaveManager.Instance;
+            manager.OnSubmitResponse += ReceiveSubmitResponse;
             manager.SubmitData();
+        }
+
+        protected void ReceiveSubmitResponse(UnityWebRequest request)
+        {
+            var manager = SaveData.SaveManager.Instance;
+            manager.OnSubmitResponse -= ReceiveSubmitResponse;
+
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                SubmitButton.Success();
+                SubmitButton.Enable(false);
+                ExitButton.Enable(true);
+            }
+            else
+            {
+                SubmitButton.Failure();
+            }
         }
 
         protected void Exit()
         {
-            //...
+            CloseMenu();
         }
     }
 }

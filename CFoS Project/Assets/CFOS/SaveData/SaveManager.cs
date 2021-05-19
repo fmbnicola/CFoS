@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Networking;
 
 namespace CFoS.SaveData
@@ -9,15 +10,19 @@ namespace CFoS.SaveData
     {
         public static SaveManager Instance { get; private set; }
 
-        [Header("Save Data")]
-        [SerializeField]
-        public List<Data.SaveData> SaveData;
-
-
         // CONSTANTS
         private const string URI = "https://api.pageclip.co/data";
         private const string FORM = "UserTesting_0";
         private const string API_KEY = "api_sNcXtXUXzzFu47paLJXHYeGHLYM7PCAz";
+
+        // Save data structure
+        [Header("Save Data")]
+        [SerializeField]
+        protected List<Data.SaveData> SaveData;
+
+        // Response Delegate
+        public delegate void OnSubmitResponseDelegate(UnityWebRequest request);
+        public event OnSubmitResponseDelegate OnSubmitResponse;
 
 
         // Unity Events
@@ -115,17 +120,21 @@ namespace CFoS.SaveData
 
                 switch (webRequest.result)
                 {
-                    case UnityWebRequest.Result.ConnectionError:
                     case UnityWebRequest.Result.DataProcessingError:
-                        Debug.LogError(pages[page] + ": Error: " + webRequest.error);
+                        Debug.LogError(pages[page] + ": Data Processing Error: " + webRequest.error);
                         break;
                     case UnityWebRequest.Result.ProtocolError:
                         Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
+                        break;
+                    case UnityWebRequest.Result.ConnectionError:
+                        Debug.Log(pages[page] + ": Connection Error: " + webRequest.error);
                         break;
                     case UnityWebRequest.Result.Success:
                         Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                         break;
                 }
+
+                OnSubmitResponse?.Invoke(webRequest);
             }
         }
 
