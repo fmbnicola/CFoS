@@ -1,11 +1,55 @@
+using CFoS.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Networking;
 
+ 
 namespace CFoS.SaveData
 {
+    [System.Serializable]
+    public class SaveData
+    {
+        [SerializeField]
+        public List<KeyValuePair<string, string>> SavedData;
+
+        public SaveData()
+        {
+            SavedData = new List<KeyValuePair<string, string>>();
+        }
+
+        public void Add(string key, string val)
+        {
+            SavedData.Add(new KeyValuePair<string, string>(key, val));
+        }
+
+        public void ConcatenateData(SaveData data)
+        {
+            SavedData.AddRange(data.SavedData);
+        }
+
+        public void Clear()
+        {
+            SavedData.Clear();
+        }
+
+        public string Serialize()
+        {
+            var serializedData = "{";
+            for(int i = 0; i < SavedData.Count; i ++)
+            {
+                var pair = SavedData[i];
+                serializedData += "\"" + pair.Key + "\": \"" + pair.Value + "\"";
+                if(i < SavedData.Count - 1)
+                {
+                    serializedData += ",";
+                }
+            }
+            serializedData += "}";
+            return serializedData;
+        }
+    }
+
     public class SaveManager : MonoBehaviour
     {
         public static SaveManager Instance { get; private set; }
@@ -16,9 +60,8 @@ namespace CFoS.SaveData
         private const string API_KEY = "api_sNcXtXUXzzFu47paLJXHYeGHLYM7PCAz";
 
         // Save data structure
-        [Header("Save Data")]
         [SerializeField]
-        protected List<Data.SaveData> SaveData;
+        protected SaveData SavedData;
 
         // Response Delegate
         public delegate void OnSubmitResponseDelegate(UnityWebRequest request);
@@ -41,6 +84,7 @@ namespace CFoS.SaveData
 
         private void Start()
         {
+            SavedData = new SaveData();
             RegisterUserData();
         }
 
@@ -48,36 +92,33 @@ namespace CFoS.SaveData
         // Register Data
         protected void ClearAllData()
         {
-            foreach (var data in SaveData)
-            {
-                Destroy(data);
-            }
-            SaveData.Clear();
+            SavedData.Clear();
+        }
+
+        protected void RegisterData(SaveData data)
+        {
+            SavedData.ConcatenateData(data);
         }
 
         protected void RegisterUserData()
         {
-            var userData = ScriptableObject.CreateInstance<Data.UserData>();
-            userData.deviceId = "1"; // TODO: get unique id
-            SaveData.Add(userData);
-        }
-
-        protected void RegisterTaskData(Data.TaskData taskData)
-        {
-            SaveData.Add(taskData);
+            var userData = new SaveData();
+            var uniqueId = SystemInfo.deviceUniqueIdentifier;
+            userData.Add("DeviceId", uniqueId);
+            RegisterData(userData);
         }
 
 
         // Public Methods
-        public void Reset()
+        public void ResetData()
         {
             ClearAllData();
             RegisterUserData();
         }
 
-        public void SaveTask(Data.TaskData taskData)
+        public void SaveData(SaveData data)
         {
-            RegisterTaskData(taskData);
+            RegisterData(data);
         }
 
 
@@ -90,20 +131,10 @@ namespace CFoS.SaveData
             return auth;
         }
 
-        protected string SerializeData()
-        {
-            string serializedData = "";
-            foreach(var obj in SaveData)
-            {
-                serializedData += JsonUtility.ToJson(obj);
-            }
-            return serializedData;
-        }
-
         protected IEnumerator DoSubmitData()
         {
             string uri = URI + "/" + FORM;
-            var data = SerializeData();
+            var data = SavedData.Serialize();
             var auth = Authenticate(API_KEY, "");
 
             UnityWebRequest webRequest = UnityWebRequest.Put(uri, data);

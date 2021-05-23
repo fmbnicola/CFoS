@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace CFoS.Experiments
+namespace CFoS.Experimentation
 {
     [System.Serializable]
     public class Experiment : MonoBehaviour
@@ -26,7 +26,10 @@ namespace CFoS.Experiments
             Debug.Log("Experiment " + name + " Init." );
 
             // Load the first task
-            LoadTask(0);
+            if(Tasks.Count != 0)
+            {
+                LoadTask(0);
+            }
         }
 
         public virtual void End()
@@ -34,7 +37,7 @@ namespace CFoS.Experiments
             Debug.Log("Experiment " + name + " End.");
 
             // Go to next experiment
-            var manager = Experiments.ExperimentManager.Instance;
+            var manager = ExperimentManager.Instance;
             manager.NextExperiment();
         }
 
@@ -42,6 +45,13 @@ namespace CFoS.Experiments
         // TASKS
         public void LoadTask(int taskIndex)
         {
+            // End Loaded Task
+            if (LoadedTask != null)
+            {
+                EndTask();
+            }
+
+            // Init next task
             if (taskIndex >= 0 && taskIndex < Tasks.Count)
             {
                 var task = Tasks[taskIndex];
@@ -76,7 +86,11 @@ namespace CFoS.Experiments
         public virtual void InitTask()
         {
             Debug.Log("Task index " + LoadedTaskIndex + " Init.");
-            //...
+        }
+
+        public virtual void EndTask()
+        {
+            Debug.Log("Task index " + LoadedTaskIndex + " Ended.");
         }
     }
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &6783913714461069643
+--- !u!114 &7622119235437867085
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2851141579498658134}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc57bd96a7aef8448bf948c8ef704a12, type: 3}
+  m_Script: {fileID: 11500000, guid: df7e06d1b00aafa4ca133090e4915a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DelayTime: 0.25
+  DoneButton: {fileID: 609582565983362290}
 --- !u!1001 &609582566038576764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26,7 +27,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 79004302, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
       propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 79004302, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
       propertyPath: ButtonStopHoldEvent.m_PersistentCalls.m_Calls.Array.size
@@ -43,10 +44,38 @@ PrefabInstance:
     - target: {fileID: 79004302, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
       propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6783913714461069643}
+      objectReference: {fileID: 0}
+    - target: {fileID: 79004302, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
+      propertyPath: ButtonStopHoldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 79004302, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
+      propertyPath: ButtonStartHoldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 79004302, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
+      propertyPath: ButtonStopHoldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 79004302, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
       propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: NextTask
+      objectReference: {fileID: 0}
+    - target: {fileID: 79004302, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
+      propertyPath: ButtonStartHoldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 79004302, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
+      propertyPath: ButtonStopHoldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 79004302, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
+      propertyPath: ButtonStartHoldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 79004302, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
+      propertyPath: ButtonStopHoldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 79004302, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
       propertyPath: ButtonStartHoldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -55,6 +84,22 @@ PrefabInstance:
     - target: {fileID: 79004302, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
       propertyPath: ButtonClickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: CFoS.UI.UIMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 79004302, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
+      propertyPath: ButtonStopHoldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 79004302, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
+      propertyPath: ButtonStartHoldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 79004302, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
+      propertyPath: ButtonStopHoldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 79004302, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
+      propertyPath: ButtonStartHoldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1159955038, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
       propertyPath: m_LocalPosition.x
@@ -146,6 +191,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
+--- !u!114 &609582565983362290 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 79004302, guid: db9d7592a08a9774a9051704d82e8b96, type: 3}
+  m_PrefabInstance: {fileID: 609582566038576764}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b95df45a94157b49ab68f3bf5ddc860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5276669162983396005
 PrefabInstance:
   m_ObjectHideFlags: 0

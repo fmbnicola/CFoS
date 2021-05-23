@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace CFoS.Experiments
+namespace CFoS.Experimentation
 {
     [CanEditMultipleObjects]
     [CustomEditor(typeof(ExperimentManager))]

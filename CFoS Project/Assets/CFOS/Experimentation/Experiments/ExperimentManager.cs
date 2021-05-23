@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CFoS.Experiments
+namespace CFoS.Experimentation
 {
 
     public class ExperimentManager : MonoBehaviour
@@ -37,6 +37,7 @@ namespace CFoS.Experiments
             LoadExperiment(0);
         }
 
+        // Experiments
         public void Refresh()
         {
             Experiments = new List<Experiment>();
@@ -117,6 +118,7 @@ namespace CFoS.Experiments
             LoadExperiment(loadedExperimentIndex - 1);
         }
 
+        // Tasks
         public void NextTask()
         {
             if(LoadedExperiment != null)
@@ -124,5 +126,6 @@ namespace CFoS.Experiments
                 LoadedExperiment.NextTask();
             }
         }
+
     }
 }
