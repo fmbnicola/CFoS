@@ -47,7 +47,7 @@ namespace CFoS.UI
         }
 
         // Register selected element in Pointer Interactor 
-        private void RegisterSelection(bool val)
+        protected virtual void RegisterSelection(bool val)
         {
             if(controller != null)
             {
