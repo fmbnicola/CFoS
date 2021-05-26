@@ -23,20 +23,20 @@ namespace CFoS.Interaction
 
         public void GrabHighlight(bool val)
         {
-            if (val) SwapMaterial(1, GrabMaterial);
-            else SwapMaterial(1, ControllerMaterial);
+            if (val) SwapMaterial(6, GrabMaterial);
+            else SwapMaterial(6, ControllerMaterial);
         }
 
         public void TriggerHighlight(bool val)
         {
-            if(val) SwapMaterial(2, SelectMaterial);
-            else SwapMaterial(2, ControllerMaterial);
+            if(val) SwapMaterial(5, SelectMaterial);
+            else SwapMaterial(5, ControllerMaterial);
         }
 
         public void JoystickHighlight(bool val)
         {
-            if (val) SwapMaterial(6, SelectMaterial);
-            else SwapMaterial(6, ControllerMaterial);
+            if (val) SwapMaterial(4, SelectMaterial);
+            else SwapMaterial(4, ControllerMaterial);
         }
 
     }

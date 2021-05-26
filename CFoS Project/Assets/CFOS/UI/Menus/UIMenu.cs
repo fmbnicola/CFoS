@@ -111,6 +111,12 @@ namespace CFoS.UI
             ExperimentManager.Instance.LoadExperiment(experimentIndex);
         }
 
+        public void LoadExperiment(Experiment experiment)
+        {
+            var name = experiment.gameObject.name;
+            LoadExperiment(name);
+        }
+
         public void NextTask()
         {
             ExperimentManager.Instance.NextTask();
