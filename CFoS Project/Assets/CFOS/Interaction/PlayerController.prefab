@@ -967,6 +967,30 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 237265624704677202, guid: 3d6e8f304363d324bb64047ad723ed82, type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1154505496742394105}
+    - target: {fileID: 237265624704677202, guid: 3d6e8f304363d324bb64047ad723ed82, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1154505496742394105}
+    - target: {fileID: 237265624704677202, guid: 3d6e8f304363d324bb64047ad723ed82, type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Hover
+      objectReference: {fileID: 0}
+    - target: {fileID: 237265624704677202, guid: 3d6e8f304363d324bb64047ad723ed82, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Hover
+      objectReference: {fileID: 0}
+    - target: {fileID: 237265624704677202, guid: 3d6e8f304363d324bb64047ad723ed82, type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: CFoS.Interaction.Pointer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 237265624704677202, guid: 3d6e8f304363d324bb64047ad723ed82, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: CFoS.Interaction.Pointer, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1101331772782628564, guid: 3d6e8f304363d324bb64047ad723ed82, type: 3}
       propertyPath: m_Name
       value: LeftHandInteractor
@@ -1027,6 +1051,30 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2152238246515647041, guid: 3d6e8f304363d324bb64047ad723ed82, type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1154505495203183336}
+    - target: {fileID: 2152238246515647041, guid: 3d6e8f304363d324bb64047ad723ed82, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1154505495203183336}
+    - target: {fileID: 2152238246515647041, guid: 3d6e8f304363d324bb64047ad723ed82, type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Hover
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152238246515647041, guid: 3d6e8f304363d324bb64047ad723ed82, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Hover
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152238246515647041, guid: 3d6e8f304363d324bb64047ad723ed82, type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Grabber, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152238246515647041, guid: 3d6e8f304363d324bb64047ad723ed82, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Grabber, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d6e8f304363d324bb64047ad723ed82, type: 3}
 --- !u!4 &1154505495027382698 stripped
@@ -1034,6 +1082,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1101331772782628571, guid: 3d6e8f304363d324bb64047ad723ed82, type: 3}
   m_PrefabInstance: {fileID: 2255485136325359473}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1154505495203183336 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1101331772740390297, guid: 3d6e8f304363d324bb64047ad723ed82, type: 3}
+  m_PrefabInstance: {fileID: 2255485136325359473}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c7f8a7afb574e44994da56986f78b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1154505496742394105 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1101331774287925128, guid: 3d6e8f304363d324bb64047ad723ed82, type: 3}
+  m_PrefabInstance: {fileID: 2255485136325359473}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e497d137e5623548bb8317f93d49525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4424794495719244332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1049,6 +1119,30 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 685322190200420980, guid: d48e79c581785744a896fc4a0861ee73, type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 4100702820498604674}
+    - target: {fileID: 685322190200420980, guid: d48e79c581785744a896fc4a0861ee73, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 4100702820498604674}
+    - target: {fileID: 685322190200420980, guid: d48e79c581785744a896fc4a0861ee73, type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Hover
+      objectReference: {fileID: 0}
+    - target: {fileID: 685322190200420980, guid: d48e79c581785744a896fc4a0861ee73, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Hover
+      objectReference: {fileID: 0}
+    - target: {fileID: 685322190200420980, guid: d48e79c581785744a896fc4a0861ee73, type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: CFoS.Interaction.Pointer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 685322190200420980, guid: d48e79c581785744a896fc4a0861ee73, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: CFoS.Interaction.Pointer, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3273456704901031127, guid: d48e79c581785744a896fc4a0861ee73, type: 3}
       propertyPath: m_ControllerRef
       value: 
@@ -1056,6 +1150,30 @@ PrefabInstance:
     - target: {fileID: 3273456704901031127, guid: d48e79c581785744a896fc4a0861ee73, type: 3}
       propertyPath: m_InteractionManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3273456704901031127, guid: d48e79c581785744a896fc4a0861ee73, type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 185595914974775587}
+    - target: {fileID: 3273456704901031127, guid: d48e79c581785744a896fc4a0861ee73, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 185595914974775587}
+    - target: {fileID: 3273456704901031127, guid: d48e79c581785744a896fc4a0861ee73, type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Hover
+      objectReference: {fileID: 0}
+    - target: {fileID: 3273456704901031127, guid: d48e79c581785744a896fc4a0861ee73, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Hover
+      objectReference: {fileID: 0}
+    - target: {fileID: 3273456704901031127, guid: d48e79c581785744a896fc4a0861ee73, type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Grabber, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3273456704901031127, guid: d48e79c581785744a896fc4a0861ee73, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Grabber, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3273456706147707806, guid: d48e79c581785744a896fc4a0861ee73, type: 3}
       propertyPath: m_Name
@@ -1116,3 +1234,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3273456706147707807, guid: d48e79c581785744a896fc4a0861ee73, type: 3}
   m_PrefabInstance: {fileID: 4424794495719244332}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &185595914974775587 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4610377213825960719, guid: d48e79c581785744a896fc4a0861ee73, type: 3}
+  m_PrefabInstance: {fileID: 4424794495719244332}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c7f8a7afb574e44994da56986f78b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4100702820498604674 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 396484285297590446, guid: d48e79c581785744a896fc4a0861ee73, type: 3}
+  m_PrefabInstance: {fileID: 4424794495719244332}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e497d137e5623548bb8317f93d49525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

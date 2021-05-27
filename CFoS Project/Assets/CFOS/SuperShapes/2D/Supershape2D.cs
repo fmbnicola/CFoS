@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace CFoS.Supershape
 {
-    [CreateAssetMenu(fileName = "Supershape2D",menuName ="CFoS/Supershape2D")]
+    [CreateAssetMenu(fileName = "Supershape2D",menuName ="CFoS/Supershape/Supershape2D")]
     public class Supershape2D : ScriptableObject
     {
         // Check that parameter was changed and evoke update
@@ -150,6 +150,19 @@ namespace CFoS.Supershape
             OnUpdate?.Invoke(Parameter.Any);
 
             Debug.Log("Randomize");
+        }
+
+        // Static Methods
+        public static float CalculateCumulativeError(Supershape2D s1, Supershape2D s2)
+        {
+            var a  = Mathf.Abs(s1.A - s2.A);
+            var b  = Mathf.Abs(s1.B - s2.b);
+            var n1 = Mathf.Abs(s1.N1 - s2.N1);
+            var n2 = Mathf.Abs(s1.N2 - s2.N2);
+            var n3 = Mathf.Abs(s1.N3 - s2.N3);
+            var m  = Mathf.Abs(s1.M - s2.M);
+
+            return a + b + n1 + n2 + n3 + m;
         }
     }
 }

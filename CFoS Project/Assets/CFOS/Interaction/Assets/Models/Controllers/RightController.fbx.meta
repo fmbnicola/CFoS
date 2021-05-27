@@ -3,7 +3,42 @@ guid: abbacad207878d44daec6d931d03cbe7
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ControllerBodyMaterial
+    second: {fileID: 2100000, guid: bac29e8123464844dba7f697132a7f91, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GraspMaterial
+    second: {fileID: 2100000, guid: bac29e8123464844dba7f697132a7f91, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: JoystickMaterial
+    second: {fileID: 2100000, guid: bac29e8123464844dba7f697132a7f91, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MenuButtonMaterial
+    second: {fileID: 2100000, guid: bac29e8123464844dba7f697132a7f91, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PrimaryButtonMaterial
+    second: {fileID: 2100000, guid: bac29e8123464844dba7f697132a7f91, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SecondaryButtonMaterial
+    second: {fileID: 2100000, guid: bac29e8123464844dba7f697132a7f91, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TriggerMaterial
+    second: {fileID: 2100000, guid: bac29e8123464844dba7f697132a7f91, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

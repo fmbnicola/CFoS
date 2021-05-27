@@ -22,6 +22,9 @@ namespace CFoS.UI
         public delegate void SelectingFunction(Thumbnail thumbnail);
         public SelectingFunction SelectFunction;
 
+        public delegate void UpdatingFunction(Thumbnail thumbnail);
+        public UpdatingFunction UpdateFunction = delegate (Thumbnail thumbnail) { };
+
         // Position index in line, quad or cube
         [Space(10)][SerializeField]
         public Vector3Int Index = Vector3Int.zero;
@@ -73,6 +76,8 @@ namespace CFoS.UI
         public void Update()
         {
             Selection.enabled = (hovered || selected);
+
+            UpdateFunction(this);
         }
     }
 }

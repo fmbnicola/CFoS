@@ -1,3 +1,4 @@
+using CFoS.Experimentation;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -101,7 +102,24 @@ namespace CFoS.UI
         public void LoadExperiment(string experimentName)
         {
             UIManager.Instance.CloseMainMenu();
-            Experiments.ExperimentManager.Instance.LoadExperiment(experimentName);
+            ExperimentManager.Instance.LoadExperiment(experimentName);
+        }
+
+        public void LoadExperiment(int experimentIndex)
+        {
+            UIManager.Instance.CloseMainMenu();
+            ExperimentManager.Instance.LoadExperiment(experimentIndex);
+        }
+
+        public void LoadExperiment(Experiment experiment)
+        {
+            var name = experiment.gameObject.name;
+            LoadExperiment(name);
+        }
+
+        public void NextTask()
+        {
+            ExperimentManager.Instance.NextTask();
         }
     }
 }

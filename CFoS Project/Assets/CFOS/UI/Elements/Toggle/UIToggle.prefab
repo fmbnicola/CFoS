@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Interactable: {fileID: 8416876259819971430}
+  disabled: 0
   CheckedElement: {fileID: 8416876261406791518}
   UncheckedElement: {fileID: 8416876261228811795}
   ElementNormalColor: {fileID: 11400000, guid: 7e3ef38f6ce91a24cad46591c30cad91, type: 2}

@@ -1,3 +1,4 @@
+using CFoS.Interaction;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,6 +40,16 @@ namespace CFoS.UI
                 Handle.Width  = Size;
                 HandleOutline.Height = Size;
                 HandleOutline.Width  = Size;
+            }
+        }
+
+        // Controller hinting
+        protected override void RegisterSelection(bool val)
+        {
+            if (controller != null)
+            {
+                var hints = controller.GetComponentInChildren<ControllerHints>();
+                hints.JoystickHighlight(val);
             }
         }
 

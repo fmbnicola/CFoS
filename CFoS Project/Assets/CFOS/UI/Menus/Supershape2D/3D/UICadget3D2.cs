@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CFoS.Supershape;
+using CFoS.Data;
 
 namespace CFoS.UI.Menus
 {
@@ -15,6 +16,8 @@ namespace CFoS.UI.Menus
 
         [Header("Thumbnails")]
         public ThumbnailQuad Thumbnails;
+        public ColorVariable ThumbnailColor1;
+        public ColorVariable ThumbnailColor2;
 
         // Init
         protected virtual void Start()
@@ -64,16 +67,35 @@ namespace CFoS.UI.Menus
             Slider.ForceValueUpdate();
         }
 
+        public void ThumbnailUpdate(Thumbnail thumbnail)
+        {
+            var renderer = (Supershape2DQuadRenderer) thumbnail.Renderer;
+
+            Vector3Int i = thumbnail.Index;
+            if (i.x % 3 == 0 && i.y % 3 == 0)
+            {
+                renderer.Color = ThumbnailColor1.Value;
+            }
+            else
+            {
+                renderer.Color = ThumbnailColor2.Value;
+            }
+        }
+
+
         protected void InitThumbnails()
         {
             Thumbnails.SetSampleFunction(ThumbnailSample);
             Thumbnails.SetSelectFunction(ThumbnailSelect);
+            Thumbnails.SetUpdateFunction(ThumbnailUpdate);
         }
 
         protected void UpdateThumbnailsPosition()
         {
+            var handlePos = Slider.ValueToWorldCoords(Slider.Value);
+
             var pos = Thumbnails.transform.position;
-            pos.z = Slider.Handle.transform.position.z;
+            pos.z = handlePos.z;
             Thumbnails.transform.position = pos;
         }
 

@@ -114,6 +114,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8555499647378088191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494434155847093265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e88afe8526c34e341826eac142def9b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DelayTime: 0.25
+  Renderer: {fileID: 0}
+  Slider: {fileID: 8872591813612515744}
+  Thumbnails: {fileID: 4624056956097066000}
+  MinimapThumbnails: {fileID: 710828733095851497}
+  MinimapThumbnailColor: {fileID: 11400000, guid: 2d53b61a07b37df4f838af6eabedd8d2, type: 2}
 --- !u!1 &2450215834676099652
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,23 +163,6 @@ Transform:
   m_Father: {fileID: 1494434155189563245}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8555499647378088191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1494434155847093265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e88afe8526c34e341826eac142def9b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DelayTime: 0.25
-  Renderer: {fileID: 0}
-  Slider: {fileID: 8872591813612515744}
-  Thumbnails: {fileID: 4624056956097066000}
-  MinimapThumbnails: {fileID: 710828733095851497}
 --- !u!1001 &33320033609917029
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerRig: {fileID: 0}
-  MainMenu: {fileID: 6788257379743632914, guid: 88933614daa059d4da8afcd86fc048ea, type: 3}
+  MainMenuAsset: {fileID: 6788257379743632914, guid: 88933614daa059d4da8afcd86fc048ea, type: 3}
+  MainMenuStartOpen: 0
+  MainMenuEnabled: 0
   UIOffsetDistance: 0.5
   menuAction:
     m_UseReference: 1
