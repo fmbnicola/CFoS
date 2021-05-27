@@ -56,6 +56,7 @@ namespace CFoS.UI.Menus
         protected void Exit()
         {
             CloseMenu();
+            Application.OpenURL("https://en.wikipedia.org/wiki/Superformula");
         }
     }
 }
