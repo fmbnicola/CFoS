@@ -81,8 +81,9 @@ namespace CFoS.UI
                 }
 
                 // animation
-                var rotation = Vector3.forward * (LoadIconSpeed * Time.deltaTime);
-                LoadIcon.transform.Rotate(rotation, Space.Self);
+                var rotation = LoadIcon.transform.rotation.eulerAngles;
+                rotation.z += LoadIconSpeed * Time.deltaTime;
+                LoadIcon.transform.rotation = Quaternion.Euler(rotation);
 
                 // update based on loading function
                 var loadResult = LoadingFunction();
