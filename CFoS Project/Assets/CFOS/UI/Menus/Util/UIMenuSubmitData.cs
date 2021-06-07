@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CFoS.Supershape;
 using UnityEngine.Networking;
+using TMPro;
 
 namespace CFoS.UI.Menus
 {
@@ -11,9 +12,14 @@ namespace CFoS.UI.Menus
         [Header("Submit Button")]
         public UIButtonLoad SubmitButton;
 
-        [Header("Exit Button")]
-        public UIButton ExitButton;
+        [Header("Fill Form Button")]
+        public UIButton FillFormButton;
 
+        [Header("Info")]
+        public Transform ConnectInternetText;
+        public Transform UserIDText;
+
+        private string FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdERtJnntOfx1RE8yUPkNdeVYRazF3oPjvxENarYG48ZGDE_A/viewform?usp=pp_url&entry.1625732217=";
 
         protected virtual void Start()
         {
@@ -21,7 +27,11 @@ namespace CFoS.UI.Menus
             SubmitButton.ButtonClickEvent.AddListener(Submit);
             SubmitButton.LoadingFunction = SubmitDataLoadFunction;
 
-            ExitButton.ButtonClickEvent.AddListener(Exit);
+            FillFormButton.ButtonClickEvent.AddListener(FillForm);
+
+            // Text info
+            ConnectInternetText.gameObject.SetActive(true);
+            UserIDText.gameObject.SetActive(false);
         }
 
         protected UIButtonLoad.LoadState SubmitDataLoadFunction()
@@ -45,7 +55,16 @@ namespace CFoS.UI.Menus
             {
                 SubmitButton.Success();
                 SubmitButton.Enable(false);
-                ExitButton.Enable(true);
+                FillFormButton.Enable(true);
+
+                // info
+                ConnectInternetText.gameObject.SetActive(false);
+                UserIDText.gameObject.SetActive(true);
+
+                // User ID
+                var idtext = UserIDText.GetComponentInChildren<TextMeshPro>();
+                idtext.text = idtext.text.Remove(idtext.text.Length - 3);
+                idtext.text += manager.UserId;
             }
             else
             {
@@ -53,10 +72,12 @@ namespace CFoS.UI.Menus
             }
         }
 
-        protected void Exit()
+        protected void FillForm()
         {
             CloseMenu();
-            Application.OpenURL("https://en.wikipedia.org/wiki/Superformula");
+            var manager = SaveData.SaveManager.Instance;
+            var userId = manager.UserId;
+            Application.OpenURL(FORM_URL + userId);
         }
     }
 }
