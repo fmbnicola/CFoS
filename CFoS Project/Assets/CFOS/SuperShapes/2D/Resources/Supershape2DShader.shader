@@ -6,12 +6,14 @@ Shader "Supershape2DShader"
 		_Antialias("Anti-aliasing", Float) = 0.1
 		_Color("Color", Color) = (1., 1., 1., 1.)
 
-		_A ("A",  Range(0, 1 )) = 1
-		_B ("B",  Range(0, 1 )) = 1
-		_N1("N1", Range(0, 2 )) = 1
-		_N2("N2", Range(0, 2 )) = 1
-		_N3("N3", Range(0, 2 )) = 1
-		_M ("M",  Range(0, 50)) = 1
+		_A("A",  Range(0, 1)) = 1
+		_B("B",  Range(0, 1)) = 1
+		_N1("N1", Range(0, 2)) = 1
+		_N2("N2", Range(0, 2)) = 1
+		_N3("N3", Range(0, 2)) = 1
+		_M("M",  Range(0, 50)) = 1
+
+		_ScaleFix("ScaleFix", Float) = 1
     }
     SubShader
     {
@@ -60,6 +62,8 @@ Shader "Supershape2DShader"
 				UNITY_DEFINE_INSTANCED_PROP(float, _N2)
 				UNITY_DEFINE_INSTANCED_PROP(float, _N3)
 				UNITY_DEFINE_INSTANCED_PROP(float, _M)
+
+				UNITY_DEFINE_INSTANCED_PROP(float, _ScaleFix)
 			UNITY_INSTANCING_BUFFER_END(Props)
 
 
@@ -116,6 +120,8 @@ Shader "Supershape2DShader"
 				float n3 = UNITY_ACCESS_INSTANCED_PROP(Props, _N3);
 				float m  = UNITY_ACCESS_INSTANCED_PROP(Props, _M);
 
+				float scaleFix = UNITY_ACCESS_INSTANCED_PROP(Props, _ScaleFix);
+
 				// center + convert to polar coordinates (x,y) -> (angle, dist)
 				float2 uv = i.uv;
 				uv = 2 * (uv - 0.5);
@@ -125,7 +131,7 @@ Shader "Supershape2DShader"
 				float r = super(uv.x, a, b, n1, n2, n3, m);
 				
 				// Scaling
-				r = r * scale;
+				r = r * scale * scaleFix;
 
 				// signed distance
 				float d = (uv.y - r);
