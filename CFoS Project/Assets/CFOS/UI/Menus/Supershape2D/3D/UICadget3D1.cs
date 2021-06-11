@@ -22,6 +22,10 @@ namespace CFoS.UI.Menus
             SliderN1.ValueChangedEvent.AddListener(ValueChangeN1);
             SliderN2.ValueChangedEvent.AddListener(ValueChangeN2);
             SliderN3.ValueChangedEvent.AddListener(ValueChangeN3);
+
+            ValueChangeN1();
+            ValueChangeN2();
+            ValueChangeN3();
         }
 
         protected virtual void ValueChangeN1()

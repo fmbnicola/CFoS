@@ -16,8 +16,8 @@ namespace CFoS.Experimentation
             base.InitTask();
 
             // Init Supershape
-            var startingSupershape = ScriptableObject.CreateInstance<Supershape2D>();
-            StartingRenderer.Supershape = startingSupershape;
+            // var startingSupershape = ScriptableObject.CreateInstance<Supershape2D>();
+            // StartingRenderer.Supershape = startingSupershape;
 
             /* No need to record metrics for tutorial tasks
              

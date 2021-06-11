@@ -51,6 +51,9 @@ namespace CFoS.Supershape
             propBlock.SetColor("_Color", color);
             propBlock.SetFloat("_Scale", scale);
 
+            var maxVal = Supershape2D.CalculateGreatestValue(supershape);
+            propBlock.SetFloat("_ScaleFix", 1 / maxVal);
+
             propBlock.SetFloat("_A",supershape.A);
             propBlock.SetFloat("_B",supershape.B);
             propBlock.SetFloat("_N1",supershape.N1);

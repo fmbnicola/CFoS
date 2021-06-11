@@ -25,9 +25,11 @@ namespace CFoS.UI.Menus
             // Render Update
             Slider.ValueChangedEvent.AddListener(ValueChange);
             Renderer.Supershape.OnUpdate += UpdateThumbnails;
-
+            
             // Thumbnails
             InitThumbnails();
+
+            ValueChange();
         }
 
         private void OnDestroy()

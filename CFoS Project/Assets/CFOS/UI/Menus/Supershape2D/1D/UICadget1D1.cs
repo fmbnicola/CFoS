@@ -18,6 +18,7 @@ namespace CFoS.UI.Menus
         {
             // Render Update
             Slider.ValueChangedEvent.AddListener(ValueChange);
+            ValueChange();
         }
 
         protected virtual void ValueChange()
