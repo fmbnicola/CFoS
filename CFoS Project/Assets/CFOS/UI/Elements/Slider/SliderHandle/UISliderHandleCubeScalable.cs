@@ -7,7 +7,7 @@ using UnityEngine.Events;
 namespace CFoS.UI
 {
 
-    public class UISliderHandleSphereScalable : UISliderHandleSphere
+    public class UISliderHandleCubeScalable : UISliderHandleCube
     {
         public float MaxSize = 0.1f;
         public float MinSize = 0.01f;

@@ -1609,7 +1609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
   m_Colliders:
-  - {fileID: 6829875795937704820}
+  - {fileID: 5127592616703827292}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 32
@@ -1982,9 +1982,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b460e43cfa7a34789944c18e36413d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &6829875795937704820 stripped
-SphereCollider:
-  m_CorrespondingSourceObject: {fileID: 4507389796623773830, guid: dab9cb3e4de2d094ebe8120c30be35c2, type: 3}
+--- !u!65 &5127592616703827292 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 2840995846123771566, guid: dab9cb3e4de2d094ebe8120c30be35c2, type: 3}
   m_PrefabInstance: {fileID: 6937198166171012082}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &6829875795937704818 stripped

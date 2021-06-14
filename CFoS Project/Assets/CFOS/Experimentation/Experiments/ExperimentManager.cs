@@ -41,10 +41,10 @@ namespace CFoS.Experimentation
         public void Refresh()
         {
             Experiments = new List<Experiment>();
-            foreach(Transform child in transform)
+            foreach (Transform child in transform)
             {
                 var exp = child.GetComponent<Experiment>();
-                if(exp && exp.Included) Experiments.Add(exp);
+                if (exp && exp.Included) Experiments.Add(exp);
             }
         }
 
@@ -67,7 +67,7 @@ namespace CFoS.Experimentation
             {
                 Debug.Log(exp.name);
 
-                if(exp.name.Equals(experimentName) && exp.Included)
+                if (exp.name.Equals(experimentName) && exp.Included)
                 {
                     LoadedExperiment = exp;
                     loadedExperimentIndex = index;
@@ -121,7 +121,7 @@ namespace CFoS.Experimentation
         // Tasks
         public void NextTask()
         {
-            if(LoadedExperiment != null)
+            if (LoadedExperiment != null)
             {
                 LoadedExperiment.NextTask();
             }

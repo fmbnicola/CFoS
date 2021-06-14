@@ -5,7 +5,7 @@ using UnityEngine;
 namespace CFoS.UI
 {
 
-    public class UISliderHandleSphere : UIElement
+    public class UISliderHandleCube : UIElement
     {
         public MeshRenderer Handle;
         public Data.ColorVariable HandleNormalColor;
@@ -13,7 +13,7 @@ namespace CFoS.UI
         public Data.ColorVariable HandleSelectColor;
 
         [Space(10)]
-        public Shapes.Rectangle HandleOutline;
+        public MeshRenderer HandleOutline;
         public Data.ColorVariable HandleOutlineNormalColor;
         public Data.ColorVariable HandleOutlineHoverColor;
 
@@ -24,27 +24,28 @@ namespace CFoS.UI
         [Header("Properties")]
         public float Size = 0.03f;
 
-        protected MaterialPropertyBlock propBlock;
+        protected MaterialPropertyBlock handlePropBlock;
+        protected MaterialPropertyBlock outlinePropBlock;
 
         private void Start()
         {
-            if(propBlock == null) propBlock = new MaterialPropertyBlock();
+            if(handlePropBlock == null)  handlePropBlock = new MaterialPropertyBlock();
+            if(outlinePropBlock == null) outlinePropBlock = new MaterialPropertyBlock();
         }
 
         [ExecuteAlways]
         protected override void OnValidate()
         {
             // Set Colors
-            if (propBlock == null) propBlock = new MaterialPropertyBlock();
-            propBlock.SetColor("_HandleColor", HandleNormalColor.Value);
-            Handle.SetPropertyBlock(propBlock);
+            if (handlePropBlock == null) handlePropBlock = new MaterialPropertyBlock();
+            handlePropBlock.SetColor("_HandleColor", HandleNormalColor.Value);
+            Handle.SetPropertyBlock(handlePropBlock);
 
-            HandleOutline.Color = HandleOutlineNormalColor.Value;
-            HandleText.color = HandleTextColor.Value;
+            if (outlinePropBlock == null) outlinePropBlock = new MaterialPropertyBlock();
+            outlinePropBlock.SetColor("_OutlineColor", HandleOutlineNormalColor.Value);
+            HandleOutline.SetPropertyBlock(handlePropBlock);
 
             Handle.transform.localScale = Vector3.one * Size;
-            HandleOutline.Height = Size;
-            HandleOutline.Width  = Size;
         }
 
         public override void Enable(bool val)
@@ -64,25 +65,26 @@ namespace CFoS.UI
 
         protected void VisualUpdate()
         {
-            // outline billboard
+            // make text face user
             var foward = transform.position - Camera.main.transform.position;
-            HandleOutline.transform.rotation = Quaternion.LookRotation(foward, Vector3.up);
             HandleText.transform.rotation    = Quaternion.LookRotation(foward, Vector3.up);
 
             if (disabled)
             {
                 var col = HandleNormalColor.Value; col.a = 0.3f;
-                propBlock.SetColor("_HandleColor", col);
-                Handle.SetPropertyBlock(propBlock);
+                handlePropBlock.SetColor("_HandleColor", col);
+                Handle.SetPropertyBlock(handlePropBlock);
                 return;
             }
 
             // Visual Update
             var handleColor = selected ? HandleSelectColor.Value : hovered ? HandleHoverColor.Value : HandleNormalColor.Value;
-            propBlock.SetColor("_HandleColor", handleColor);
-            Handle.SetPropertyBlock(propBlock);
+            handlePropBlock.SetColor("_HandleColor", handleColor);
+            Handle.SetPropertyBlock(handlePropBlock);
 
-            HandleOutline.Color = selected ? HandleOutlineHoverColor.Value : hovered ? HandleOutlineHoverColor.Value : HandleOutlineNormalColor.Value;
+            var outlineColor = selected ? HandleOutlineHoverColor.Value : hovered ? HandleOutlineHoverColor.Value : HandleOutlineNormalColor.Value;
+            outlinePropBlock.SetColor("_OutlineColor", outlineColor);
+            HandleOutline.SetPropertyBlock(outlinePropBlock);
         }
 
         protected virtual void Update()

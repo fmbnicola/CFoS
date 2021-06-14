@@ -1,13 +1,13 @@
 // Made with Amplify Shader Editor
 // Available at the Unity Asset Store - http://u3d.as/y3X 
-Shader "UISliderHandleShader"
+Shader "UISliderHandleOutlineShader"
 {
 	Properties
 	{
 		[HideInInspector] _AlphaCutoff("Alpha Cutoff ", Range(0, 1)) = 0.5
 		[HideInInspector] _EmissionColor("Emission Color", Color) = (1,1,1,1)
-		[ASEBegin]_HandleColor("HandleColor", Color) = (0,0,0,0)
-		_Emission("Emission", Float) = 0
+		[ASEBegin]_OutlineColor("OutlineColor", Color) = (1,1,1,1)
+		_Emission("Emission", Float) = 1
 		_Metalic("Metalic", Float) = 0
 		[ASEEnd]_Smoothness("Smoothness", Float) = 0
 
@@ -33,7 +33,7 @@ Shader "UISliderHandleShader"
 		
 
 		Tags { "RenderPipeline"="UniversalPipeline" "RenderType"="Opaque" "Queue"="Geometry" }
-		Cull Back
+		Cull Front
 		AlphaToMask Off
 		HLSLINCLUDE
 		#pragma target 2.0
@@ -258,9 +258,9 @@ Shader "UISliderHandleShader"
 				float _TessMaxDisp;
 			#endif
 			CBUFFER_END
-			UNITY_INSTANCING_BUFFER_START(UISliderHandleShader)
-				UNITY_DEFINE_INSTANCED_PROP(float4, _HandleColor)
-			UNITY_INSTANCING_BUFFER_END(UISliderHandleShader)
+			UNITY_INSTANCING_BUFFER_START(UISliderHandleOutlineShader)
+				UNITY_DEFINE_INSTANCED_PROP(float4, _OutlineColor)
+			UNITY_INSTANCING_BUFFER_END(UISliderHandleOutlineShader)
 
 
 			
@@ -457,11 +457,11 @@ Shader "UISliderHandleShader"
 	
 				WorldViewDirection = SafeNormalize( WorldViewDirection );
 
-				float4 _HandleColor_Instance = UNITY_ACCESS_INSTANCED_PROP(UISliderHandleShader,_HandleColor);
+				float4 _OutlineColor_Instance = UNITY_ACCESS_INSTANCED_PROP(UISliderHandleOutlineShader,_OutlineColor);
 				
-				float3 Albedo = _HandleColor_Instance.rgb;
+				float3 Albedo = _OutlineColor_Instance.rgb;
 				float3 Normal = float3(0, 0, 1);
-				float3 Emission = ( _HandleColor_Instance * _Emission ).rgb;
+				float3 Emission = ( _OutlineColor_Instance * _Emission ).rgb;
 				float3 Specular = 0.5;
 				float Metallic = _Metalic;
 				float Smoothness = _Smoothness;
@@ -701,8 +701,8 @@ Shader "UISliderHandleShader"
 				float _TessMaxDisp;
 			#endif
 			CBUFFER_END
-			UNITY_INSTANCING_BUFFER_START(UISliderHandleShader)
-			UNITY_INSTANCING_BUFFER_END(UISliderHandleShader)
+			UNITY_INSTANCING_BUFFER_START(UISliderHandleOutlineShader)
+			UNITY_INSTANCING_BUFFER_END(UISliderHandleOutlineShader)
 
 
 			
@@ -969,8 +969,8 @@ Shader "UISliderHandleShader"
 				float _TessMaxDisp;
 			#endif
 			CBUFFER_END
-			UNITY_INSTANCING_BUFFER_START(UISliderHandleShader)
-			UNITY_INSTANCING_BUFFER_END(UISliderHandleShader)
+			UNITY_INSTANCING_BUFFER_START(UISliderHandleOutlineShader)
+			UNITY_INSTANCING_BUFFER_END(UISliderHandleOutlineShader)
 
 
 			
@@ -1225,9 +1225,9 @@ Shader "UISliderHandleShader"
 				float _TessMaxDisp;
 			#endif
 			CBUFFER_END
-			UNITY_INSTANCING_BUFFER_START(UISliderHandleShader)
-				UNITY_DEFINE_INSTANCED_PROP(float4, _HandleColor)
-			UNITY_INSTANCING_BUFFER_END(UISliderHandleShader)
+			UNITY_INSTANCING_BUFFER_START(UISliderHandleOutlineShader)
+				UNITY_DEFINE_INSTANCED_PROP(float4, _OutlineColor)
+			UNITY_INSTANCING_BUFFER_END(UISliderHandleOutlineShader)
 
 
 			
@@ -1372,11 +1372,11 @@ Shader "UISliderHandleShader"
 					#endif
 				#endif
 
-				float4 _HandleColor_Instance = UNITY_ACCESS_INSTANCED_PROP(UISliderHandleShader,_HandleColor);
+				float4 _OutlineColor_Instance = UNITY_ACCESS_INSTANCED_PROP(UISliderHandleOutlineShader,_OutlineColor);
 				
 				
-				float3 Albedo = _HandleColor_Instance.rgb;
-				float3 Emission = ( _HandleColor_Instance * _Emission ).rgb;
+				float3 Albedo = _OutlineColor_Instance.rgb;
+				float3 Emission = ( _OutlineColor_Instance * _Emission ).rgb;
 				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
 
@@ -1480,9 +1480,9 @@ Shader "UISliderHandleShader"
 				float _TessMaxDisp;
 			#endif
 			CBUFFER_END
-			UNITY_INSTANCING_BUFFER_START(UISliderHandleShader)
-				UNITY_DEFINE_INSTANCED_PROP(float4, _HandleColor)
-			UNITY_INSTANCING_BUFFER_END(UISliderHandleShader)
+			UNITY_INSTANCING_BUFFER_START(UISliderHandleOutlineShader)
+				UNITY_DEFINE_INSTANCED_PROP(float4, _OutlineColor)
+			UNITY_INSTANCING_BUFFER_END(UISliderHandleOutlineShader)
 
 
 			
@@ -1624,10 +1624,10 @@ Shader "UISliderHandleShader"
 					#endif
 				#endif
 
-				float4 _HandleColor_Instance = UNITY_ACCESS_INSTANCED_PROP(UISliderHandleShader,_HandleColor);
+				float4 _OutlineColor_Instance = UNITY_ACCESS_INSTANCED_PROP(UISliderHandleOutlineShader,_OutlineColor);
 				
 				
-				float3 Albedo = _HandleColor_Instance.rgb;
+				float3 Albedo = _OutlineColor_Instance.rgb;
 				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
 
@@ -1725,8 +1725,8 @@ Shader "UISliderHandleShader"
 				float _TessMaxDisp;
 			#endif
 			CBUFFER_END
-			UNITY_INSTANCING_BUFFER_START(UISliderHandleShader)
-			UNITY_INSTANCING_BUFFER_END(UISliderHandleShader)
+			UNITY_INSTANCING_BUFFER_START(UISliderHandleOutlineShader)
+			UNITY_INSTANCING_BUFFER_END(UISliderHandleOutlineShader)
 
 
 			
@@ -2015,9 +2015,9 @@ Shader "UISliderHandleShader"
 				float _TessMaxDisp;
 			#endif
 			CBUFFER_END
-			UNITY_INSTANCING_BUFFER_START(UISliderHandleShader)
-				UNITY_DEFINE_INSTANCED_PROP(float4, _HandleColor)
-			UNITY_INSTANCING_BUFFER_END(UISliderHandleShader)
+			UNITY_INSTANCING_BUFFER_START(UISliderHandleOutlineShader)
+				UNITY_DEFINE_INSTANCED_PROP(float4, _OutlineColor)
+			UNITY_INSTANCING_BUFFER_END(UISliderHandleOutlineShader)
 
 
 			
@@ -2213,11 +2213,11 @@ Shader "UISliderHandleShader"
 	
 				WorldViewDirection = SafeNormalize( WorldViewDirection );
 
-				float4 _HandleColor_Instance = UNITY_ACCESS_INSTANCED_PROP(UISliderHandleShader,_HandleColor);
+				float4 _OutlineColor_Instance = UNITY_ACCESS_INSTANCED_PROP(UISliderHandleOutlineShader,_OutlineColor);
 				
-				float3 Albedo = _HandleColor_Instance.rgb;
+				float3 Albedo = _OutlineColor_Instance.rgb;
 				float3 Normal = float3(0, 0, 1);
-				float3 Emission = ( _HandleColor_Instance * _Emission ).rgb;
+				float3 Emission = ( _OutlineColor_Instance * _Emission ).rgb;
 				float3 Specular = 0.5;
 				float Metallic = 0;
 				float Smoothness = 0.5;
@@ -2377,12 +2377,12 @@ Shader "UISliderHandleShader"
 }
 /*ASEBEGIN
 Version=18900
-1920;85;1906;880;953;440;1;True;False
-Node;AmplifyShaderEditor.RangedFloatNode;12;-408,42;Inherit;False;Property;_Emission;Emission;1;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.ColorNode;9;-464,-229;Inherit;False;InstancedProperty;_HandleColor;HandleColor;0;0;Create;True;0;0;0;False;0;False;0,0,0,0;0.4150943,0.4150943,0.4150943,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.RangedFloatNode;11;-204,150;Inherit;False;Property;_Metalic;Metalic;2;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
+1920;44;1906;880;1035;453;1;True;False
+Node;AmplifyShaderEditor.RangedFloatNode;12;-408,42;Inherit;False;Property;_Emission;Emission;1;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.ColorNode;9;-464,-229;Inherit;False;InstancedProperty;_OutlineColor;OutlineColor;0;0;Create;True;0;0;0;False;0;False;1,1,1,1;0.4150943,0.4150943,0.4150943,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.RangedFloatNode;10;-205,229;Inherit;False;Property;_Smoothness;Smoothness;3;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;13;-209,2;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
+Node;AmplifyShaderEditor.RangedFloatNode;11;-204,150;Inherit;False;Property;_Metalic;Metalic;2;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;0;0;False;True;1;1;False;-1;0;False;-1;0;1;False;-1;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;True;True;True;True;0;False;-1;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;1;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;0;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;2;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;0;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;-1;True;3;False;-1;False;True;1;LightMode=ShadowCaster;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;3;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;0;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;False;False;True;False;False;False;False;0;False;-1;False;False;False;False;False;False;False;False;False;True;1;False;-1;False;False;True;1;LightMode=DepthOnly;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
@@ -2390,7 +2390,7 @@ Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;4;0,0;Float;False;False;-1;
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;5;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;Universal2D;0;5;Universal2D;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;0;0;False;True;1;1;False;-1;0;False;-1;1;1;False;-1;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;-1;False;False;False;False;False;False;False;False;False;True;1;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;1;LightMode=Universal2D;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;6;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;DepthNormals;0;6;DepthNormals;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;0;0;False;True;1;1;False;-1;0;False;-1;0;1;False;-1;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;-1;True;3;False;-1;False;True;1;LightMode=DepthNormals;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;7;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;GBuffer;0;7;GBuffer;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;0;0;False;True;1;1;False;-1;0;False;-1;1;1;False;-1;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;-1;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;1;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;1;LightMode=UniversalGBuffer;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;1;0,0;Float;False;True;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;2;UISliderHandleShader;94348b07e5e8bab40bd6c8a1e3df54cd;True;Forward;0;1;Forward;18;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;0;0;False;True;1;1;False;-1;0;False;-1;1;1;False;-1;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;-1;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;1;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;1;LightMode=UniversalForward;False;0;Hidden/InternalErrorShader;0;0;Standard;38;Workflow;1;Surface;0;  Refraction Model;0;  Blend;0;Two Sided;1;Fragment Normal Space,InvertActionOnDeselection;0;Transmission;0;  Transmission Shadow;0.5,False,-1;Translucency;0;  Translucency Strength;1,False,-1;  Normal Distortion;0.5,False,-1;  Scattering;2,False,-1;  Direct;0.9,False,-1;  Ambient;0.1,False,-1;  Shadow;0.5,False,-1;Cast Shadows;1;  Use Shadow Threshold;0;Receive Shadows;1;GPU Instancing;1;LOD CrossFade;1;Built-in Fog;1;_FinalColorxAlpha;0;Meta Pass;1;Override Baked GI;0;Extra Pre Pass;0;DOTS Instancing;0;Tessellation;0;  Phong;0;  Strength;0.5,False,-1;  Type;0;  Tess;16,False,-1;  Min;10,False,-1;  Max;25,False,-1;  Edge Length;16,False,-1;  Max Displacement;25,False,-1;Write Depth;0;  Early Z;0;Vertex Position,InvertActionOnDeselection;1;0;8;False;True;True;True;True;True;True;True;False;;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;1;0,0;Float;False;True;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;2;UISliderHandleOutlineShader;94348b07e5e8bab40bd6c8a1e3df54cd;True;Forward;0;1;Forward;18;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;1;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;0;0;False;True;1;1;False;-1;0;False;-1;1;1;False;-1;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;-1;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;1;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;1;LightMode=UniversalForward;False;0;Hidden/InternalErrorShader;0;0;Standard;38;Workflow;1;Surface;0;  Refraction Model;0;  Blend;0;Two Sided;2;Fragment Normal Space,InvertActionOnDeselection;0;Transmission;0;  Transmission Shadow;0.5,False,-1;Translucency;0;  Translucency Strength;1,False,-1;  Normal Distortion;0.5,False,-1;  Scattering;2,False,-1;  Direct;0.9,False,-1;  Ambient;0.1,False,-1;  Shadow;0.5,False,-1;Cast Shadows;1;  Use Shadow Threshold;0;Receive Shadows;1;GPU Instancing;1;LOD CrossFade;1;Built-in Fog;1;_FinalColorxAlpha;0;Meta Pass;1;Override Baked GI;0;Extra Pre Pass;0;DOTS Instancing;0;Tessellation;0;  Phong;0;  Strength;0.5,False,-1;  Type;0;  Tess;16,False,-1;  Min;10,False,-1;  Max;25,False,-1;  Edge Length;16,False,-1;  Max Displacement;25,False,-1;Write Depth;0;  Early Z;0;Vertex Position,InvertActionOnDeselection;1;0;8;False;True;True;True;True;True;True;True;False;;False;0
 WireConnection;13;0;9;0
 WireConnection;13;1;12;0
 WireConnection;1;0;9;0
@@ -2398,4 +2398,4 @@ WireConnection;1;2;13;0
 WireConnection;1;3;11;0
 WireConnection;1;4;10;0
 ASEEND*/
-//CHKSM=687E6D5545A213D9667EDB5D58482F478383656F
+//CHKSM=C91042F2C5B0FB62FC910A008E0696D967C12D71

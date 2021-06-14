@@ -10,7 +10,7 @@ namespace CFoS.UI
     public class UISlider3D : UIElement
     {
         [Header("Handle")]
-        public UISliderHandleSphere Handle;
+        public UISliderHandleCube Handle;
        
         [Header("Track")]
         public Transform Track;
