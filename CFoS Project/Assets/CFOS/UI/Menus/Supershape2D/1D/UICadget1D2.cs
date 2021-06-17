@@ -13,29 +13,10 @@ namespace CFoS.UI.Menus
         public ColorVariable ThumbnailColor1;
         public ColorVariable ThumbnailColor2;
 
-        [Header("Zones")]
-        public Data.ColorVariable TextActiveColor;
-        public Data.ColorVariable TextInactiveColor;
-        [Space(20)]
-        public TMPro.TextMeshPro Starness;
-        public TMPro.TextMeshPro Roundness;
-        public TMPro.TextMeshPro Squareness;
-        [Space(10)]
-        public TMPro.TextMeshPro Concave;
-        public TMPro.TextMeshPro Convex;
-        [Space(10)]
-        public TMPro.TextMeshPro Inscribed;
-        public TMPro.TextMeshPro Circumscribed;
-
 
         protected override void Start()
         {
             base.Start();
-
-            // Zones
-            var slider = (UISlider1DZones) Slider;
-            slider.ZoneChangedEvent.AddListener(ZoneChange);
-            ZoneChange();
 
             // Render
             Slider.ValueChangedEvent.AddListener(ValueChange);
@@ -102,41 +83,5 @@ namespace CFoS.UI.Menus
                 Thumbnails.UpdateSampling();
             }
         }
-
-
-        // ZONES
-        protected void ZoneChange()
-        {
-            Starness.color      = TextInactiveColor.Value;
-            Roundness.color     = TextInactiveColor.Value;
-            Squareness.color    = TextInactiveColor.Value;
-            Concave.color       = TextInactiveColor.Value;
-            Convex.color        = TextInactiveColor.Value;
-            Inscribed.color     = TextInactiveColor.Value;
-            Circumscribed.color = TextInactiveColor.Value;
-
-            var slider = (UISlider1DZones) Slider;
-            switch (slider.ZoneIndex)
-            {
-                case 0:
-                    Starness.color = TextActiveColor.Value;
-                    Concave.color = TextActiveColor.Value;
-                    Inscribed.color = TextActiveColor.Value;
-                    break;
-
-                case 1:
-                    Roundness.color = TextActiveColor.Value;
-                    Convex.color = TextActiveColor.Value;
-                    Inscribed.color = TextActiveColor.Value;
-                    break;
-
-                case 2:
-                    Squareness.color = TextActiveColor.Value;
-                    Convex.color = TextActiveColor.Value;
-                    Circumscribed.color = TextActiveColor.Value;
-                    break;
-            }
-        }
-
     }
 }

@@ -9,21 +9,19 @@ public class FollowMainCamera : MonoBehaviour
     [Header("Input")]
     public PlayerInputController Input;
 
-    [Header("Tolerances")]
-    public float TranslationTolerance  = 1.0f;
-    public float HeightChangeTolerance = 0.6f;
-    public float RotationTolerance     = 90.0f;
+    [Header("Horizontal Adjustment")]
+    public bool  FollowHorizontal    = true;
+    public float HorizontalTolerance = 0.8f;
+    public float HorizontalSpeed     = 0.05f;
 
-    [Header("Speeds")]
-    public float PosSpeed = 0.1f;
-    public float RotSpeed = 1.0f;
+    [Header("Vertical Adjustment")]
+    public bool  FollowVertical    = true;
+    public float VerticalTolerance = 0.25f;
+    public float VerticalSpeed     = 0.05f;
 
-    // Offsets
+    // Private vars
     private float yOffset;
-
-    // Targets
     private Vector3 targetPos;
-    private Quaternion targetRot;
 
     // Conserve vertical offset
     private void Awake()
@@ -36,7 +34,6 @@ public class FollowMainCamera : MonoBehaviour
     void Start()
     {
         targetPos = transform.position;
-        targetRot = transform.rotation;
 
         Input.ResetAction.action.performed += ResetAction;
     }
@@ -55,7 +52,7 @@ public class FollowMainCamera : MonoBehaviour
         var xzDelta = Vector3.ProjectOnPlane(posDelta, Vector3.up);
         var xzDist  = xzDelta.magnitude;
 
-        if(xzDist > TranslationTolerance)
+        if(xzDist > HorizontalTolerance)
         {
             targetPos.x = camera.position.x;
             targetPos.z = camera.position.z;
@@ -63,17 +60,9 @@ public class FollowMainCamera : MonoBehaviour
 
         // Y
         var yDist = Mathf.Abs(posDelta.y);
-        if(yDist > HeightChangeTolerance)
+        if(yDist > VerticalTolerance)
         {
             targetPos.y = camera.position.y - yOffset;
-        }
-
-        // Calculate Rotation delta on y axis
-        var rotDelta = Mathf.Abs(camera.eulerAngles.y - transform.eulerAngles.y);
-        if(rotDelta > RotationTolerance)
-        {
-            var foward = Vector3.ProjectOnPlane(camera.forward, Vector3.up);
-            targetRot = Quaternion.LookRotation(foward, Vector3.up);
         }
 
     }
@@ -84,15 +73,17 @@ public class FollowMainCamera : MonoBehaviour
         // Position
         if(Vector3.Distance(transform.position, targetPos) > 0.01f)
         {
-            transform.position = Vector3.Lerp(transform.position, targetPos, PosSpeed);
-        }
+            var pos = transform.position;
+            
+            // XZ
+            pos.x = Mathf.Lerp(pos.x, targetPos.x, HorizontalSpeed);
+            pos.z = Mathf.Lerp(pos.z, targetPos.z, HorizontalSpeed);
+            
+            // Y
+            pos.y = Mathf.Lerp(pos.y, targetPos.y, VerticalSpeed);
 
-        // Rotation
-        /*
-        if (Quaternion.Angle(transform.rotation, targetRot) > 0.01f) {
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, RotSpeed/360);
+            transform.position = pos;
         }
-        */
     }
 
     protected void ResetAction(InputAction.CallbackContext context)
@@ -110,13 +101,5 @@ public class FollowMainCamera : MonoBehaviour
         targetPos.x = camera.position.x;
         targetPos.z = camera.position.z;
         targetPos.y = camera.position.y - yOffset;
-
-        transform.position = targetPos;
-
-        // reset rotation
-        var foward = Vector3.ProjectOnPlane(camera.forward, Vector3.up);
-        targetRot = Quaternion.LookRotation(foward, Vector3.up);
-
-        transform.rotation = targetRot;
     }
 }
