@@ -17,16 +17,22 @@ namespace CFoS.Experimentation
         [HideInInspector]
         public Task LoadedTask = null;
         [HideInInspector]
-        public int LoadedTaskIndex = -1; 
+        public int LoadedTaskIndex = -1;
 
+        [Header("Randomization")]
+        public bool RandomizeTaskOrder = false;
 
         // EXPERIMENT EVENTS
         public virtual void Init()
         {
             Debug.Log("Experiment " + name + " Init." );
 
+            //Randomize Task Order
+            if (RandomizeTaskOrder)
+                ExtensionMethods.Shuffle(Tasks);
+
             // Load the first task
-            if(Tasks.Count != 0)
+            if (Tasks.Count != 0)
             {
                 LoadTask(0);
             }

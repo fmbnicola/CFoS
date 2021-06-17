@@ -9,6 +9,7 @@ namespace CFoS.Experimentation
     [System.Serializable]
     public class ExperimentTutorial : Experiment 
     {
+        [Header("Renderer")]
         public Supershape2DRenderer StartingRenderer;
 
         public override void InitTask()

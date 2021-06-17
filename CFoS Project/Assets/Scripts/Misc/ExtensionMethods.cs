@@ -10,4 +10,19 @@ public static class ExtensionMethods
         return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
     }
 
+    public static void Shuffle<T>(this IList<T> ts, int start, int end)
+    {
+        for (var i = start; i < end; ++i)
+        {
+            var r = Random.Range(i, end+1);
+            var tmp = ts[i];
+            ts[i] = ts[r];
+            ts[r] = tmp;
+        }
+    }
+
+    public static void Shuffle<T>(this IList<T> ts)
+    {
+        Shuffle<T>(ts, 0, ts.Count - 1);
+    }
 }

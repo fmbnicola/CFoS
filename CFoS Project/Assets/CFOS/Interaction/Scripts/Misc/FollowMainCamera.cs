@@ -74,13 +74,19 @@ public class FollowMainCamera : MonoBehaviour
         if(Vector3.Distance(transform.position, targetPos) > 0.01f)
         {
             var pos = transform.position;
-            
+
             // XZ
-            pos.x = Mathf.Lerp(pos.x, targetPos.x, HorizontalSpeed);
-            pos.z = Mathf.Lerp(pos.z, targetPos.z, HorizontalSpeed);
-            
+            if (FollowHorizontal)
+            {
+                pos.x = Mathf.Lerp(pos.x, targetPos.x, HorizontalSpeed);
+                pos.z = Mathf.Lerp(pos.z, targetPos.z, HorizontalSpeed);
+            }
+
             // Y
-            pos.y = Mathf.Lerp(pos.y, targetPos.y, VerticalSpeed);
+            if (FollowVertical)
+            {
+                pos.y = Mathf.Lerp(pos.y, targetPos.y, VerticalSpeed);
+            }
 
             transform.position = pos;
         }

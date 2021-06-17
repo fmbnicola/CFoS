@@ -9,6 +9,7 @@ namespace CFoS.Experimentation
     [System.Serializable]
     public class ExperimentSupershape2D : Experiment 
     {
+        [Header("Renderers")]
         public Supershape2DRenderer StartingRenderer;
         public Supershape2DRenderer TargetRenderer;
 

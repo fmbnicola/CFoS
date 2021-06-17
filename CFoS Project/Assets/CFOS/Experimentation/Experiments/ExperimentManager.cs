@@ -18,6 +18,11 @@ namespace CFoS.Experimentation
         [HideInInspector]
         public int loadedExperimentIndex = -1;
 
+        [Header("Randomization")]
+        public bool RandomizeExperimentOrder = false;
+        public int RandomizeStartIndex = 0;
+        public int RandomizeEndIndex = 0;
+
         void Awake()
         {
             if (Instance != null && Instance != this)
@@ -33,6 +38,10 @@ namespace CFoS.Experimentation
 
         private void Start()
         {
+            // Randomize Experiment Order
+            if(RandomizeExperimentOrder)
+                ExtensionMethods.Shuffle(Experiments, RandomizeStartIndex, RandomizeEndIndex);
+
             if (!LoadOnStart) return;
             LoadExperiment(0);
         }
