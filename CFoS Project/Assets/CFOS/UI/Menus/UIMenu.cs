@@ -2,6 +2,7 @@ using CFoS.Experimentation;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CFoS.UI
 {
@@ -120,6 +121,17 @@ namespace CFoS.UI
         public void NextTask()
         {
             ExperimentManager.Instance.NextTask();
+        }
+
+        //General
+        public void RestartApp()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        public void ExitApp()
+        {
+            Application.Quit();
         }
     }
 }

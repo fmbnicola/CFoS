@@ -83,12 +83,12 @@ namespace CFoS.UI
                 // Callback
                 if (state == ToggleState.Checked)
                 {
-                    ToggleCheckedEvent.Invoke();
+                    ToggleUncheckedEvent.Invoke();
                     UncheckedInit();
                 }
                 else if (state == ToggleState.Unchecked)
                 {
-                    ToggleUncheckedEvent.Invoke();
+                    ToggleCheckedEvent.Invoke();
                     CheckedInit();
                 }
 

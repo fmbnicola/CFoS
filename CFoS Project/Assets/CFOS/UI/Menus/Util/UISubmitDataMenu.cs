@@ -7,7 +7,7 @@ using TMPro;
 
 namespace CFoS.UI.Menus
 {
-    public class UIMenuSubmitData : UIMenu
+    public class UISubmitDataMenu : UIMenu
     {
         [Header("Submit Button")]
         public UIButtonLoad SubmitButton;
@@ -74,10 +74,11 @@ namespace CFoS.UI.Menus
 
         protected void FillForm()
         {
-            CloseMenu();
             var manager = SaveData.SaveManager.Instance;
             var userId = manager.UserId;
             Application.OpenURL(FORM_URL + userId);
+
+            NextTask();
         }
     }
 }
