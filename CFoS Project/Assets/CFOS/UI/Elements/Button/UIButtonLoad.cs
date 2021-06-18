@@ -40,8 +40,8 @@ namespace CFoS.UI
         {
             base.OnValidate();
 
-            LoadIcon.Color    = LoadIconColor.Value;
-            SuccessIcon.Color = SuccessIconColor.Value;
+            LoadIcon.Color     = LoadIconColor.Value;
+            SuccessIcon.Color  = SuccessIconColor.Value;
             FailureIcon1.Color = FailureIconColor.Value;
             FailureIcon2.Color = FailureIconColor.Value;
         }
@@ -81,9 +81,9 @@ namespace CFoS.UI
                 }
 
                 // animation
-                var rotation = LoadIcon.transform.rotation.eulerAngles;
+                var rotation = LoadIcon.transform.localEulerAngles;
                 rotation.z += LoadIconSpeed * Time.deltaTime;
-                LoadIcon.transform.rotation = Quaternion.Euler(rotation);
+                LoadIcon.transform.localRotation = Quaternion.Euler(rotation);
 
                 // update based on loading function
                 var loadResult = LoadingFunction();

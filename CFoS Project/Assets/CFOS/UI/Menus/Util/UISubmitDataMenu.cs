@@ -4,6 +4,7 @@ using UnityEngine;
 using CFoS.Supershape;
 using UnityEngine.Networking;
 using TMPro;
+using UnityEngine.Events;
 
 namespace CFoS.UI.Menus
 {
@@ -18,6 +19,9 @@ namespace CFoS.UI.Menus
         [Header("Info")]
         public Transform ConnectInternetText;
         public Transform UserIDText;
+
+        [Header("Event")]
+        public UnityEvent SuccessEvent;
 
         private string FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdERtJnntOfx1RE8yUPkNdeVYRazF3oPjvxENarYG48ZGDE_A/viewform?usp=pp_url&entry.1625732217=";
 
@@ -53,6 +57,10 @@ namespace CFoS.UI.Menus
 
             if (request.result == UnityWebRequest.Result.Success)
             {
+                // Event
+                SuccessEvent.Invoke();
+
+                // Toggle Buttons
                 SubmitButton.Success();
                 SubmitButton.Enable(false);
                 FillFormButton.Enable(true);
