@@ -1,3 +1,4 @@
+using CFoS.Experimentation;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -62,6 +63,9 @@ namespace CFoS.UI
             {
                 ValueChangedEvent.Invoke();
                 if (selected) controller.SendHapticImpulse(0.5f, 0.02f);
+
+                // Register Value change as metric
+                MetricManager.Instance.RegisterTaskMetric("SlideTime", Time.deltaTime);
             }
             oldValue = Value;
         }

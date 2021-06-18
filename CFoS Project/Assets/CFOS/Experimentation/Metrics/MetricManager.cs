@@ -10,18 +10,28 @@ namespace CFoS.Experimentation
         public string Name = "Metric";
         public bool enabled = true;
 
-        public enum UpdateType { Set, Add, Min, Max }
+        public enum UpdateType { Set, Add, Average, Min, Max }
         public UpdateType UpdateMethod = UpdateType.Set;
 
-        [HideInInspector] public float Value;
+        [ReadOnly] public float Value;
+
+        // Used to update average
+        [HideInInspector] public float UpdateSum;
+        [HideInInspector] public int UpdateCount;
 
         public void Init()
         {
             Value = 0.0f;
+
+            UpdateSum = 0.0f;
+            UpdateCount = 0;
         }
 
         public void Update(float value)
         {
+            UpdateSum += value;
+            UpdateCount++;
+
             switch (UpdateMethod)
             {
                 case UpdateType.Set:
@@ -29,7 +39,11 @@ namespace CFoS.Experimentation
                     break;
 
                 case UpdateType.Add:
-                    Value += value;
+                    Value = UpdateSum;
+                    break;
+
+                case UpdateType.Average:
+                    Value = UpdateSum / UpdateCount;
                     break;
 
                 case UpdateType.Min:
@@ -80,11 +94,12 @@ namespace CFoS.Experimentation
 
         private void Start()
         {
-            // Save metric by name for easier access
+            // Save metric by name for easier access and Init
             metricDict = new Dictionary<string, Metric>();
             foreach (var metric in Metrics)
             {
                 metricDict[metric.Name] = metric;
+                metric.Init();
             }
         }
 

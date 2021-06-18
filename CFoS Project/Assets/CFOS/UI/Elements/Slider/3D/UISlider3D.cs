@@ -1,3 +1,4 @@
+using CFoS.Experimentation;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -91,6 +92,9 @@ namespace CFoS.UI
                 // save local offset from controller to handle
                 var handlePos = Handle.transform.position;
                 selectOffset = controller.transform.InverseTransformPoint(handlePos);
+
+                // Register selection as metric
+                MetricManager.Instance.RegisterTaskMetric("SelectCount", 1.0f);
             }
         }
 
@@ -223,6 +227,9 @@ namespace CFoS.UI
                 if(Value != oldValue)
                 {
                     ForceValueUpdate();
+
+                    // Register Value change as metric
+                    MetricManager.Instance.RegisterTaskMetric("SlideTime", Time.deltaTime);
                 }
             }
             // If not selecting, value changes handle position

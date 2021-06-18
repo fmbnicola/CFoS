@@ -1,3 +1,4 @@
+using CFoS.Experimentation;
 using CFoS.Supershape;
 using System.Collections;
 using System.Collections.Generic;
@@ -64,6 +65,9 @@ namespace CFoS.UI
 
                 if (gameObject.activeInHierarchy)
                     StartCoroutine(DeSelect(0.1f));
+
+                // Register Selection as Metric
+                MetricManager.Instance.RegisterTaskMetric("SelectCount", 1.0f);
             }
         }
 
