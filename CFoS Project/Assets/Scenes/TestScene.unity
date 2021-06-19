@@ -1423,6 +1423,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d07b7984271272408cfda5007ea17bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!21 &125928257
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Disc Transparent [INNER_RADIUS] (instance)
+  m_Shader: {fileID: 4800000, guid: 0736a017ee88a8741b09e7382339ab99, type: 3}
+  m_ShaderKeywords: INNER_RADIUS
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 0
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!1001 &130246293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3915,6 +3946,37 @@ Material:
     - _ZTest: 0
     m_Colors: []
   m_BuildTextureStacks: []
+--- !u!21 &361361478
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Disc Transparent [INNER_RADIUS] (instance)
+  m_Shader: {fileID: 4800000, guid: 0736a017ee88a8741b09e7382339ab99, type: 3}
+  m_ShaderKeywords: INNER_RADIUS
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 0
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!4 &363461395 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1860707455619736164, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
@@ -4376,37 +4438,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d07b7984271272408cfda5007ea17bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!21 &464554276
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Disc Transparent [INNER_RADIUS] (instance)
-  m_Shader: {fileID: 4800000, guid: 0736a017ee88a8741b09e7382339ab99, type: 3}
-  m_ShaderKeywords: INNER_RADIUS
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Floats:
-    - _StencilComp: 8
-    - _StencilID: 0
-    - _StencilOp: 0
-    - _StencilOpPass: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _ZOffsetFactor: 0
-    - _ZOffsetUnits: 0
-    - _ZTest: 0
-    m_Colors: []
-  m_BuildTextureStacks: []
 --- !u!114 &469031218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6617,37 +6648,6 @@ MonoBehaviour:
   n3: 1
   N3Min: 0
   N3Max: 2
---- !u!21 &754899252
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Disc Transparent [INNER_RADIUS] (instance)
-  m_Shader: {fileID: 4800000, guid: 0736a017ee88a8741b09e7382339ab99, type: 3}
-  m_ShaderKeywords: INNER_RADIUS
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Floats:
-    - _StencilComp: 8
-    - _StencilID: 0
-    - _StencilOp: 0
-    - _StencilOpPass: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _ZOffsetFactor: 0
-    - _ZOffsetUnits: 0
-    - _ZTest: 0
-    m_Colors: []
-  m_BuildTextureStacks: []
 --- !u!114 &755970092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8885,6 +8885,37 @@ MonoBehaviour:
   n3: 1
   N3Min: 0
   N3Max: 2
+--- !u!21 &996718980
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Disc Transparent [INNER_RADIUS] (instance)
+  m_Shader: {fileID: 4800000, guid: 0736a017ee88a8741b09e7382339ab99, type: 3}
+  m_ShaderKeywords: INNER_RADIUS
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 0
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!114 &1003305491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9134,37 +9165,6 @@ MonoBehaviour:
   n3: 1
   N3Min: 0
   N3Max: 2
---- !u!21 &1031978830
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Disc Transparent [INNER_RADIUS] (instance)
-  m_Shader: {fileID: 4800000, guid: 0736a017ee88a8741b09e7382339ab99, type: 3}
-  m_ShaderKeywords: INNER_RADIUS
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Floats:
-    - _StencilComp: 8
-    - _StencilID: 0
-    - _StencilOp: 0
-    - _StencilOpPass: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _ZOffsetFactor: 0
-    - _ZOffsetUnits: 0
-    - _ZTest: 0
-    m_Colors: []
-  m_BuildTextureStacks: []
 --- !u!1 &1034132422
 GameObject:
   m_ObjectHideFlags: 0
@@ -9433,6 +9433,37 @@ MonoBehaviour:
   n3: 1
   N3Min: 0
   N3Max: 2
+--- !u!21 &1083796278
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Disc Transparent [INNER_RADIUS] (instance)
+  m_Shader: {fileID: 4800000, guid: 0736a017ee88a8741b09e7382339ab99, type: 3}
+  m_ShaderKeywords: INNER_RADIUS
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 0
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!114 &1085186474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18216,37 +18247,6 @@ MonoBehaviour:
   n3: 1
   N3Min: 0
   N3Max: 2
---- !u!21 &1883232322
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Disc Transparent [INNER_RADIUS] (instance)
-  m_Shader: {fileID: 4800000, guid: 0736a017ee88a8741b09e7382339ab99, type: 3}
-  m_ShaderKeywords: INNER_RADIUS
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Floats:
-    - _StencilComp: 8
-    - _StencilID: 0
-    - _StencilOp: 0
-    - _StencilOpPass: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _ZOffsetFactor: 0
-    - _ZOffsetUnits: 0
-    - _ZTest: 0
-    m_Colors: []
-  m_BuildTextureStacks: []
 --- !u!114 &1889452162 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1154505495507090420, guid: c803e3841213e5e48a87db00cf423554, type: 3}
@@ -22801,7 +22801,7 @@ PrefabInstance:
     - target: {fileID: 185595914130789244, guid: c803e3841213e5e48a87db00cf423554, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 464554276}
+      objectReference: {fileID: 996718980}
     - target: {fileID: 185595914328184112, guid: c803e3841213e5e48a87db00cf423554, type: 3}
       propertyPath: m_InteractionManager
       value: 
@@ -22973,7 +22973,7 @@ PrefabInstance:
     - target: {fileID: 1154505497110388919, guid: c803e3841213e5e48a87db00cf423554, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1031978830}
+      objectReference: {fileID: 361361478}
     - target: {fileID: 2019855757431161379, guid: c803e3841213e5e48a87db00cf423554, type: 3}
       propertyPath: m_InteractionManager
       value: 
@@ -24393,7 +24393,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
       propertyPath: Metrics.Array.size
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
       propertyPath: Metrics.Array.data[2].Name
@@ -24404,11 +24404,59 @@ PrefabInstance:
       value: SlideTime
       objectReference: {fileID: 0}
     - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
+      propertyPath: Metrics.Array.data[4].Name
+      value: AverageTranslationH
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
+      propertyPath: Metrics.Array.data[5].Name
+      value: AverageTranslationL
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
+      propertyPath: Metrics.Array.data[6].Name
+      value: AverageTranslationR
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
+      propertyPath: Metrics.Array.data[7].Name
+      value: AverageRotationH
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
+      propertyPath: Metrics.Array.data[8].Name
+      value: AverageRotationR
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
+      propertyPath: Metrics.Array.data[9].Name
+      value: AverageRotationL
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
       propertyPath: Metrics.Array.data[2].enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
       propertyPath: Metrics.Array.data[3].enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
+      propertyPath: Metrics.Array.data[4].enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
+      propertyPath: Metrics.Array.data[5].enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
+      propertyPath: Metrics.Array.data[6].enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
+      propertyPath: Metrics.Array.data[7].enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
+      propertyPath: Metrics.Array.data[8].enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
+      propertyPath: Metrics.Array.data[9].enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
@@ -24418,6 +24466,30 @@ PrefabInstance:
     - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
       propertyPath: Metrics.Array.data[3].UpdateMethod
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
+      propertyPath: Metrics.Array.data[4].UpdateMethod
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
+      propertyPath: Metrics.Array.data[5].UpdateMethod
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
+      propertyPath: Metrics.Array.data[6].UpdateMethod
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
+      propertyPath: Metrics.Array.data[7].UpdateMethod
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
+      propertyPath: Metrics.Array.data[8].UpdateMethod
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860707455619736163, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
+      propertyPath: Metrics.Array.data[9].UpdateMethod
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1860707455619736164, guid: 3d83910ac08cd5744a530b0e03d87462, type: 3}
       propertyPath: m_RootOrder
