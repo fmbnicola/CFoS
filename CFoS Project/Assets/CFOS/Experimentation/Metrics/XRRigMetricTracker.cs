@@ -46,35 +46,35 @@ namespace CFoS.Experimentation
         protected void RegisterDiffs()
         {
             // Translation
-            var translationH = Vector3.Distance(head.position, HeadLastPos);
+            var translationH = Vector3.Distance(head.localPosition, HeadLastPos);
             MetricManager.Instance.RegisterTaskMetric("AverageTranslationH", translationH);
 
-            var translationL = Vector3.Distance(leftHand.position, LeftHandLastPos);
+            var translationL = Vector3.Distance(leftHand.localPosition, LeftHandLastPos);
             MetricManager.Instance.RegisterTaskMetric("AverageTranslationL", translationL);
 
-            var translationR = Vector3.Distance(rightHand.position, RightHandLastPos);
+            var translationR = Vector3.Distance(rightHand.localPosition, RightHandLastPos);
             MetricManager.Instance.RegisterTaskMetric("AverageTranslationR", translationR);
 
             // Rotation
-            var rotationH = Quaternion.Angle(head.rotation, HeadLastRot);
+            var rotationH = Quaternion.Angle(head.localRotation, HeadLastRot);
             MetricManager.Instance.RegisterTaskMetric("AverageRotationH", rotationH);
 
-            var rotationL = Quaternion.Angle(leftHand.rotation, LeftHandLastRot);
+            var rotationL = Quaternion.Angle(leftHand.localRotation, LeftHandLastRot);
             MetricManager.Instance.RegisterTaskMetric("AverageRotationL", rotationL);
 
-            var rotationR = Quaternion.Angle(rightHand.rotation, RightHandLastRot);
+            var rotationR = Quaternion.Angle(rightHand.localRotation, RightHandLastRot);
             MetricManager.Instance.RegisterTaskMetric("AverageRotationR", rotationR);
         }
 
         protected void UpdateLastVals()
         {
-            HeadLastPos = head.position;
-            LeftHandLastPos = leftHand.position;
-            RightHandLastPos = rightHand.position;
+            HeadLastPos         = head.localPosition;
+            LeftHandLastPos     = leftHand.localPosition;
+            RightHandLastPos    = rightHand.localPosition;
 
-            HeadLastRot = head.rotation;
-            LeftHandLastRot = leftHand.rotation;
-            RightHandLastRot = rightHand.rotation;
+            HeadLastRot         = head.localRotation;
+            LeftHandLastRot     = leftHand.localRotation;
+            RightHandLastRot    = rightHand.localRotation;
         }
     }
 }

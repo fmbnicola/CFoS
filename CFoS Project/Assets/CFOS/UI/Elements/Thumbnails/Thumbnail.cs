@@ -9,6 +9,8 @@ namespace CFoS.UI
 {
     public class Thumbnail : UIElement
     {
+        public AudioClip ClickAudio;
+
         [Header("Renderer")]
         public Supershape2DRenderer Renderer;
         public Supershape2D Supershape { get; private set; }
@@ -31,8 +33,10 @@ namespace CFoS.UI
         public Vector3Int Index = Vector3Int.zero;
 
         // Init
-        void Awake()
+        protected void Awake()
         {
+            base.Awake();
+
             Renderer.Supershape = ScriptableObject.CreateInstance<Supershape2D>();
             Supershape = Renderer.Supershape;
         }
@@ -62,6 +66,9 @@ namespace CFoS.UI
             {
                 // Evoke select function and Schedule Deselect
                 SelectFunction(this);
+
+                // Play audio
+                UIManager.Instance.PlaySound(ClickAudio);
 
                 if (gameObject.activeInHierarchy)
                     StartCoroutine(DeSelect(0.1f));

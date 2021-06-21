@@ -7,6 +7,7 @@ namespace CFoS.UI
     {
     public class UIButtonHold : UIButton
     {
+        public AudioClip FinishAudio;
 
         [Header("HoldBar")]
         public Shapes.Rectangle HoldBar;
@@ -35,13 +36,24 @@ namespace CFoS.UI
             HoldBar.Color = HoldBarColor.Value;
         }
 
-        public override void Awake()
+        protected override void Awake()
         {
             base.Awake();
 
             // HoldBar Animation
             animProgress = 0.0f;
             HoldBar.Width = 0.0f;
+
+            // Audio
+            ButtonStartHoldEvent.AddListener(() =>
+            {
+                UIManager.Instance.PlaySound(ClickAudio);
+            });
+            ButtonClickEvent.RemoveAllListeners();
+            ButtonClickEvent.AddListener(() =>
+            {
+                UIManager.Instance.PlaySound(FinishAudio);
+            });
         }
 
         public override void Update()

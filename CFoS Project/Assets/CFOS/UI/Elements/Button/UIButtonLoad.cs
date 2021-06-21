@@ -6,6 +6,9 @@ namespace CFoS.UI
     {
     public class UIButtonLoad : UIButton
     {
+        public AudioClip FailureAudio;
+        public AudioClip SuccessAudio;
+
         [Header("Icons")]
         public Shapes.ShapeRenderer LoadIcon;
         public Data.ColorVariable LoadIconColor;
@@ -46,7 +49,7 @@ namespace CFoS.UI
             FailureIcon2.Color = FailureIconColor.Value;
         }
 
-        public override void Awake()
+        protected override void Awake()
         {
             base.Awake();
 
@@ -54,6 +57,16 @@ namespace CFoS.UI
             ResetState();
 
             ButtonClickEvent.AddListener(Load);
+
+            // Sound
+            ButtonSuccessEvent.AddListener(() =>
+            {
+                UIManager.Instance.PlaySound(SuccessAudio);
+            });
+            ButtonFailureEvent.AddListener(() =>
+            {
+                UIManager.Instance.PlaySound(FailureAudio);
+            });
         }
 
 

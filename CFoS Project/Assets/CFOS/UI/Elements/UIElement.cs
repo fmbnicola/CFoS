@@ -17,7 +17,16 @@ namespace CFoS.UI
         protected bool selected = false;
         public bool disabled = false;
 
+        // Audio
+        [Header("Audio")]
+        public AudioClip HoverAudio;
+
+
         // Set Initial properties
+        protected virtual void Awake()
+        {
+        }
+
         [ExecuteAlways]
         protected abstract void OnValidate();
 
@@ -83,6 +92,9 @@ namespace CFoS.UI
 
                 // and hook delegates
                 HookController(controller);
+
+                // Play sound
+                UIManager.Instance.PlaySound(HoverAudio);
             }
         }
         

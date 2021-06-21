@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 834069823929821360}
   - component: {fileID: 4356468815816689786}
   m_Layer: 5
-  m_Name: ThumbnailAsset
+  m_Name: Thumbnail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,6 +367,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Interactable: {fileID: 834069823929821360}
   disabled: 0
+  HoverAudio: {fileID: 8300000, guid: f1075fee27453794e8130e1b6619963e, type: 3}
+  ClickAudio: {fileID: 8300000, guid: ffdaf492cc8d49f46b7b08fef4ca51a4, type: 3}
   Renderer: {fileID: 3215424248692863421}
   Selection: {fileID: 8918255818828144536}
   SelectionHoverColor: {fileID: 11400000, guid: 6edde36debd85114aaeac5d4ef74fc96, type: 2}

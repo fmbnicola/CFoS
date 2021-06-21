@@ -270,6 +270,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Interactable: {fileID: 8416876259819971430}
   disabled: 0
+  HoverAudio: {fileID: 8300000, guid: 31aa894950ca72e4590690de157fed73, type: 3}
+  ClickAudio: {fileID: 8300000, guid: 847b98ec3032e4c47a5e663b6220c30f, type: 3}
   CheckedElement: {fileID: 8416876261406791518}
   UncheckedElement: {fileID: 8416876261228811795}
   ElementNormalColor: {fileID: 11400000, guid: 7e3ef38f6ce91a24cad46591c30cad91, type: 2}

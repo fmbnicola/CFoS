@@ -10,6 +10,9 @@ namespace CFoS.UI
 {
     public class UISlider3D : UIElement
     {
+        public AudioClip GrabAudio;
+        public AudioClip ReleaseAudio;
+
         [Header("Handle")]
         public UISliderHandleCube Handle;
        
@@ -76,8 +79,10 @@ namespace CFoS.UI
             ForceValueUpdate();
         }
 
-        protected virtual void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             oldValue = Value;
         }
 
@@ -95,6 +100,12 @@ namespace CFoS.UI
 
                 // Register selection as metric
                 MetricManager.Instance.RegisterTaskMetric("SelectCount", 1.0f);
+
+                UIManager.Instance.PlaySound(GrabAudio);
+            }
+            else
+            {
+                UIManager.Instance.PlaySound(ReleaseAudio);
             }
         }
 
