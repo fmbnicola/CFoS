@@ -1,11 +1,14 @@
+using CFoS.Experimentation;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace CFoS.UI
-    {
+{
+    
     public class UIButton : UIElement
     {
+        public AudioClip ClickAudio;
 
         [Header("Element")]
         public Shapes.ShapeRenderer Element;
@@ -41,14 +44,22 @@ namespace CFoS.UI
             Text.color = TextNormalColor.Value;
         }
 
-        public virtual void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             // Offsets
             normalOffsetAmmount = Element.transform.localPosition.z; ;
             hoverOffsetAmmount = normalOffsetAmmount * 0.2f;
 
             textOffset = Text.transform.localPosition.z - normalOffsetAmmount;
             offset = normalOffsetAmmount;
+
+            // Audio
+            ButtonClickEvent.AddListener(() =>
+            {
+                UIManager.Instance.PlaySound(ClickAudio);
+            });
         }
 
         public virtual void Update()

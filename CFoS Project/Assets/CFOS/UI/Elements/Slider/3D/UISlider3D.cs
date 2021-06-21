@@ -1,3 +1,4 @@
+using CFoS.Experimentation;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,11 @@ namespace CFoS.UI
 {
     public class UISlider3D : UIElement
     {
+        public AudioClip GrabAudio;
+        public AudioClip ReleaseAudio;
+
         [Header("Handle")]
-        public UISliderHandleSphere Handle;
+        public UISliderHandleCube Handle;
        
         [Header("Track")]
         public Transform Track;
@@ -32,8 +36,11 @@ namespace CFoS.UI
 
         [Header("Variables")]
         public string StringFormat = "0.00";
+
         public Vector3 Value = new Vector3(0,0,0);
         protected Vector3 oldValue;
+        protected Vector3 defaultValue;
+
         public float XMin = 0.0f;
         public float XMax = 1.0f;
         public float YMin = 0.0f;
@@ -75,9 +82,12 @@ namespace CFoS.UI
             ForceValueUpdate();
         }
 
-        protected virtual void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             oldValue = Value;
+            defaultValue = Value;
         }
 
 
@@ -91,6 +101,15 @@ namespace CFoS.UI
                 // save local offset from controller to handle
                 var handlePos = Handle.transform.position;
                 selectOffset = controller.transform.InverseTransformPoint(handlePos);
+
+                // Register selection as metric
+                MetricManager.Instance.RegisterTaskMetric("SelectCount", 1.0f);
+
+                UIManager.Instance.PlaySound(GrabAudio);
+            }
+            else
+            {
+                UIManager.Instance.PlaySound(ReleaseAudio);
             }
         }
 
@@ -206,6 +225,12 @@ namespace CFoS.UI
             ValueChangedEvent.Invoke();
         }
 
+        public virtual void ResetValue()
+        {
+            Value = defaultValue;
+            ForceValueUpdate();
+        }
+
         protected virtual void Update()
         {
             VisualUpdate();
@@ -223,6 +248,9 @@ namespace CFoS.UI
                 if(Value != oldValue)
                 {
                     ForceValueUpdate();
+
+                    // Register Value change as metric
+                    MetricManager.Instance.RegisterTaskMetric("SlideTime", Time.deltaTime);
                 }
             }
             // If not selecting, value changes handle position

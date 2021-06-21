@@ -6,6 +6,7 @@ using static UnityEngine.InputSystem.InputAction;
 
 namespace CFoS.UI
 {
+    [RequireComponent(typeof(AudioSource))]
     public class UIManager : MonoBehaviour
     {
         public static UIManager Instance { get; private set; }
@@ -31,6 +32,8 @@ namespace CFoS.UI
             get => menuAction;
             set => SetInputActionProperty(ref menuAction, value);
         }
+
+        protected AudioSource AudioSource;
 
         void SetInputActionProperty(ref InputActionProperty property, InputActionProperty value)
         {
@@ -64,6 +67,8 @@ namespace CFoS.UI
             {
                 Instance = this;
             }
+
+            AudioSource = GetComponent<AudioSource>();
 
             menuAction.action.performed += ToggleMainMenu;
         }
@@ -130,6 +135,17 @@ namespace CFoS.UI
             if(menu != null) menu.CloseMenu();
 
             menuInstance = null;
+        }
+
+        public void PlaySound(AudioClip clip)
+        {
+            // audio pitch
+            var volume = 1.0f - (Random.Range(-0.1f, 0.1f));
+            var pitch  = 1.0f - (Random.Range(-0.1f, 0.1f));
+
+            AudioSource.volume = volume;
+            AudioSource.pitch = pitch;
+            AudioSource.PlayOneShot(clip);
         }
     }
 }

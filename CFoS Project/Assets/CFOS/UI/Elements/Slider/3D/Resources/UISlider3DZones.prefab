@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Interactable: {fileID: 3565954016776353300}
   disabled: 0
+  HoverAudio: {fileID: 8300000, guid: f1075fee27453794e8130e1b6619963e, type: 3}
+  GrabAudio: {fileID: 8300000, guid: 3b9fd33a3ee8ff34a82a937147758401, type: 3}
+  ReleaseAudio: {fileID: 8300000, guid: 26a3ab6e8fd8fb848b2c1b2212d19360, type: 3}
   Handle: {fileID: 3565954015831315189}
   Track: {fileID: 3565954016056475894}
   RangeXMinText: {fileID: 3565954015010577801}
@@ -28,7 +31,7 @@ MonoBehaviour:
   ZText: {fileID: 3565954014908633227}
   TextColor: {fileID: 11400000, guid: a6f01b11dc9532e419e6551821c28e9c, type: 2}
   StringFormat: 0.00
-  Value: {x: 0, y: 0, z: 0}
+  Value: {x: 0.25, y: 0.25, z: 0.25}
   XMin: 0
   XMax: 1
   YMin: 0

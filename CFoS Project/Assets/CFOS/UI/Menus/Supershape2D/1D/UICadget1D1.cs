@@ -18,6 +18,12 @@ namespace CFoS.UI.Menus
         {
             // Render Update
             Slider.ValueChangedEvent.AddListener(ValueChange);
+            ValueChange();
+        }
+
+        public  override void ResetMenu()
+        {
+            Slider.ResetValue();
         }
 
         protected virtual void ValueChange()

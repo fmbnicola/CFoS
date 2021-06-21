@@ -18,7 +18,7 @@ MonoBehaviour:
   HandleNormalColor: {fileID: 11400000, guid: 9704baa2edcf40149906bc2093829163, type: 2}
   HandleHoverColor: {fileID: 11400000, guid: e9a4b3b8bdd85184eac2573f6b9bf201, type: 2}
   HandleSelectColor: {fileID: 11400000, guid: 47d71db28377b1d45b73a585b0740c81, type: 2}
-  HandleOutline: {fileID: 4217195199206598214}
+  HandleOutline: {fileID: 1934138380196603412}
   HandleOutlineNormalColor: {fileID: 11400000, guid: 1439b32c2a3b6a0409c4a51d0bcb5df1, type: 2}
   HandleOutlineHoverColor: {fileID: 11400000, guid: 169e74c7f8773dd4c8f6436b767e9efa, type: 2}
   HandleText: {fileID: 4217195199382157027}
@@ -329,17 +329,11 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 3565954015831315191, guid: 86e0762f9dff4bf42868141caaba6b7e, type: 3}
   m_PrefabInstance: {fileID: 863192461093871919}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4217195199206598214 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3565954016745260905, guid: 86e0762f9dff4bf42868141caaba6b7e, type: 3}
+--- !u!23 &1934138380196603412 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1237887793214703419, guid: 86e0762f9dff4bf42868141caaba6b7e, type: 3}
   m_PrefabInstance: {fileID: 863192461093871919}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08f210828086c1a4398856e1ba65627c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4217195199382157027 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3565954016920491980, guid: 86e0762f9dff4bf42868141caaba6b7e, type: 3}

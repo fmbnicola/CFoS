@@ -19,7 +19,7 @@ namespace CFoS.UI.Menus
             // Update Mini-map Thumbnails
             Slider.ValueChangedEvent.AddListener(UpdateMinimapThumbnails);
 
-            var scalableHandle = (UISliderHandleSphereScalable) Slider.Handle;
+            var scalableHandle = (UISliderHandleCubeScalable) Slider.Handle;
             scalableHandle.SizeChangedEvent.AddListener(UpdateMinimapThumbnails);
             InitMinimapThumbnails();
         }

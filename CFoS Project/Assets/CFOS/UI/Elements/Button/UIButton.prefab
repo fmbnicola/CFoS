@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blendMode: 0
   scaleMode: 1
-  color: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 1}
+  color: {r: 0.2901961, g: 0.2901961, b: 0.2901961, a: 1}
   detailLevel: 2
   zTest: 4
   zOffsetFactor: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   thickness: 0.1
 --- !u!33 &4362093998955562545
 MeshFilter:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -74,7 +74,7 @@ MeshFilter:
   m_Mesh: {fileID: 43100795730674332, guid: a3d1f56cebf202c448b6fb479f61a9dc, type: 2}
 --- !u!23 &4362093998955562546
 MeshRenderer:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -436,6 +436,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Interactable: {fileID: 6067194605720534096}
+  disabled: 0
+  HoverAudio: {fileID: 8300000, guid: 31aa894950ca72e4590690de157fed73, type: 3}
+  ClickAudio: {fileID: 8300000, guid: 847b98ec3032e4c47a5e663b6220c30f, type: 3}
   Element: {fileID: 4362093998955562544}
   ElementNormalColor: {fileID: 11400000, guid: 7e3ef38f6ce91a24cad46591c30cad91, type: 2}
   ElementHoverColor: {fileID: 11400000, guid: b70e6c5f8d0a00f4c82141bee5f3010c, type: 2}

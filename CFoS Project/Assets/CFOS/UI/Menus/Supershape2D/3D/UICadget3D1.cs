@@ -22,6 +22,17 @@ namespace CFoS.UI.Menus
             SliderN1.ValueChangedEvent.AddListener(ValueChangeN1);
             SliderN2.ValueChangedEvent.AddListener(ValueChangeN2);
             SliderN3.ValueChangedEvent.AddListener(ValueChangeN3);
+
+            ValueChangeN1();
+            ValueChangeN2();
+            ValueChangeN3();
+        }
+
+        public override void ResetMenu()
+        {
+            SliderN1.ResetValue();
+            SliderN2.ResetValue();
+            SliderN3.ResetValue();
         }
 
         protected virtual void ValueChangeN1()

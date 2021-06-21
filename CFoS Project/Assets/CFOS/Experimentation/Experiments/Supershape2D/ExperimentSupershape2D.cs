@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using CFoS.Data;
 using CFoS.Supershape;
+using CFoS.UI;
 
 namespace CFoS.Experimentation
 {
     [System.Serializable]
     public class ExperimentSupershape2D : Experiment 
     {
+        [Header("Renderers")]
         public Supershape2DRenderer StartingRenderer;
         public Supershape2DRenderer TargetRenderer;
 
@@ -23,10 +25,7 @@ namespace CFoS.Experimentation
                 return;
             }
 
-            var startingSupershape = ScriptableObject.CreateInstance<Supershape2D>();
-            startingSupershape.SetData(task.StartingSupershape.GetData());
-            StartingRenderer.Supershape = startingSupershape;
-
+            StartingRenderer.Supershape.SetData(task.StartingSupershape.GetData());
             TargetRenderer.Supershape = task.TargetSupershape;
 
             // Init Metrics
@@ -39,6 +38,13 @@ namespace CFoS.Experimentation
         public override void EndTask()
         {
             base.EndTask();
+
+            // Reset Menus
+            var menus = GetComponentsInChildren<UIMenu>();
+            foreach(var menu in menus)
+            {
+                menu.ResetMenu();
+            }
 
             // Register Metrics
             var metricManager = MetricManager.Instance;

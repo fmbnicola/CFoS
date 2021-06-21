@@ -164,5 +164,19 @@ namespace CFoS.Supershape
 
             return a + b + n1 + n2 + n3 + m;
         }
+
+        public static float CalculateGreatestValue(Supershape2D s)
+        {
+            float maxVal = 0.0f;
+
+            float maxTheta  = (2 * Mathf.PI) / s.M;
+            float increment = maxTheta / 100.0f;
+            for (float theta = 0.0f; theta < maxTheta; theta += increment)
+            {
+                var val = s.GetValue(theta);
+                if(val > maxVal) maxVal = val;
+            }
+            return maxVal;
+        }
     }
 }

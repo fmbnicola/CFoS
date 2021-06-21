@@ -6,6 +6,9 @@ namespace CFoS.UI
     {
     public class UIButtonLoad : UIButton
     {
+        public AudioClip FailureAudio;
+        public AudioClip SuccessAudio;
+
         [Header("Icons")]
         public Shapes.ShapeRenderer LoadIcon;
         public Data.ColorVariable LoadIconColor;
@@ -40,13 +43,13 @@ namespace CFoS.UI
         {
             base.OnValidate();
 
-            LoadIcon.Color    = LoadIconColor.Value;
-            SuccessIcon.Color = SuccessIconColor.Value;
+            LoadIcon.Color     = LoadIconColor.Value;
+            SuccessIcon.Color  = SuccessIconColor.Value;
             FailureIcon1.Color = FailureIconColor.Value;
             FailureIcon2.Color = FailureIconColor.Value;
         }
 
-        public override void Awake()
+        protected override void Awake()
         {
             base.Awake();
 
@@ -54,6 +57,16 @@ namespace CFoS.UI
             ResetState();
 
             ButtonClickEvent.AddListener(Load);
+
+            // Sound
+            ButtonSuccessEvent.AddListener(() =>
+            {
+                UIManager.Instance.PlaySound(SuccessAudio);
+            });
+            ButtonFailureEvent.AddListener(() =>
+            {
+                UIManager.Instance.PlaySound(FailureAudio);
+            });
         }
 
 
@@ -81,9 +94,9 @@ namespace CFoS.UI
                 }
 
                 // animation
-                var rotation = LoadIcon.transform.rotation.eulerAngles;
+                var rotation = LoadIcon.transform.localEulerAngles;
                 rotation.z += LoadIconSpeed * Time.deltaTime;
-                LoadIcon.transform.rotation = Quaternion.Euler(rotation);
+                LoadIcon.transform.localRotation = Quaternion.Euler(rotation);
 
                 // update based on loading function
                 var loadResult = LoadingFunction();
@@ -123,7 +136,7 @@ namespace CFoS.UI
             SuccessIcon.enabled = false;
             FailureIcon1.enabled = true;
             FailureIcon2.enabled = true;
-            LoadIcon.transform.rotation = Quaternion.identity;
+            LoadIcon.transform.localRotation= Quaternion.identity;
             Text.text = FailureMessage;
         }
 
@@ -139,7 +152,7 @@ namespace CFoS.UI
             SuccessIcon.enabled = true;
             FailureIcon1.enabled = false;
             FailureIcon2.enabled = false;
-            LoadIcon.transform.rotation = Quaternion.identity;
+            LoadIcon.transform.localRotation = Quaternion.identity;
             Text.text = SuccessMessage;
         }
 

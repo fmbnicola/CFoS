@@ -6,6 +6,8 @@ namespace CFoS.UI
 {
     public class UIToggle : UIElement
     {
+        public AudioClip ClickAudio;
+
         [Header("Element")]
         public Shapes.ShapeRenderer CheckedElement;
         public Shapes.ShapeRenderer UncheckedElement;
@@ -63,12 +65,24 @@ namespace CFoS.UI
             Text.color = TextColor.Value;
         }
 
-        public void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             if (StartState == ToggleState.Checked) CheckedInit();
             else if (StartState == ToggleState.Unchecked) UncheckedInit();
 
             Outline.gameObject.SetActive(false);
+
+            // Audio
+            ToggleCheckedEvent.AddListener(() =>
+            {
+                UIManager.Instance.PlaySound(ClickAudio);
+            });
+            ToggleUncheckedEvent.AddListener(() =>
+            {
+                UIManager.Instance.PlaySound(ClickAudio);
+            });
         }
 
 
@@ -83,12 +97,12 @@ namespace CFoS.UI
                 // Callback
                 if (state == ToggleState.Checked)
                 {
-                    ToggleCheckedEvent.Invoke();
+                    ToggleUncheckedEvent.Invoke();
                     UncheckedInit();
                 }
                 else if (state == ToggleState.Unchecked)
                 {
-                    ToggleUncheckedEvent.Invoke();
+                    ToggleCheckedEvent.Invoke();
                     CheckedInit();
                 }
 

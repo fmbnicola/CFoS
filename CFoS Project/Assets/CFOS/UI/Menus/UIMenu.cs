@@ -2,6 +2,7 @@ using CFoS.Experimentation;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CFoS.UI
 {
@@ -62,6 +63,8 @@ namespace CFoS.UI
             OpenSubMenu(subMenuObj);
         }
 
+        // Reset
+        public virtual void ResetMenu() { }
 
         // Close menu
         public void CloseMenu()
@@ -97,7 +100,6 @@ namespace CFoS.UI
             CloseMenu();
         }
 
-
         // Load Experiment
         public void LoadExperiment(string experimentName)
         {
@@ -120,6 +122,18 @@ namespace CFoS.UI
         public void NextTask()
         {
             ExperimentManager.Instance.NextTask();
+        }
+
+
+        //General
+        public void RestartApp()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        public void ExitApp()
+        {
+            Application.Quit();
         }
     }
 }

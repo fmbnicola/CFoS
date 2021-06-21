@@ -18,6 +18,11 @@ namespace CFoS.Experimentation
         [HideInInspector]
         public int loadedExperimentIndex = -1;
 
+        [Header("Randomization")]
+        public bool RandomizeExperimentOrder = false;
+        public int RandomizeStartIndex = 0;
+        public int RandomizeEndIndex = 0;
+
         void Awake()
         {
             if (Instance != null && Instance != this)
@@ -33,18 +38,58 @@ namespace CFoS.Experimentation
 
         private void Start()
         {
+            // Randomize Experiment Order
+            if(RandomizeExperimentOrder)
+                ExtensionMethods.Shuffle(Experiments, RandomizeStartIndex, RandomizeEndIndex);
+
+            // Randomize Task Order
+            foreach(var experiment in Experiments)
+            {
+                if (experiment.RandomizeTaskOrder)
+                    ExtensionMethods.Shuffle(experiment.Tasks);
+            }
+
+            // Save Experiment and Task order
+            SaveTaskOrder();
+
+            // Init
             if (!LoadOnStart) return;
             LoadExperiment(0);
         }
+
+        // Save task order
+        public void SaveTaskOrder()
+        {
+            var data = new SaveData.SaveData();
+
+            var key = "ExperimentOrder";
+            var value = "";
+
+            for(int i = RandomizeStartIndex; i <= RandomizeEndIndex; i++)
+            {
+                var exp = Experiments[i];
+                value += exp.name + ",";
+
+                foreach(var task in exp.Tasks)
+                {
+                    value += task.name + ",";
+                }
+            }
+            data.Add(key, value);
+
+            var sameManager = SaveData.SaveManager.Instance;
+            sameManager.SaveData(data);
+        }
+
 
         // Experiments
         public void Refresh()
         {
             Experiments = new List<Experiment>();
-            foreach(Transform child in transform)
+            foreach (Transform child in transform)
             {
                 var exp = child.GetComponent<Experiment>();
-                if(exp && exp.Included) Experiments.Add(exp);
+                if (exp && exp.Included) Experiments.Add(exp);
             }
         }
 
@@ -67,7 +112,7 @@ namespace CFoS.Experimentation
             {
                 Debug.Log(exp.name);
 
-                if(exp.name.Equals(experimentName) && exp.Included)
+                if (exp.name.Equals(experimentName) && exp.Included)
                 {
                     LoadedExperiment = exp;
                     loadedExperimentIndex = index;
@@ -121,7 +166,7 @@ namespace CFoS.Experimentation
         // Tasks
         public void NextTask()
         {
-            if(LoadedExperiment != null)
+            if (LoadedExperiment != null)
             {
                 LoadedExperiment.NextTask();
             }

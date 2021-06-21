@@ -9,8 +9,11 @@ namespace CFoS.Interaction
     public class HandInteractorManager : MonoBehaviour
     {
         public Grabber Grabber;
+        public bool GrabberEnabled = true;
 
+        [Space(10)]
         public Pointer Pointer;
+        public bool PointerEnabled = true;
 
         public enum InteractorState { GrabberMode, PointerMode };
         private InteractorState state;
@@ -45,7 +48,7 @@ namespace CFoS.Interaction
         {
             Grabber.Activate(true);
             Grabber.Hover(false);
-
+  
             state = InteractorState.GrabberMode;
         }
 
@@ -66,7 +69,7 @@ namespace CFoS.Interaction
         {
             Pointer.Activate(true);
             Pointer.Hover(false);
-
+           
             state = InteractorState.PointerMode;
         }
 
@@ -99,6 +102,10 @@ namespace CFoS.Interaction
                     }
                     break;
             }
+
+            // Disable Grabber or Pointer
+            if (!GrabberEnabled) Grabber.Activate(false);
+            if (!PointerEnabled) Pointer.Activate(false);
         }
     }
 }

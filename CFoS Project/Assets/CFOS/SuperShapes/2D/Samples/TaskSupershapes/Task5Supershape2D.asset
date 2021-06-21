@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9961e8264da3614c9c12d94f7572513, type: 3}
+  m_Name: Task5Supershape2D
+  m_EditorClassIdentifier: 
+  Lock: 1
+  a: 1
+  AMin: 0
+  AMax: 1
+  b: 1
+  BMin: 0
+  BMax: 1
+  m: 4
+  MMin: 0
+  MMax: 50
+  n1: 10
+  N1Min: 0
+  N1Max: 50
+  n2: 25.47
+  N2Min: 0
+  N2Max: 50
+  n3: 25.47
+  N3Min: 0
+  N3Max: 50

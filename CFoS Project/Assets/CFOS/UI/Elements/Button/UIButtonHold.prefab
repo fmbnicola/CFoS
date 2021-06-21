@@ -127,6 +127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Interactable: {fileID: 2615532240067455296}
   disabled: 0
+  HoverAudio: {fileID: 8300000, guid: 31aa894950ca72e4590690de157fed73, type: 3}
+  ClickAudio: {fileID: 8300000, guid: 847b98ec3032e4c47a5e663b6220c30f, type: 3}
   Element: {fileID: 5545752545629180704}
   ElementNormalColor: {fileID: 11400000, guid: 7e3ef38f6ce91a24cad46591c30cad91, type: 2}
   ElementHoverColor: {fileID: 11400000, guid: b70e6c5f8d0a00f4c82141bee5f3010c, type: 2}
@@ -151,9 +153,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  FinishAudio: {fileID: 8300000, guid: ee888ecd663e4924c9cfb1ef3c328dbf, type: 3}
   HoldBar: {fileID: 1159955041}
   HoldBarColor: {fileID: 11400000, guid: 6edde36debd85114aaeac5d4ef74fc96, type: 2}
-  HoldTime: 2
+  HoldTime: 1
   ButtonStartHoldEvent:
     m_PersistentCalls:
       m_Calls:

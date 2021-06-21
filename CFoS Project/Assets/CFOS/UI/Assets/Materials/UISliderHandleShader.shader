@@ -2377,9 +2377,9 @@ Shader "UISliderHandleShader"
 }
 /*ASEBEGIN
 Version=18900
--13;296;1906;910;953;455;1;True;False
+1920;85;1906;880;953;440;1;True;False
 Node;AmplifyShaderEditor.RangedFloatNode;12;-408,42;Inherit;False;Property;_Emission;Emission;1;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.ColorNode;9;-464,-229;Inherit;False;InstancedProperty;_HandleColor;HandleColor;0;0;Create;True;0;0;0;False;0;False;0,0,0,0;0.990566,0.07943217,0.07943217,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ColorNode;9;-464,-229;Inherit;False;InstancedProperty;_HandleColor;HandleColor;0;0;Create;True;0;0;0;False;0;False;0,0,0,0;0.4150943,0.4150943,0.4150943,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.RangedFloatNode;11;-204,150;Inherit;False;Property;_Metalic;Metalic;2;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;10;-205,229;Inherit;False;Property;_Smoothness;Smoothness;3;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;13;-209,2;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
@@ -2398,4 +2398,4 @@ WireConnection;1;2;13;0
 WireConnection;1;3;11;0
 WireConnection;1;4;10;0
 ASEEND*/
-//CHKSM=31BB46D232A3B90C9ECF3B8F5002F919B28305DD
+//CHKSM=687E6D5545A213D9667EDB5D58482F478383656F
