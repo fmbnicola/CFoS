@@ -25,10 +25,7 @@ namespace CFoS.Experimentation
                 return;
             }
 
-            var startingSupershape = ScriptableObject.CreateInstance<Supershape2D>();
-            startingSupershape.SetData(task.StartingSupershape.GetData());
-            StartingRenderer.Supershape = startingSupershape;
-
+            StartingRenderer.Supershape.SetData(task.StartingSupershape.GetData());
             TargetRenderer.Supershape = task.TargetSupershape;
 
             // Init Metrics

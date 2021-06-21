@@ -19,7 +19,6 @@ namespace CFoS.UI.Menus
             base.Start();
 
             // Render
-            //Slider.ValueChangedEvent.AddListener(ValueChange);
             Renderer.Supershape.OnUpdate += UpdateThumbnails;
 
             // Thumbnails
