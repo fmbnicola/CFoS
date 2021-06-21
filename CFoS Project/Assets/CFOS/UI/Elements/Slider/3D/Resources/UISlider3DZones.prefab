@@ -31,7 +31,7 @@ MonoBehaviour:
   ZText: {fileID: 3565954014908633227}
   TextColor: {fileID: 11400000, guid: a6f01b11dc9532e419e6551821c28e9c, type: 2}
   StringFormat: 0.00
-  Value: {x: 0, y: 0, z: 0}
+  Value: {x: 0.25, y: 0.25, z: 0.25}
   XMin: 0
   XMax: 1
   YMin: 0

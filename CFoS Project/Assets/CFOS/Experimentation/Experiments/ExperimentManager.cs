@@ -42,9 +42,45 @@ namespace CFoS.Experimentation
             if(RandomizeExperimentOrder)
                 ExtensionMethods.Shuffle(Experiments, RandomizeStartIndex, RandomizeEndIndex);
 
+            // Randomize Task Order
+            foreach(var experiment in Experiments)
+            {
+                if (experiment.RandomizeTaskOrder)
+                    ExtensionMethods.Shuffle(experiment.Tasks);
+            }
+
+            // Save Experiment and Task order
+            SaveTaskOrder();
+
+            // Init
             if (!LoadOnStart) return;
             LoadExperiment(0);
         }
+
+        // Save task order
+        public void SaveTaskOrder()
+        {
+            var data = new SaveData.SaveData();
+
+            var key = "ExperimentOrder";
+            var value = "";
+
+            for(int i = RandomizeStartIndex; i <= RandomizeEndIndex; i++)
+            {
+                var exp = Experiments[i];
+                value += exp.name + ",";
+
+                foreach(var task in exp.Tasks)
+                {
+                    value += task.name + ",";
+                }
+            }
+            data.Add(key, value);
+
+            var sameManager = SaveData.SaveManager.Instance;
+            sameManager.SaveData(data);
+        }
+
 
         // Experiments
         public void Refresh()

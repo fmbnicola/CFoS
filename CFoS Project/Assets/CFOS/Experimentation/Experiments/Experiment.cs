@@ -27,10 +27,6 @@ namespace CFoS.Experimentation
         {
             Debug.Log("Experiment " + name + " Init." );
 
-            //Randomize Task Order
-            if (RandomizeTaskOrder)
-                ExtensionMethods.Shuffle(Tasks);
-
             // Load the first task
             if (Tasks.Count != 0)
             {

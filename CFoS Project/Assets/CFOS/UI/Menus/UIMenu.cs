@@ -63,6 +63,8 @@ namespace CFoS.UI
             OpenSubMenu(subMenuObj);
         }
 
+        // Reset
+        public virtual void ResetMenu() { }
 
         // Close menu
         public void CloseMenu()
@@ -98,7 +100,6 @@ namespace CFoS.UI
             CloseMenu();
         }
 
-
         // Load Experiment
         public void LoadExperiment(string experimentName)
         {
@@ -122,6 +123,7 @@ namespace CFoS.UI
         {
             ExperimentManager.Instance.NextTask();
         }
+
 
         //General
         public void RestartApp()

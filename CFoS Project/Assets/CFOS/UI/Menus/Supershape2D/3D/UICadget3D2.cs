@@ -32,6 +32,11 @@ namespace CFoS.UI.Menus
             ValueChange();
         }
 
+        public override void ResetMenu()
+        {
+            Slider.ResetValue();
+        }
+
         private void OnDestroy()
         {
             Renderer.Supershape.OnUpdate -= UpdateThumbnails;

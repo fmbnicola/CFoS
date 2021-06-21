@@ -28,6 +28,13 @@ namespace CFoS.UI.Menus
             ValueChangeN3();
         }
 
+        public override void ResetMenu()
+        {
+            SliderN1.ResetValue();
+            SliderN2.ResetValue();
+            SliderN3.ResetValue();
+        }
+
         protected virtual void ValueChangeN1()
         {
             Renderer.Supershape.N1 = SliderN1.Value;

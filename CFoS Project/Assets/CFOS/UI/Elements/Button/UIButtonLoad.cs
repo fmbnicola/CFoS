@@ -136,7 +136,7 @@ namespace CFoS.UI
             SuccessIcon.enabled = false;
             FailureIcon1.enabled = true;
             FailureIcon2.enabled = true;
-            LoadIcon.transform.rotation = Quaternion.identity;
+            LoadIcon.transform.localRotation= Quaternion.identity;
             Text.text = FailureMessage;
         }
 
@@ -152,7 +152,7 @@ namespace CFoS.UI
             SuccessIcon.enabled = true;
             FailureIcon1.enabled = false;
             FailureIcon2.enabled = false;
-            LoadIcon.transform.rotation = Quaternion.identity;
+            LoadIcon.transform.localRotation = Quaternion.identity;
             Text.text = SuccessMessage;
         }
 

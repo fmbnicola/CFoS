@@ -21,6 +21,11 @@ namespace CFoS.UI.Menus
             ValueChange();
         }
 
+        public  override void ResetMenu()
+        {
+            Slider.ResetValue();
+        }
+
         protected virtual void ValueChange()
         {
             var val = Slider.Value;

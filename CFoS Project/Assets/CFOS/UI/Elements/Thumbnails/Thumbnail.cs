@@ -33,7 +33,7 @@ namespace CFoS.UI
         public Vector3Int Index = Vector3Int.zero;
 
         // Init
-        protected void Awake()
+        protected override void Awake()
         {
             base.Awake();
 

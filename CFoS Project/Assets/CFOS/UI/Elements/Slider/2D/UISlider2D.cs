@@ -34,8 +34,11 @@ namespace CFoS.UI
 
         [Header("Variables")]
         public string StringFormat = "0.00";
+
         public Vector2 Value = new Vector2(0,0);
         protected Vector2 oldValue;
+        protected Vector2 defaultValue;
+
         public float XMin = 0.0f;
         public float XMax = 1.0f;
         public float YMin = 0.0f;
@@ -78,6 +81,7 @@ namespace CFoS.UI
             base.Awake();
 
             oldValue = Value;
+            defaultValue = Value;
         }
 
 
@@ -202,6 +206,12 @@ namespace CFoS.UI
         {
             oldValue = Value;
             ValueChangedEvent.Invoke();
+        }
+
+        public virtual void ResetValue()
+        {
+            Value = defaultValue;
+            ForceValueUpdate();
         }
 
         protected virtual void Update()

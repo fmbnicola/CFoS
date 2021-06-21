@@ -34,6 +34,7 @@ namespace CFoS.UI
 
         public float Value = 0.0f;
         protected float oldValue;
+        protected float defaultValue;
 
         public float Min = 0.0f;
         public float Max = 1.0f;
@@ -69,6 +70,7 @@ namespace CFoS.UI
             base.Awake();
 
             oldValue = Value;
+            defaultValue = Value;
         }
 
 
@@ -180,6 +182,12 @@ namespace CFoS.UI
         {
             oldValue = Value;
             ValueChangedEvent.Invoke();
+        }
+
+        public virtual void ResetValue()
+        {
+            Value = defaultValue;
+            ForceValueUpdate();
         }
 
         protected virtual void Update()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CFoS.Data;
 using CFoS.Supershape;
+using CFoS.UI;
 
 namespace CFoS.Experimentation
 {
@@ -40,6 +41,13 @@ namespace CFoS.Experimentation
         public override void EndTask()
         {
             base.EndTask();
+
+            // Reset Menus
+            var menus = GetComponentsInChildren<UIMenu>();
+            foreach(var menu in menus)
+            {
+                menu.ResetMenu();
+            }
 
             // Register Metrics
             var metricManager = MetricManager.Instance;
