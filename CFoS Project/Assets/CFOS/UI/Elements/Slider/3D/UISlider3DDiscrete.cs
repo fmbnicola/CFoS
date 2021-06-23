@@ -65,7 +65,7 @@ namespace CFoS.UI
                 if (selected) controller.SendHapticImpulse(0.5f, 0.02f);
 
                 // Register Value change as metric
-                MetricManager.Instance.RegisterTaskMetric("SlideTime", Time.deltaTime);
+                MetricManager.Instance.RegisterTaskMetric("TimeSliding", Time.deltaTime);
             }
             oldValue = Value;
         }

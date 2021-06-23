@@ -1,3 +1,4 @@
+using CFoS.Experimentation;
 using CFoS.Interaction;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,8 +32,14 @@ namespace CFoS.UI
             {
                 var input = controller.translateAnchorAction.action.ReadValue<Vector2>();
                 var delta = input.y;
-                
-                if(!Mathf.Approximately(delta, 0.0f)) SizeChangedEvent.Invoke();
+
+                if (!Mathf.Approximately(delta, 0.0f))
+                {
+                    SizeChangedEvent.Invoke();
+
+                    // Register Value change as metric
+                    MetricManager.Instance.RegisterTaskMetric("TimeRescaling", Time.deltaTime);
+                }
 
                 Size = Mathf.Clamp(Size + delta * SizeChangeRate, MinSize, MaxSize);
                 

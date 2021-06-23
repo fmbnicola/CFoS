@@ -57,8 +57,10 @@ namespace CFoS.Experimentation
             // SelectionError
             var supershape1 = StartingRenderer.Supershape;
             var supershape2 = TargetRenderer.Supershape;
-            var error = Supershape2D.CalculateCumulativeError(supershape1, supershape2);
-            metricManager.RegisterTaskMetric("SelectionError", error);
+            var error = Supershape2D.CalculateComponentError(supershape1, supershape2);
+            metricManager.RegisterTaskMetric("SelectionErrorN1", error.x);
+            metricManager.RegisterTaskMetric("SelectionErrorN2", error.y);
+            metricManager.RegisterTaskMetric("SelectionErrorN3", error.z);
 
             // Save Metrics 
             metricManager.SaveTaskMetrics();

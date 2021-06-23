@@ -10,8 +10,6 @@ namespace CFoS.UI
 {
     public class UISlider1D : UIElement
     {
-        public AudioClip GrabAudio;
-        public AudioClip ReleaseAudio;
 
         [Header("Handle")]
         public UISliderHandle Handle;
@@ -86,13 +84,11 @@ namespace CFoS.UI
                 selectOffset = controller.transform.InverseTransformPoint(handlePos);
 
                 // Register selection as metric
-                MetricManager.Instance.RegisterTaskMetric("SelectCount", 1.0f);
+                if (controller.gameObject.name == "LeftHand Controller")
+                    MetricManager.Instance.RegisterTaskMetric("SliderSelectCountL", 1.0f);
 
-                UIManager.Instance.PlaySound(GrabAudio);
-            }
-            else
-            {
-                UIManager.Instance.PlaySound(ReleaseAudio);
+                if (controller.gameObject.name == "RightHand Controller")
+                    MetricManager.Instance.RegisterTaskMetric("SliderSelectCountR", 1.0f);
             }
         }
 
@@ -209,7 +205,7 @@ namespace CFoS.UI
                     ForceValueUpdate();
 
                     // Register Value change as metric
-                    MetricManager.Instance.RegisterTaskMetric("SlideTime", Time.deltaTime);
+                    MetricManager.Instance.RegisterTaskMetric("TimeSliding", Time.deltaTime);
                 }
             }
             // If not selecting, value changes handle position

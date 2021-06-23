@@ -140,8 +140,8 @@ namespace CFoS.Experimentation
 
             var expManager = ExperimentManager.Instance;
             string expName = expManager.LoadedExperiment.name;
-            int taskIndex = expManager.LoadedExperiment.LoadedTaskIndex;
-            string ExpTask = expName + " Task " + taskIndex.ToString();
+            string taskName = expManager.LoadedExperiment.LoadedTask.name;
+            string ExpTask = expName + " " + taskName;
 
             var data = new SaveData.SaveData();
             foreach (var metric in Metrics)

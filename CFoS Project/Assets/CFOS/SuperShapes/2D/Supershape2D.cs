@@ -165,6 +165,15 @@ namespace CFoS.Supershape
             return a + b + n1 + n2 + n3 + m;
         }
 
+        public static Vector3 CalculateComponentError(Supershape2D s1, Supershape2D s2)
+        {
+            var n1 = Mathf.Abs(s1.N1 - s2.N1);
+            var n2 = Mathf.Abs(s1.N2 - s2.N2);
+            var n3 = Mathf.Abs(s1.N3 - s2.N3);
+
+            return new Vector3(n1, n2, n3);
+        }
+
         public static float CalculateGreatestValue(Supershape2D s)
         {
             float maxVal = 0.0f;

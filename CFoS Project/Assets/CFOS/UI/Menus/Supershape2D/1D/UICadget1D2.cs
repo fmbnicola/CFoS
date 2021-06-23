@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using CFoS.Supershape;
 using CFoS.Data;
+using CFoS.Experimentation;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace CFoS.UI.Menus
 {
@@ -43,11 +45,17 @@ namespace CFoS.UI.Menus
             return data;
         }
 
-        public void ThumbnailSelect(Thumbnail thumbnail)
+        public void ThumbnailSelect(Thumbnail thumbnail, XRBaseController controller)
         {
             var data = thumbnail.Supershape.GetData();
             Slider.Value = data.N1;
             Slider.ForceValueUpdate();
+
+            // Register Thumbnail Click as metric
+            if(controller.gameObject.name == "LeftHand Controller")
+                MetricManager.Instance.RegisterTaskMetric("ThumbnailSelectCountL", 1.0f);
+            if (controller.gameObject.name == "RightHand Controller")
+                MetricManager.Instance.RegisterTaskMetric("ThumbnailSelectCountR", 1.0f);
         }
 
         public void ThumbnailUpdate(Thumbnail thumbnail)

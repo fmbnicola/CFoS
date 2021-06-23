@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using CFoS.Supershape;
 using CFoS.Data;
+using CFoS.Experimentation;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace CFoS.UI.Menus
 {
@@ -84,11 +86,24 @@ namespace CFoS.UI.Menus
             renderer.Scale = scale;
         }
 
+        public void MinimapThumbnailSelect(Thumbnail thumbnail, XRBaseController controller)
+        {
+            var data = thumbnail.Supershape.GetData();
+            Slider.Value = new Vector3(data.N1, data.N2, data.N3);
+            Slider.ForceValueUpdate();
+
+            // Register Thumbnail Click as metric
+            if (controller.gameObject.name == "LeftHand Controller")
+                MetricManager.Instance.RegisterTaskMetric("MinimapSelectCountL", 1.0f);
+            if (controller.gameObject.name == "RightHand Controller")
+                MetricManager.Instance.RegisterTaskMetric("MinimapSelectCountR", 1.0f);
+        }
+
         protected void InitMinimapThumbnails()
         {
             MinimapThumbnails.SetSampleFunction(MinimapThumbnailSample);
             MinimapThumbnails.SetUpdateFunction(MinimapThumbnailUpdate);
-            MinimapThumbnails.SetSelectFunction(ThumbnailSelect);
+            MinimapThumbnails.SetSelectFunction(MinimapThumbnailSelect);
         }
 
         protected void UpdateMinimapThumbnails()
