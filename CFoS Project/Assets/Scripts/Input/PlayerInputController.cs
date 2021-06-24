@@ -7,6 +7,8 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 public class PlayerInputController : MonoBehaviour
 {
+    public static PlayerInputController Instance { get; private set; }
+
     #region Input Actions
 
     [SerializeField]
@@ -54,7 +56,29 @@ public class PlayerInputController : MonoBehaviour
         set => SetInputActionProperty(ref resetAction, value);
     }
 
+    [SerializeField]
+    [Tooltip("Reset Input System Action [Button Press]")]
+    InputActionProperty scaleAction;
+    public InputActionProperty ScaleAction
+    {
+        get => scaleAction;
+        set => SetInputActionProperty(ref scaleAction, value);
+    }
+
     #endregion
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     protected void OnEnable()
     {

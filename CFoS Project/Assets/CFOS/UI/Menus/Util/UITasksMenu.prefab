@@ -22,11 +22,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2615966703212050208, guid: bd35b3b7c05b44540ba077bed5025c6a, type: 3}
       propertyPath: m_text
-      value: "<align=center><b><size=40>Tasks</size> </b></align>\n\nYou will now
-        be given a set of tasks. \n\nEach task consists of using one of the widgets
-        to match a given target shape.\n\n<b>Please try to match the shapes as closely
-        as you can in as little time as possible.</b>\n\n\n<align=center><color=#0072FF>Click
-        the button below when you are ready to begin</color></align>"
+      value: '<align=center><b><size=40>Tasks</size> </b></align>
+
+
+        You will
+        now be given a set of tasks. Each task consists of using one of the widgets
+        to match a given target shape within a maximum time period of 90 seconds.
+
+
+        <b>Please
+        try to match the shapes as closely as you can in as little time as possible.</b>
+
+
+
+        <align=center><color=#0072FF>Click
+        the button below when you are ready to begin</color></align>'
       objectReference: {fileID: 0}
     - target: {fileID: 2615966703212050208, guid: bd35b3b7c05b44540ba077bed5025c6a, type: 3}
       propertyPath: m_fontSize

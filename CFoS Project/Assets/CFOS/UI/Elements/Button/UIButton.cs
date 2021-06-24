@@ -8,6 +8,7 @@ namespace CFoS.UI
     
     public class UIButton : UIElement
     {
+        public AudioClip HoverAudio;
         public AudioClip ClickAudio;
 
         [Header("Element")]
@@ -89,6 +90,13 @@ namespace CFoS.UI
 
 
         // Actions
+        public override void Hover(bool val)
+        {
+            base.Hover(val);
+
+            if(val) UIManager.Instance.PlaySound(HoverAudio);
+        }
+
         public virtual void SelectAux(bool val)
         {
             if (val)

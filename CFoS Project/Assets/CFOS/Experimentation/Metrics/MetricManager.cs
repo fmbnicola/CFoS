@@ -157,7 +157,6 @@ namespace CFoS.Experimentation
             sameManager.SaveData(data);
         }
 
-
         // Timer
         protected void TimerUpdate()
         {

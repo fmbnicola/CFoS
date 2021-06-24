@@ -14,6 +14,11 @@ namespace CFoS.Experimentation
         public Supershape2DRenderer StartingRenderer;
         public Supershape2DRenderer TargetRenderer;
 
+        [Space(10)]
+        public float MaxTime = 90.0f;
+        public AudioClip TimeOutAudio;
+
+
         public override void InitTask()
         {
             base.InitTask();
@@ -31,7 +36,8 @@ namespace CFoS.Experimentation
             // Init Metrics
             MetricManager.Instance.InitTaskMetrics();
 
-            // Timer
+            // Reset Timer
+            MetricManager.Instance.StopTimer();
             MetricManager.Instance.StartTimer();
         }
 
@@ -64,6 +70,15 @@ namespace CFoS.Experimentation
 
             // Save Metrics 
             metricManager.SaveTaskMetrics();
+        }
+
+        public override void UpdateTask()
+        {
+            if(MetricManager.Instance.GetTime() >= MaxTime)
+            {
+                UIManager.Instance.PlaySound(TimeOutAudio);
+                NextTask();
+            }
         }
     }
 }

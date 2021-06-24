@@ -337,6 +337,8 @@ MonoBehaviour:
   RandomizeTaskOrder: 0
   StartingRenderer: {fileID: 5494470419529997760}
   TargetRenderer: {fileID: 5494470419235760137}
+  MaxTime: 90
+  TimeOutAudio: {fileID: 8300000, guid: 74917185a372b534c9df0054711f2429, type: 3}
 --- !u!1001 &6840436542811775934
 PrefabInstance:
   m_ObjectHideFlags: 0

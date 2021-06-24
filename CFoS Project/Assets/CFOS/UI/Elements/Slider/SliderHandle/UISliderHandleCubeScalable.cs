@@ -28,23 +28,20 @@ namespace CFoS.UI
         {
             base.Update();
 
-            if (selected)
+            var input = PlayerInputController.Instance.ScaleAction.action.ReadValue<Vector2>();
+            var delta = input.y;
+
+            if (!Mathf.Approximately(delta, 0.0f))
             {
-                var input = controller.translateAnchorAction.action.ReadValue<Vector2>();
-                var delta = input.y;
+                SizeChangedEvent.Invoke();
 
-                if (!Mathf.Approximately(delta, 0.0f))
-                {
-                    SizeChangedEvent.Invoke();
-
-                    // Register Value change as metric
-                    MetricManager.Instance.RegisterTaskMetric("TimeRescaling", Time.deltaTime);
-                }
-
-                Size = Mathf.Clamp(Size + delta * SizeChangeRate, MinSize, MaxSize);
-
-                Handle.transform.localScale = Vector3.one * Size;
+                // Register Value change as metric
+                MetricManager.Instance.RegisterTaskMetric("TimeRescaling", Time.deltaTime);
             }
+
+            Size = Mathf.Clamp(Size + delta * SizeChangeRate, MinSize, MaxSize);
+
+            Handle.transform.localScale = Vector3.one * Size;
         }
 
         // Controller hinting
