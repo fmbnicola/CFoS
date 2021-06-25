@@ -28,7 +28,9 @@ namespace CFoS.UI
         protected override void OnValidate()
         {
             // Set Colors
-            Handle.Color = HandleNormalColor.Value;
+            var col = HandleNormalColor.Value;
+            col.a = 0.5f;
+            Handle.Color = col;
             HandleOutline.Color = HandleOutlineNormalColor.Value;
             HandleText.color = HandleTextColor.Value;
 
@@ -44,7 +46,8 @@ namespace CFoS.UI
 
             if (!val)
             {
-                var col = HandleTextColor.Value; col.a = 0.3f;
+                var col = HandleTextColor.Value;
+                col.a = 0.3f;
                 HandleText.color = col;
             }
             else
@@ -57,13 +60,17 @@ namespace CFoS.UI
         {
             if (disabled)
             {
-                var col = HandleNormalColor.Value; col.a = 0.3f;
-                Handle.Color = col;
+                var disabledCol = HandleNormalColor.Value;
+                disabledCol.a = 0.3f;
+                Handle.Color = disabledCol;
                 return;
             }
 
             // Visual Update
-            Handle.Color = selected ? HandleSelectColor.Value : hovered ? HandleHoverColor.Value : HandleNormalColor.Value;
+            var handleCol = selected ? HandleSelectColor.Value : hovered ? HandleHoverColor.Value : HandleNormalColor.Value;
+            handleCol.a = 0.5f;
+            Handle.Color = handleCol;
+
             HandleOutline.Color = selected ? HandleOutlineHoverColor.Value : hovered ? HandleOutlineHoverColor.Value : HandleOutlineNormalColor.Value;
         }
 

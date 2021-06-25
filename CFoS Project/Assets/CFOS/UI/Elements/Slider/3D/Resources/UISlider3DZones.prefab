@@ -14,9 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Interactable: {fileID: 3565954016776353300}
   disabled: 0
-  HoverAudio: {fileID: 8300000, guid: f1075fee27453794e8130e1b6619963e, type: 3}
-  GrabAudio: {fileID: 8300000, guid: 3b9fd33a3ee8ff34a82a937147758401, type: 3}
-  ReleaseAudio: {fileID: 8300000, guid: 26a3ab6e8fd8fb848b2c1b2212d19360, type: 3}
   Handle: {fileID: 3565954015831315189}
   Track: {fileID: 3565954016056475894}
   RangeXMinText: {fileID: 3565954015010577801}

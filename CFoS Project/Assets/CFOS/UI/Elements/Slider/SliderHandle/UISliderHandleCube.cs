@@ -7,13 +7,10 @@ namespace CFoS.UI
 
     public class UISliderHandleCube : UIElement
     {
-        public MeshRenderer Handle;
+        public OutlineCubeSimple  Handle;
         public Data.ColorVariable HandleNormalColor;
         public Data.ColorVariable HandleHoverColor;
         public Data.ColorVariable HandleSelectColor;
-
-        [Space(10)]
-        public MeshRenderer HandleOutline;
         public Data.ColorVariable HandleOutlineNormalColor;
         public Data.ColorVariable HandleOutlineHoverColor;
 
@@ -24,26 +21,13 @@ namespace CFoS.UI
         [Header("Properties")]
         public float Size = 0.03f;
 
-        protected MaterialPropertyBlock handlePropBlock;
-        protected MaterialPropertyBlock outlinePropBlock;
-
-        private void Start()
-        {
-            if(handlePropBlock == null)  handlePropBlock = new MaterialPropertyBlock();
-            if(outlinePropBlock == null) outlinePropBlock = new MaterialPropertyBlock();
-        }
 
         [ExecuteAlways]
         protected override void OnValidate()
         {
             // Set Colors
-            if (handlePropBlock == null) handlePropBlock = new MaterialPropertyBlock();
-            handlePropBlock.SetColor("_HandleColor", HandleNormalColor.Value);
-            Handle.SetPropertyBlock(handlePropBlock);
-
-            if (outlinePropBlock == null) outlinePropBlock = new MaterialPropertyBlock();
-            outlinePropBlock.SetColor("_OutlineColor", HandleOutlineNormalColor.Value);
-            HandleOutline.SetPropertyBlock(handlePropBlock);
+            Handle.SetColor(HandleNormalColor.Value);
+            Handle.SetLinesColor(HandleOutlineNormalColor.Value);
 
             Handle.transform.localScale = Vector3.one * Size;
         }
@@ -72,19 +56,16 @@ namespace CFoS.UI
             if (disabled)
             {
                 var col = HandleNormalColor.Value; col.a = 0.3f;
-                handlePropBlock.SetColor("_HandleColor", col);
-                Handle.SetPropertyBlock(handlePropBlock);
+                Handle.SetColor(col);
                 return;
             }
 
             // Visual Update
             var handleColor = selected ? HandleSelectColor.Value : hovered ? HandleHoverColor.Value : HandleNormalColor.Value;
-            handlePropBlock.SetColor("_HandleColor", handleColor);
-            Handle.SetPropertyBlock(handlePropBlock);
+            Handle.SetColor(handleColor);
 
             var outlineColor = selected ? HandleOutlineHoverColor.Value : hovered ? HandleOutlineHoverColor.Value : HandleOutlineNormalColor.Value;
-            outlinePropBlock.SetColor("_OutlineColor", outlineColor);
-            HandleOutline.SetPropertyBlock(outlinePropBlock);
+            Handle.SetLinesColor(outlineColor);
         }
 
         protected virtual void Update()
