@@ -1,3 +1,4 @@
+using CFoS.SaveData;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -84,9 +85,7 @@ namespace CFoS.Experimentation
                 }
             }
             data.Add(key, value);
-
-            var sameManager = SaveData.SaveManager.Instance;
-            sameManager.SaveData(data);
+            SaveManager.Instance.SaveData(data);
         }
 
 

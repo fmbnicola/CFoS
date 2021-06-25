@@ -131,10 +131,7 @@ namespace CFoS.SaveData
             {
                 Instance = this;
             }
-        }
 
-        private void Start()
-        {
             SavedData = new SaveData();
         }
 
@@ -253,7 +250,7 @@ namespace CFoS.SaveData
                         break;
                 }
 
-                // If successful Save all used ids
+                // If successful Save all user ids
                 if(webRequest.result == UnityWebRequest.Result.Success)
                 {
                     string jsonData = webRequest.downloadHandler.text;

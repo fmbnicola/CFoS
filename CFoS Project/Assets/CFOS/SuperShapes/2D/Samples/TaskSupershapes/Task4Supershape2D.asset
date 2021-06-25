@@ -22,12 +22,12 @@ MonoBehaviour:
   m: 3
   MMin: 0
   MMax: 50
-  n1: 0.6
+  n1: 2.4
   N1Min: 0
   N1Max: 50
-  n2: 1.2
+  n2: 14.5
   N2Min: 0
   N2Max: 50
-  n3: 1.2
+  n3: 14.5
   N3Min: 0
   N3Max: 50
