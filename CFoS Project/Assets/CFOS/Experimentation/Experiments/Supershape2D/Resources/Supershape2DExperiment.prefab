@@ -99,7 +99,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Match the Left Shape with the Right Shape as closely as possible.
+  m_text: Match the White and Blue Shapes as closely as possible.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1f4fb6d6324ba964ab4c10842d0a68dd, type: 2}
   m_sharedMaterial: {fileID: 4745415545742599177, guid: 1f4fb6d6324ba964ab4c10842d0a68dd, type: 2}
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 9.898029, y: -1.3656616, z: 10.333605, w: -1.526475}
+  m_margin: {x: 19.589449, y: -1.3656616, z: 19.01555, w: -1.526475}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -198,7 +198,7 @@ Transform:
   m_GameObject: {fileID: 4581360772557053589}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.849998}
-  m_LocalScale: {x: 50, y: 50, z: 0}
+  m_LocalScale: {x: 36.607502, y: 50, z: 0}
   m_Children: []
   m_Father: {fileID: 3190668631557999174}
   m_RootOrder: 0
@@ -388,7 +388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7782576626435532160, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7782576626435532160, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -457,7 +457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1346113907204275838, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: color.a
-      value: 1
+      value: 0.5019608
       objectReference: {fileID: 0}
     - target: {fileID: 1346113907204275838, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: color.b
@@ -465,11 +465,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1346113907204275838, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: color.g
-      value: 1
+      value: 0.45634604
       objectReference: {fileID: 0}
     - target: {fileID: 1346113907204275838, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1346113907204275838, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: supershape
@@ -493,7 +493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7782576626435532160, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7782576626435532160, guid: 6331a535d07eab748a891f93768838dd, type: 3}
       propertyPath: m_LocalPosition.y

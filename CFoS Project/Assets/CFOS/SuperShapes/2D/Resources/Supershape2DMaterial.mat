@@ -32,6 +32,7 @@ Material:
     - _N2: 0.59
     - _N3: 0.38
     - _Scale: 0.5
+    - _ScaleFix: 1
     - _Thickness: 1
     - _a: 1
     - _b: 1
@@ -40,6 +41,6 @@ Material:
     - _n2: 1
     - _n3: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0, g: 0.3675041, b: 1, a: 0.59607846}
     - _Resolution: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
