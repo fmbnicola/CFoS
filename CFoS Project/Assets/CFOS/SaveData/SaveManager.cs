@@ -85,7 +85,8 @@ namespace CFoS.SaveData
 
         // CONSTANTS
         private const string URI = "https://api.pageclip.co/data";
-        private const string FORM = "UserTesting";
+        private const string DATA_FORM = "UserTestingData";
+        private const string IDS_FORM  = "UserTestingIds";
         private const string API_KEY = "api_sNcXtXUXzzFu47paLJXHYeGHLYM7PCAz";
 
         // List of words to filter out (for politeness sake)
@@ -111,7 +112,7 @@ namespace CFoS.SaveData
         [SerializeField]
         protected SaveData SavedData;
     
-        public Form submitedData;
+        public Form receivedData;
         public string UserId { get;  protected set; }
         
         // Response Delegate
@@ -174,7 +175,7 @@ namespace CFoS.SaveData
             yield return StartCoroutine(DoRegisterUserData());
 
             // Submit all data to server
-            string uri = URI + "/" + FORM;
+            string uri = URI + "/" + DATA_FORM;
             var data = SavedData.Serialize();
             var auth = Authenticate(API_KEY, "");
 
@@ -210,6 +211,43 @@ namespace CFoS.SaveData
             }
         }
 
+        protected IEnumerator DoSubmitUserID()
+        {
+            // Submit user id to server
+            string uri = URI + "/" + IDS_FORM;
+            var data = "{\"UserId\": \"" + UserId + "\"}";
+            var auth = Authenticate(API_KEY, "");
+
+            UnityWebRequest webRequest = UnityWebRequest.Put(uri, data);
+            webRequest.SetRequestHeader("Authorization", auth);
+            webRequest.SetRequestHeader("Content-Type", "application/json");
+
+            using (webRequest)
+            {
+                // Request and wait for response
+                yield return webRequest.SendWebRequest();
+
+                string[] pages = uri.Split('/');
+                int page = pages.Length - 1;
+
+                switch (webRequest.result)
+                {
+                    case UnityWebRequest.Result.DataProcessingError:
+                        Debug.LogError(pages[page] + ": Data Processing Error: " + webRequest.error);
+                        break;
+                    case UnityWebRequest.Result.ProtocolError:
+                        Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
+                        break;
+                    case UnityWebRequest.Result.ConnectionError:
+                        Debug.Log(pages[page] + ": Connection Error: " + webRequest.error);
+                        break;
+                    case UnityWebRequest.Result.Success:
+                        Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                        break;
+                }
+            }
+        }
+
         public void SubmitData()
         {
             StartCoroutine(DoSubmitData());
@@ -218,7 +256,7 @@ namespace CFoS.SaveData
         // Request data from Server 
         protected IEnumerator DoReceiveData()
         {
-            string uri = URI + "/" + FORM;
+            string uri = URI + "/" + IDS_FORM;
             var data = SavedData.Serialize();
             var auth = Authenticate(API_KEY, "");
 
@@ -254,7 +292,7 @@ namespace CFoS.SaveData
                 if(webRequest.result == UnityWebRequest.Result.Success)
                 {
                     string jsonData = webRequest.downloadHandler.text;
-                    submitedData = JsonUtility.FromJson<Form>(jsonData);
+                    receivedData = JsonUtility.FromJson<Form>(jsonData);
                 }
                 // Otherwise abort request
                 else
@@ -289,7 +327,7 @@ namespace CFoS.SaveData
                 id = GenerateCode(3);
 
                 var repeated = false;
-                foreach(var item in submitedData.data)
+                foreach(var item in receivedData.data)
                 {
                     if(item.payload.UserId == id)
                     {
@@ -302,7 +340,10 @@ namespace CFoS.SaveData
                 if ((!badWords.Contains(id) && !repeated) || 
                     repeatTolerance == 0)
                 {
+                    //Save Id in database
                     UserId = id;
+                    yield return DoSubmitUserID();
+
                     yield break;
                 }
 
