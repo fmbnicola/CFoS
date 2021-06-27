@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7974525343417437168, guid: fc6ea55b3b2c33c48bdfc2837ebdd3dd, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8004985
+      value: 0.9135288
       objectReference: {fileID: 0}
     - target: {fileID: 7974525343417437168, guid: fc6ea55b3b2c33c48bdfc2837ebdd3dd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -118,7 +118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7974525344001419407, guid: fc6ea55b3b2c33c48bdfc2837ebdd3dd, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2492216
+      value: 1.0946562
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc6ea55b3b2c33c48bdfc2837ebdd3dd, type: 3}
@@ -161,11 +161,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6067194605720534126, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1291
+      value: -0.1638
       objectReference: {fileID: 0}
     - target: {fileID: 6067194605720534126, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6067194605720534126, guid: 7cdb0b006738be348ab2ee46de2575c5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -261,7 +261,8 @@ PrefabInstance:
       value: "<align=center><b><size=40>Tutorial</size> </b></align>\n\nYou will
         now have the oportunity to interact with all the interfaces one by one. \n\nSome
         info will be given regarding each widget.\n\n<b>Take your time to experiment
-        freely and when you feel confortable, progress to the next one.</b>\n"
+        freely and when you feel confortable, progress to the next one.</b>\n\n<align=center><color=#0072FF>Click
+        the button below to begin.</color></align>\n"
       objectReference: {fileID: 0}
     - target: {fileID: 2615966703212050208, guid: bd35b3b7c05b44540ba077bed5025c6a, type: 3}
       propertyPath: m_fontSize
@@ -401,7 +402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5537686065278644370, guid: bd35b3b7c05b44540ba077bed5025c6a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.014100013
+      value: 0.013800019
       objectReference: {fileID: 0}
     - target: {fileID: 5537686065278644370, guid: bd35b3b7c05b44540ba077bed5025c6a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

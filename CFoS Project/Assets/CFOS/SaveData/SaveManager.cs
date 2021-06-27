@@ -120,7 +120,7 @@ namespace CFoS.SaveData
         public event OnSubmitResponseDelegate OnSubmitResponse;
 
 
-        // Unity Events
+        // Init
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -137,28 +137,6 @@ namespace CFoS.SaveData
         }
 
 
-        // Register Data
-        protected void RegisterData(SaveData data)
-        {
-            SavedData.ConcatenateData(data);
-        }
-
-        protected IEnumerator DoRegisterUserData()
-        {
-            var userData = new SaveData();
-
-            // DeviceID
-            var deviceId = SystemInfo.deviceUniqueIdentifier;
-            userData.Add("DeviceId", deviceId);
-
-            // UserID
-            yield return StartCoroutine(DoGetUserId());
-            userData.Add("UserId", UserId);
-
-            RegisterData(userData);
-        }
-
-
         // Communicate with API 
         protected string Authenticate(string username, string password)
         {
@@ -168,95 +146,22 @@ namespace CFoS.SaveData
             return auth;
         }
 
-        // Submit data to Server
-        protected IEnumerator DoSubmitData()
+
+        // Get UserId
+        protected string GenerateCode(int numChars)
         {
-            // Register User Data 
-            yield return StartCoroutine(DoRegisterUserData());
-
-            // Submit all data to server
-            string uri = URI + "/" + DATA_FORM;
-            var data = SavedData.Serialize();
-            var auth = Authenticate(API_KEY, "");
-
-            UnityWebRequest webRequest = UnityWebRequest.Put(uri, data);
-            webRequest.SetRequestHeader("Authorization", auth);
-            webRequest.SetRequestHeader("Content-Type", "application/json");
-
-            using (webRequest)
+            var code = "";
+            for (int i = 0; i < numChars; i++)
             {
-                // Request and wait for response
-                yield return webRequest.SendWebRequest();
-
-                string[] pages = uri.Split('/');
-                int page = pages.Length - 1;
-
-                switch (webRequest.result)
-                {
-                    case UnityWebRequest.Result.DataProcessingError:
-                        Debug.LogError(pages[page] + ": Data Processing Error: " + webRequest.error);
-                        break;
-                    case UnityWebRequest.Result.ProtocolError:
-                        Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
-                        break;
-                    case UnityWebRequest.Result.ConnectionError:
-                        Debug.Log(pages[page] + ": Connection Error: " + webRequest.error);
-                        break;
-                    case UnityWebRequest.Result.Success:
-                        Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
-                        break;
-                }
-
-                OnSubmitResponse?.Invoke(webRequest);
+                char c = (char)('A' + Random.Range(0, 26));
+                code += c;
             }
+            return code;
         }
 
-        protected IEnumerator DoSubmitUserID()
+        protected IEnumerator DoReceiveUsedIds()
         {
-            // Submit user id to server
-            string uri = URI + "/" + IDS_FORM;
-            var data = "{\"UserId\": \"" + UserId + "\"}";
-            var auth = Authenticate(API_KEY, "");
-
-            UnityWebRequest webRequest = UnityWebRequest.Put(uri, data);
-            webRequest.SetRequestHeader("Authorization", auth);
-            webRequest.SetRequestHeader("Content-Type", "application/json");
-
-            using (webRequest)
-            {
-                // Request and wait for response
-                yield return webRequest.SendWebRequest();
-
-                string[] pages = uri.Split('/');
-                int page = pages.Length - 1;
-
-                switch (webRequest.result)
-                {
-                    case UnityWebRequest.Result.DataProcessingError:
-                        Debug.LogError(pages[page] + ": Data Processing Error: " + webRequest.error);
-                        break;
-                    case UnityWebRequest.Result.ProtocolError:
-                        Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
-                        break;
-                    case UnityWebRequest.Result.ConnectionError:
-                        Debug.Log(pages[page] + ": Connection Error: " + webRequest.error);
-                        break;
-                    case UnityWebRequest.Result.Success:
-                        Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
-                        break;
-                }
-            }
-        }
-
-        public void SubmitData()
-        {
-            StartCoroutine(DoSubmitData());
-        }
-
-        // Request data from Server 
-        protected IEnumerator DoReceiveData()
-        {
-            string uri = URI + "/" + IDS_FORM;
+            string uri = URI + "/" + IDS_FORM + "?archived=false";
             var data = SavedData.Serialize();
             var auth = Authenticate(API_KEY, "");
 
@@ -303,21 +208,10 @@ namespace CFoS.SaveData
             }
         }
 
-        protected string GenerateCode(int numChars)
-        {
-            var code = "";
-            for (int i = 0; i < numChars; i++)
-            {
-                char c = (char)('A' + Random.Range(0, 26));
-                code += c;
-            }
-            return code;
-        }
-
         protected IEnumerator DoGetUserId()
         {
             // populate submitedData structure
-            yield return DoReceiveData();
+            yield return DoReceiveUsedIds();
 
             // generate valid code 
             int repeatTolerance = 5; // just to prevent infinite loop (probably will never happen tho)
@@ -352,8 +246,119 @@ namespace CFoS.SaveData
             }
         }
 
+        protected IEnumerator DoSubmitUserID()
+        {
+            // Submit user id to server
+            string uri = URI + "/" + IDS_FORM;
+            var data = "{\"UserId\": \"" + UserId + "\"}";
+            var auth = Authenticate(API_KEY, "");
 
-        // Public Methods
+            UnityWebRequest webRequest = UnityWebRequest.Put(uri, data);
+            webRequest.SetRequestHeader("Authorization", auth);
+            webRequest.SetRequestHeader("Content-Type", "application/json");
+
+            using (webRequest)
+            {
+                // Request and wait for response
+                yield return webRequest.SendWebRequest();
+
+                string[] pages = uri.Split('/');
+                int page = pages.Length - 1;
+
+                switch (webRequest.result)
+                {
+                    case UnityWebRequest.Result.DataProcessingError:
+                        Debug.LogError(pages[page] + ": Data Processing Error: " + webRequest.error);
+                        break;
+                    case UnityWebRequest.Result.ProtocolError:
+                        Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
+                        break;
+                    case UnityWebRequest.Result.ConnectionError:
+                        Debug.Log(pages[page] + ": Connection Error: " + webRequest.error);
+                        break;
+                    case UnityWebRequest.Result.Success:
+                        Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                        break;
+                }
+
+                OnSubmitResponse?.Invoke(webRequest);
+            }
+        }
+
+        public void GetUserId()
+        {
+            StartCoroutine(DoGetUserId());
+        }
+
+
+        // Submit Experiment Data
+        protected IEnumerator DoRegisterUserData()
+        {
+            // Save DeviceID and UserId
+            var userData = new SaveData();
+
+            var deviceId = SystemInfo.deviceUniqueIdentifier;
+            userData.Add("DeviceId", deviceId);
+            userData.Add("UserId", UserId);
+
+            RegisterData(userData);
+
+            yield return null;
+        }
+
+        protected IEnumerator DoSubmitxperimentData()
+        {
+            yield return StartCoroutine(DoRegisterUserData());
+
+            // Submit all data to server
+            string uri = URI + "/" + DATA_FORM;
+            var data = SavedData.Serialize();
+            var auth = Authenticate(API_KEY, "");
+
+            UnityWebRequest webRequest = UnityWebRequest.Put(uri, data);
+            webRequest.SetRequestHeader("Authorization", auth);
+            webRequest.SetRequestHeader("Content-Type", "application/json");
+
+            using (webRequest)
+            {
+                // Request and wait for response
+                yield return webRequest.SendWebRequest();
+
+                string[] pages = uri.Split('/');
+                int page = pages.Length - 1;
+
+                switch (webRequest.result)
+                {
+                    case UnityWebRequest.Result.DataProcessingError:
+                        Debug.LogError(pages[page] + ": Data Processing Error: " + webRequest.error);
+                        break;
+                    case UnityWebRequest.Result.ProtocolError:
+                        Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
+                        break;
+                    case UnityWebRequest.Result.ConnectionError:
+                        Debug.Log(pages[page] + ": Connection Error: " + webRequest.error);
+                        break;
+                    case UnityWebRequest.Result.Success:
+                        Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                        break;
+                }
+
+                OnSubmitResponse?.Invoke(webRequest);
+            }
+        }
+
+        public void SubmitExperimentData()
+        {
+            StartCoroutine(DoSubmitxperimentData());
+        }
+
+
+        // Data Methods
+        protected void RegisterData(SaveData data)
+        {
+            SavedData.ConcatenateData(data);
+        }
+
         public void ResetData()
         {
             SavedData.Clear();
