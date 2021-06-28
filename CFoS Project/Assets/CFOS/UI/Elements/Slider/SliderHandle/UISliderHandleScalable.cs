@@ -1,3 +1,4 @@
+using CFoS.Experimentation;
 using CFoS.Interaction;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,20 +28,24 @@ namespace CFoS.UI
         {
             base.Update();
 
-            if (selected)
-            {
-                var input = controller.translateAnchorAction.action.ReadValue<Vector2>();
-                var delta = input.y;
-                
-                if(!Mathf.Approximately(delta, 0.0f)) SizeChangedEvent.Invoke();
+            var input = PlayerInputController.Instance.ScaleAction.action.ReadValue<Vector2>();
+            var delta = input.y;
 
-                Size = Mathf.Clamp(Size + delta * SizeChangeRate, MinSize, MaxSize);
-                
-                Handle.Height = Size;
-                Handle.Width  = Size;
-                HandleOutline.Height = Size;
-                HandleOutline.Width  = Size;
+            if (!Mathf.Approximately(delta, 0.0f))
+            {
+                SizeChangedEvent.Invoke();
+
+                // Register Value change as metric
+                MetricManager.Instance.RegisterTaskMetric("TimeRescaling", Time.deltaTime);
             }
+
+            Size = Mathf.Clamp(Size + delta * SizeChangeRate, MinSize, MaxSize);
+                
+            Handle.Height = Size;
+            Handle.Width  = Size;
+            HandleOutline.Height = Size;
+            HandleOutline.Width  = Size;
+       
         }
 
         // Controller hinting

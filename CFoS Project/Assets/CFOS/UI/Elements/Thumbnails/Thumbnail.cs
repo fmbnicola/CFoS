@@ -3,14 +3,12 @@ using CFoS.Supershape;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace CFoS.UI
 {
     public class Thumbnail : UIElement
     {
-        public AudioClip ClickAudio;
-
         [Header("Renderer")]
         public Supershape2DRenderer Renderer;
         public Supershape2D Supershape { get; private set; }
@@ -22,7 +20,7 @@ namespace CFoS.UI
         public delegate Supershape2D.Data SamplingFunction(Thumbnail thumbnail);
         public SamplingFunction SampleFunction;
 
-        public delegate void SelectingFunction(Thumbnail thumbnail);
+        public delegate void SelectingFunction(Thumbnail thumbnail, XRBaseController controller);
         public SelectingFunction SelectFunction;
 
         public delegate void UpdatingFunction(Thumbnail thumbnail);
@@ -65,16 +63,10 @@ namespace CFoS.UI
             if (val)
             {
                 // Evoke select function and Schedule Deselect
-                SelectFunction(this);
-
-                // Play audio
-                UIManager.Instance.PlaySound(ClickAudio);
+                SelectFunction(this, controller);
 
                 if (gameObject.activeInHierarchy)
                     StartCoroutine(DeSelect(0.1f));
-
-                // Register Selection as Metric
-                MetricManager.Instance.RegisterTaskMetric("SelectCount", 1.0f);
             }
         }
 

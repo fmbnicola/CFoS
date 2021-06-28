@@ -6,6 +6,7 @@ namespace CFoS.UI
 {
     public class UIToggle : UIElement
     {
+        public AudioClip HoverAudio;
         public AudioClip ClickAudio;
 
         [Header("Element")]
@@ -88,6 +89,13 @@ namespace CFoS.UI
 
 
         // Actions
+        public override void Hover(bool val)
+        {
+            base.Hover(val);
+
+            if (val) UIManager.Instance.PlaySound(HoverAudio);
+        }
+
         public override void Select(bool val)
         {
             base.Select(val);

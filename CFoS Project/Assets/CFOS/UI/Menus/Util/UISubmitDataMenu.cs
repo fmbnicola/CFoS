@@ -17,24 +17,23 @@ namespace CFoS.UI.Menus
         public UIButton FillFormButton;
 
         [Header("Info")]
-        public Transform ConnectInternetText;
+        public Transform InstructionText;
         public Transform UserIDText;
 
         [Header("Event")]
         public UnityEvent SuccessEvent;
 
-        private string FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdERtJnntOfx1RE8yUPkNdeVYRazF3oPjvxENarYG48ZGDE_A/viewform?usp=pp_url&entry.1625732217=";
+        private string FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdwP_6UTMY10cLCEqS8i9VgPQhkeDNLy1iYfxTjFyy2G7Lekw/viewform?usp=pp_url&entry.1571228065=";
 
         protected virtual void Start()
         {
-            // Render Update
             SubmitButton.ButtonClickEvent.AddListener(Submit);
             SubmitButton.LoadingFunction = SubmitDataLoadFunction;
 
             FillFormButton.ButtonClickEvent.AddListener(FillForm);
 
             // Text info
-            ConnectInternetText.gameObject.SetActive(true);
+            InstructionText.gameObject.SetActive(true);
             UserIDText.gameObject.SetActive(false);
         }
 
@@ -47,7 +46,7 @@ namespace CFoS.UI.Menus
         {
             var manager = SaveData.SaveManager.Instance;
             manager.OnSubmitResponse += ReceiveSubmitResponse;
-            manager.SubmitData();
+            manager.SubmitExperimentData();
         }
 
         protected void ReceiveSubmitResponse(UnityWebRequest request)
@@ -66,7 +65,7 @@ namespace CFoS.UI.Menus
                 FillFormButton.Enable(true);
 
                 // info
-                ConnectInternetText.gameObject.SetActive(false);
+                InstructionText.gameObject.SetActive(false);
                 UserIDText.gameObject.SetActive(true);
 
                 // User ID

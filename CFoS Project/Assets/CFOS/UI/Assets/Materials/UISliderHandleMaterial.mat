@@ -26,7 +26,7 @@ Material:
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -89,6 +89,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _Alpha: 0.5
     - _AlphaClip: 0
     - _AlphaCutoff: 0.5
     - _Blend: 0
@@ -122,6 +123,6 @@ Material:
     - _BaseColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 1}
     - _Color: {r: 0.990566, g: 0.07943219, b: 0.07943219, a: 1}
     - _EmissionColor: {r: 0.041668475, g: 0.041668475, b: 0.041668475, a: 1}
-    - _HandleColor: {r: 0.49019605, g: 0.49019605, b: 0.49019605, a: 0.9098039}
+    - _HandleColor: {r: 1, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

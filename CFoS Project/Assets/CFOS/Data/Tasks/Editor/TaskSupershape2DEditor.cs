@@ -7,7 +7,7 @@ using UnityEngine;
 namespace CFoS.Data
 {
     [CanEditMultipleObjects]
-    [CustomEditor(typeof(TaskSupershape2D))]
+    //[CustomEditor(typeof(TaskSupershape2D))]
     public class TaskSupershape2DEditor : Editor
     {
         bool showStartingParameters = false;

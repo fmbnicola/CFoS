@@ -23,7 +23,7 @@ namespace CFoS.Experimentation
         public bool RandomizeTaskOrder = false;
 
         // EXPERIMENT EVENTS
-        public virtual void Init()
+        public virtual void InitExperiment()
         {
             Debug.Log("Experiment " + name + " Init." );
 
@@ -34,7 +34,7 @@ namespace CFoS.Experimentation
             }
         }
 
-        public virtual void End()
+        public virtual void EndExperiment()
         {
             Debug.Log("Experiment " + name + " End.");
 
@@ -43,6 +43,13 @@ namespace CFoS.Experimentation
             manager.NextExperiment();
         }
 
+        public virtual void UpdateExperiment()
+        {
+            if(LoadedTask != null)
+            {
+                UpdateTask();
+            }
+        }
 
         // TASKS
         public void LoadTask(int taskIndex)
@@ -68,7 +75,7 @@ namespace CFoS.Experimentation
             // if no more tasks, end experiment
             if (taskIndex >= Tasks.Count)
             {
-                End();
+                EndExperiment();
                 return;
             }
 
@@ -88,6 +95,11 @@ namespace CFoS.Experimentation
         public virtual void InitTask()
         {
             Debug.Log("Task index " + LoadedTaskIndex + " Init.");
+        }
+
+        public virtual void UpdateTask()
+        {
+            
         }
 
         public virtual void EndTask()

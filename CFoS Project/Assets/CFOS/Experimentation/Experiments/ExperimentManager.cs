@@ -1,3 +1,4 @@
+using CFoS.SaveData;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -57,6 +58,14 @@ namespace CFoS.Experimentation
             LoadExperiment(0);
         }
 
+        private void Update()
+        {
+            if (LoadedExperiment != null)
+            {
+                LoadedExperiment.UpdateExperiment();
+            }
+        }
+
         // Save task order
         public void SaveTaskOrder()
         {
@@ -76,9 +85,7 @@ namespace CFoS.Experimentation
                 }
             }
             data.Add(key, value);
-
-            var sameManager = SaveData.SaveManager.Instance;
-            sameManager.SaveData(data);
+            SaveManager.Instance.SaveData(data);
         }
 
 
@@ -118,7 +125,7 @@ namespace CFoS.Experimentation
                     loadedExperimentIndex = index;
 
                     LoadedExperiment.gameObject.SetActive(true);
-                    LoadedExperiment.Init();
+                    LoadedExperiment.InitExperiment();
                     return;
                 }
                 index++;
@@ -139,7 +146,7 @@ namespace CFoS.Experimentation
                     loadedExperimentIndex = experimentIndex;
 
                     LoadedExperiment.gameObject.SetActive(true);
-                    LoadedExperiment.Init();
+                    LoadedExperiment.InitExperiment();
                     return;
                 }
             }

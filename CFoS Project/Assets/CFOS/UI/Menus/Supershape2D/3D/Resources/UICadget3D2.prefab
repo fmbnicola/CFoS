@@ -1,23 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &4600223863622194982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7227397508502230322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca3a66f20319b6746b609c7145428396, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DelayTime: 0.25
-  Renderer: {fileID: 0}
-  Slider: {fileID: 4869239779544642200}
-  Thumbnails: {fileID: 7684506254034433729}
-  ThumbnailColor1: {fileID: 11400000, guid: 2d53b61a07b37df4f838af6eabedd8d2, type: 2}
-  ThumbnailColor2: {fileID: 11400000, guid: 7f3f6fe2cb8279f4db6002584a8ef4db, type: 2}
 --- !u!1 &1266832548335862064
 GameObject:
   m_ObjectHideFlags: 0
@@ -51,6 +33,24 @@ Transform:
   m_Father: {fileID: 7227397509157713486}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4600223863622194982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7227397508502230322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca3a66f20319b6746b609c7145428396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DelayTime: 0.25
+  Renderer: {fileID: 0}
+  Slider: {fileID: 4869239779544642200}
+  Thumbnails: {fileID: 7684506254034433729}
+  ThumbnailColor1: {fileID: 11400000, guid: 2d53b61a07b37df4f838af6eabedd8d2, type: 2}
+  ThumbnailColor2: {fileID: 11400000, guid: 7f3f6fe2cb8279f4db6002584a8ef4db, type: 2}
 --- !u!1001 &20013982858523631
 PrefabInstance:
   m_ObjectHideFlags: 0

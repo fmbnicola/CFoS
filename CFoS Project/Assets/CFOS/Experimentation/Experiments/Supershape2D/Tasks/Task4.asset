@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d8e8e58bcb6544bbe8a483ce08363a, type: 3}
   m_Name: Task4
   m_EditorClassIdentifier: 
-  StartingSupershape: {fileID: 11400000, guid: 562b28cf8b636334dbe5f7ea4daa5153, type: 2}
-  TargetSupershape: {fileID: 11400000, guid: 1cf2ed005b92b2c4ca424413477da13a, type: 2}
+  StartingSupershape: {fileID: 11400000, guid: bdcc0a0cdb9a67141bc4bde371ef627b, type: 2}
+  TargetSupershape: {fileID: 11400000, guid: 5108cce17574d1f4eac269178f00592b, type: 2}

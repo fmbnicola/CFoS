@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CFoS.Supershape;
+using UnityEngine.XR.Interaction.Toolkit;
+using CFoS.Experimentation;
 
 namespace CFoS.UI.Menus
 {
@@ -61,17 +63,39 @@ namespace CFoS.UI.Menus
             return data;
         }
 
-        public void ThumbnailSelect(Thumbnail thumbnail)
+        public void ThumbnailSelect(Thumbnail thumbnail, XRBaseController controller)
         {
             var data = thumbnail.Supershape.GetData();
             Slider.Value = new Vector2(data.N1, data.N2);
             Slider.ForceValueUpdate();
+
+            // Register Thumbnail Click as metric
+            if (controller.gameObject.name == "LeftHand Controller")
+                MetricManager.Instance.RegisterTaskMetric("ThumbnailSelectCountL", 1.0f);
+            if (controller.gameObject.name == "RightHand Controller")
+                MetricManager.Instance.RegisterTaskMetric("ThumbnailSelectCountR", 1.0f);
         }
 
+        /*
+        public void ThumbnailUpdate(Thumbnail thumbnail)
+        {
+            var renderer = (Supershape2DQuadRenderer)thumbnail.Renderer;
+
+            Vector3Int i = thumbnail.Index;
+            if (i.x % 3 == 0)
+            {
+                renderer.Color = ThumbnailColor1.Value;
+            }
+            else
+            {
+                renderer.Color = ThumbnailColor2.Value;
+            }
+        }*/
 
         protected void InitThumbnails()
         {
             Thumbnails.SetSampleFunction(ThumbnailSample);
+            //Thumbnails.SetUpdateFunction(ThumbnailUpdate);
             Thumbnails.SetSelectFunction(ThumbnailSelect);
         }
 
