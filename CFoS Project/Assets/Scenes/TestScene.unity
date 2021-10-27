@@ -3340,6 +3340,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4311146631467606826, guid: f756597cf8f6cba4ab6c9276df7a5433, type: 3}
   m_PrefabInstance: {fileID: 2041791082}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &156673452
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Disc Transparent [INNER_RADIUS] (instance)
+  m_Shader: {fileID: 4800000, guid: 0736a017ee88a8741b09e7382339ab99, type: 3}
+  m_ShaderKeywords: INNER_RADIUS
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 0
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!114 &159753263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9882,6 +9913,37 @@ MonoBehaviour:
   n3: 1
   N3Min: 0
   N3Max: 2
+--- !u!21 &793150879
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Disc Transparent [INNER_RADIUS] (instance)
+  m_Shader: {fileID: 4800000, guid: 0736a017ee88a8741b09e7382339ab99, type: 3}
+  m_ShaderKeywords: INNER_RADIUS
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 0
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!114 &793673523 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6840436542999410956, guid: 6d46da97ccef0a24e80820e45a766046, type: 3}
@@ -11030,37 +11092,6 @@ MonoBehaviour:
   n3: 1
   N3Min: 0
   N3Max: 2
---- !u!21 &913504310
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Disc Transparent [INNER_RADIUS] (instance)
-  m_Shader: {fileID: 4800000, guid: 0736a017ee88a8741b09e7382339ab99, type: 3}
-  m_ShaderKeywords: INNER_RADIUS
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Floats:
-    - _StencilComp: 8
-    - _StencilID: 0
-    - _StencilOp: 0
-    - _StencilOpPass: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _ZOffsetFactor: 0
-    - _ZOffsetUnits: 0
-    - _ZTest: 0
-    m_Colors: []
-  m_BuildTextureStacks: []
 --- !u!114 &916566038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25294,37 +25325,6 @@ MonoBehaviour:
   n3: 1
   N3Min: 0
   N3Max: 2
---- !u!21 &1893114015
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Disc Transparent [INNER_RADIUS] (instance)
-  m_Shader: {fileID: 4800000, guid: 0736a017ee88a8741b09e7382339ab99, type: 3}
-  m_ShaderKeywords: INNER_RADIUS
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Floats:
-    - _StencilComp: 8
-    - _StencilID: 0
-    - _StencilOp: 0
-    - _StencilOpPass: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _ZOffsetFactor: 0
-    - _ZOffsetUnits: 0
-    - _ZTest: 0
-    m_Colors: []
-  m_BuildTextureStacks: []
 --- !u!114 &1903735576
 MonoBehaviour:
   m_ObjectHideFlags: 0
