@@ -6,9 +6,6 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 public class FollowMainCamera : MonoBehaviour
 {
-    [Header("Input")]
-    public PlayerInputController Input;
-
     [Header("Horizontal Adjustment")]
     public bool  FollowHorizontal    = true;
     public float HorizontalTolerance = 0.8f;
@@ -35,7 +32,7 @@ public class FollowMainCamera : MonoBehaviour
     {
         targetPos = transform.position;
 
-        Input.ResetAction.action.performed += ResetAction;
+        PlayerInputController.Instance.ResetAction.action.performed += ResetAction;
     }
 
     // Find targets

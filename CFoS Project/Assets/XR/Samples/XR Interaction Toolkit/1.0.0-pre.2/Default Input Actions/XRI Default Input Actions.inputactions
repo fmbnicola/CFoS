@@ -552,14 +552,6 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "Reset",
-                    "type": "Button",
-                    "id": "bb54ed9b-be91-44c9-ad53-4c8c7c5370a1",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -741,17 +733,6 @@
                 },
                 {
                     "name": "",
-                    "id": "a0ed7d0e-2b57-4444-bfaa-1fee8f13692a",
-                    "path": "<XRController>{RightHand}/primary2DAxisClick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Reset",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "d6c08c3d-3d41-4695-994d-1ac9016a5a9e",
                     "path": "<XRController>{RightHand}/Primary2DAxis",
                     "interactions": "",
@@ -794,6 +775,14 @@
                     "type": "Value",
                     "id": "e8a8b152-658f-4d4d-ba49-aa3931562577",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Reset",
+                    "type": "Button",
+                    "id": "63e6cc61-9eae-4582-9069-7e56aa30cea9",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -908,6 +897,72 @@
                     "action": "Scale",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "74b9bc4f-e91c-4b3a-b1cd-351e8c7819d7",
+                    "path": "<XRController>{LeftHand}/thumbstickClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b57d4843-dbe2-47b5-8f39-579105c74ebe",
+                    "path": "<XRController>{RightHand}/joystickClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8e9288a6-155e-4992-a268-00c786d72dc5",
+                    "path": "<XRController>{RightHand}/primary2DAxisClick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "16c33104-c0fb-4140-8f76-625979eee0cf",
+                    "path": "<XRController>{RightHand}/thumbstickClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "027a20c2-ec77-4c47-974b-3f4a3e90c6e9",
+                    "path": "<XRController>{RightHand}/joystickClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "28f5e46b-8cb8-4444-a39f-322154d64d06",
+                    "path": "<XRController>{RightHand}/primary2DAxisClick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

@@ -107,11 +107,11 @@ namespace CFoS.UI.Menus
 
         protected void UpdateThumbnailsPosition()
         {
-            var handlePos = Slider.ValueToWorldCoords(Slider.Value);
+            var handlePos = Slider.Handle.transform.localPosition;
 
-            var pos = Thumbnails.transform.position;
-            pos.z = handlePos.z;
-            Thumbnails.transform.position = pos;
+            var pos = Thumbnails.transform.localPosition;
+            pos.z = handlePos.z - 0.2f;
+            Thumbnails.transform.localPosition = pos;
         }
 
         protected void UpdateThumbnails(Supershape2D.Parameter p)
