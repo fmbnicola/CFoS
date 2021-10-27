@@ -85,9 +85,9 @@ namespace CFoS.SaveData
 
         // CONSTANTS
         private const string URI = "https://api.pageclip.co/data";
-        private const string DATA_FORM = "UserTestingData";
-        private const string IDS_FORM  = "UserTestingIds";
-        private const string API_KEY = "api_sNcXtXUXzzFu47paLJXHYeGHLYM7PCAz";
+        private const string DATA_FORM = "";
+        private const string IDS_FORM  = "";
+        private const string API_KEY = "";
 
         // List of words to filter out (for politeness sake)
         private readonly List<string> badWords = new List<string>()
